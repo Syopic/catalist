@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<cross-domain-policy>
+    <allow-access-from domain="*"/>
+	<allow-access-from domain="D:/"/>
+	<allow-access-from domain="E:/"/>
+</cross-domain-policy>
+
