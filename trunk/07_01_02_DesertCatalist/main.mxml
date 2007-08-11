@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<mx:Application  xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" initialize="initApp()">
-
-	<mx:Script source="ua/com/syo/catalist/Main.as" />
-	
-	<mx:TextArea top="125" left="10" right="10" bottom="32" id="outputTxt" />
-	
-</mx:Application>
