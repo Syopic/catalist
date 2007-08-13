@@ -33,7 +33,7 @@ package ua.com.syo.catalist.data.storage
 		public static var f1		: Number=	0.014+0.005;
 		public static var nDvZchep	: Number=	1700;
 		public static var vDros		: Number=	172;
-		public static var tDrosMin	: Number=	1,035*60/6.6/nXXmin;
+		public static var tDrosMin	: Number=	1.035*60/6.6/nXXmin;
 		public static var vZchep	: Number=	112;
 		public static var A			: Number=	0;
 		public static var phiDrosEnd: Number=	50;
