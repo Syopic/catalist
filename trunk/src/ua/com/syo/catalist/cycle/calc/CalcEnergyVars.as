@@ -264,12 +264,12 @@ package ua.com.syo.catalist.cycle.calc
 			for (var j:Number = 109; j<18*10; j++) 
 			{
 				var modej:String=CycleData.modePoint2_array[j];
-				Application.application["outputTxt"].text+="##################### time: "+j/10+" , mode: "+modej+" ###\n";;
-				Application.application["outputTxt"].text+="nDv: "+CycleData.NdvPoint_array[j]+"\n";
-				Application.application["outputTxt"].text+="Mk: "+CycleData.MkPoint_array[j]+"\n";
-				Application.application["outputTxt"].text+="phiDros: "+CycleData.PhiDrosPoint_array[j]+"\n";
-				Application.application["outputTxt"].text+="dPk: "+CycleData.DeltaPkPoint_array[j]+"\n";
-				Application.application["outputTxt"].text+="a: "+CycleData.getAcceleration(j/10)+"\n";
+				trace("##################### time: "+j/10+" , mode: "+modej+" ###\n");
+				trace("nDv: "+CycleData.NdvPoint_array[j]+"\n");
+				trace("Mk: "+CycleData.MkPoint_array[j]+"\n");
+				trace("phiDros: "+CycleData.PhiDrosPoint_array[j]+"\n");
+				trace("dPk: "+CycleData.DeltaPkPoint_array[j]+"\n");
+				trace("a: "+CycleData.getAcceleration(j/10)+"\n");
 			}
 		
 		}
