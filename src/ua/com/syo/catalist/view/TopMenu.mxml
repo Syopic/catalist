@@ -54,6 +54,7 @@
                // Alert.show("Label: " + event.item.@label + "\n" + 
                 //    "Data: " + event.item.@data, "Clicked menu item");
                    UIManager.getInstance().showParamForm();
+                   trace(event.toString());
             }
 
          ]]>

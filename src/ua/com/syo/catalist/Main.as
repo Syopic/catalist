@@ -17,6 +17,7 @@ public var myLoader:URLLoader;
 //
 public function initApp():void 
 {
+	trace("show in console");
 	Controller.getInstance().init();
 	Model.getInstance().init();
 	
