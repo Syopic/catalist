@@ -20,6 +20,7 @@
 <applications>
 <application path="src\main.mxml"/>
 <application path="main.mxml"/>
+<application path="test.mxml"/>
 </applications>
 <buildCSSFiles/>
 </actionScriptProperties>

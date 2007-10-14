@@ -21,7 +21,6 @@ package ua.com.syo.catalist.cycle.math
 		   
 		    while (i<n)
 		    {
-		    	//Application.application["outputTxt"].text+=x+" _ "+y+ " ___ "+func(x, y)+"\n";
 		    	k1 = h*func(x, y);
 		        x = x+h/2;
 		        y = y1+k1/2;

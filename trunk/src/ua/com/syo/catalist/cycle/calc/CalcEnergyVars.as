@@ -55,7 +55,6 @@ package ua.com.syo.catalist.cycle.calc
 	    					//Application.application["outputTxt"].text+="mode: "+mode+"  prevNDv: "+prevNDv+"\n";
 		    				if (prevNDv<KoefStorage.nDvZchep && !isRush)
 		    				{
-								
 		    					//phiDros
 		    					CycleData.PhiDrosPoint_array[i]= KoefStorage.phiDrosMin+KoefStorage.vDros*rozginTime;
 		    					if (CycleData.PhiDrosPoint_array[i]>KoefStorage.phiDrosEnd)
@@ -264,12 +263,12 @@ package ua.com.syo.catalist.cycle.calc
 			for (var j:Number = 109; j<18*10; j++) 
 			{
 				var modej:String=CycleData.modePoint2_array[j];
-				trace("##################### time: "+j/10+" , mode: "+modej+" ###\n");
-				trace("nDv: "+CycleData.NdvPoint_array[j]+"\n");
-				trace("Mk: "+CycleData.MkPoint_array[j]+"\n");
-				trace("phiDros: "+CycleData.PhiDrosPoint_array[j]+"\n");
-				trace("dPk: "+CycleData.DeltaPkPoint_array[j]+"\n");
-				trace("a: "+CycleData.getAcceleration(j/10)+"\n");
+				Application.application["outputTxt"].text+="##################### time: "+j/10+" , mode: "+modej+" ###\n";
+				Application.application["outputTxt"].text+="nDv: "+CycleData.NdvPoint_array[j]+"\n";
+				Application.application["outputTxt"].text+="Mk: "+CycleData.MkPoint_array[j]+"\n";
+				Application.application["outputTxt"].text+="phiDros: "+CycleData.PhiDrosPoint_array[j]+"\n";
+				Application.application["outputTxt"].text+="dPk: "+CycleData.DeltaPkPoint_array[j]+"\n";
+				Application.application["outputTxt"].text+="a: "+CycleData.getAcceleration(j/10)+"\n";
 			}
 		
 		}
@@ -280,12 +279,16 @@ package ua.com.syo.catalist.cycle.calc
 			
 			x=Math.round(x*10)/10;
 			var prevNdv:Number=y;
-			//Application.application["outputTxt"].text+="x "+ x+"\n";
 			
+			trace(prevNdv);
 			
-			//var deltaPk:Number=KoefStorage._b0+KoefStorage._b1*prevNdv+KoefStorage._b2*CycleData.getPhiDros(x)+KoefStorage._b11*Math.pow(prevNdv, 2)+KoefStorage._b22*Math.pow(CycleData.getPhiDros(x), 2)+KoefStorage._b12*prevNdv*CycleData.getPhiDros(x)+KoefStorage._b111*Math.pow(prevNdv, 3)+KoefStorage._b222*Math.pow(CycleData.getPhiDros(x), 3);
+			var deltaPk:Number=KoefStorage._b0+KoefStorage._b1*prevNdv+KoefStorage._b2*CycleData.getPhiDros(x)+KoefStorage._b11*Math.pow(prevNdv, 2)+KoefStorage._b22*Math.pow(CycleData.getPhiDros(x), 2)+KoefStorage._b12*prevNdv*CycleData.getPhiDros(x)+KoefStorage._b111*Math.pow(prevNdv, 3)+KoefStorage._b222*Math.pow(CycleData.getPhiDros(x), 3);
 			var phiDrosZch:Number=KoefStorage._c0+KoefStorage._c1*KoefStorage.nDvZchep;
-			var _Mk_ust:Number=KoefStorage._a0+KoefStorage._a1*prevNdv+(KoefStorage._a2+KoefStorage._a12*prevNdv)*(KoefStorage._b0+KoefStorage._b1*prevNdv+KoefStorage._b11*prevNdv*prevNdv+KoefStorage._b111*Math.pow(prevNdv,3)+(KoefStorage._b2+KoefStorage._b12*prevNdv)*(phiDrosZch+KoefStorage.phiDrosMin)/2+KoefStorage._b22*(phiDrosZch*phiDrosZch+phiDrosZch*KoefStorage.phiDrosMin+KoefStorage.phiDrosMin*KoefStorage.phiDrosMin)/3+KoefStorage._b222*(Math.pow(phiDrosZch,3)+phiDrosZch*KoefStorage.phiDrosMin*KoefStorage.phiDrosMin+phiDrosZch*phiDrosZch*KoefStorage.phiDrosMin+Math.pow(KoefStorage.phiDrosMin, 3))/4);
+			//var _Mk_ust:Number=KoefStorage._a0+KoefStorage._a1*prevNdv+(KoefStorage._a2+KoefStorage._a12*prevNdv)*(KoefStorage._b0+KoefStorage._b1*prevNdv+KoefStorage._b11*prevNdv*prevNdv+KoefStorage._b111*Math.pow(prevNdv,3)+(KoefStorage._b2+KoefStorage._b12*prevNdv)*(phiDrosZch+KoefStorage.phiDrosMin)/2+KoefStorage._b22*(phiDrosZch*phiDrosZch+phiDrosZch*KoefStorage.phiDrosMin+KoefStorage.phiDrosMin*KoefStorage.phiDrosMin)/3+KoefStorage._b222*(Math.pow(phiDrosZch,3)+phiDrosZch*KoefStorage.phiDrosMin*KoefStorage.phiDrosMin+phiDrosZch*phiDrosZch*KoefStorage.phiDrosMin+Math.pow(KoefStorage.phiDrosMin, 3))/4);
+			var _Mk_ust:Number=KoefStorage._a0+KoefStorage._a1*prevNdv+KoefStorage._a2*deltaPk+KoefStorage._a12*deltaPk*prevNdv;
+			
+			//trace(phiDrosZch);
+			//trace(_Mk_ust);
 			
 			var tOb:Number=60/prevNdv;
 			var tDros:Number=(CycleData.getPhiDros(x)-KoefStorage.phiDrosMin)/KoefStorage.vDros;
