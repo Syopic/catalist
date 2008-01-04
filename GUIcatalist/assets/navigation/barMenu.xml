@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- $Id: barMenu.xml,v 1.8 2007/12/10 13:53:15 sekr Exp $  -->
 <menu>
-    <item label="File" >
-       <item label="Open1" />
-       <item label="Open2" />
-       <item label="GUIcatalist\bin\Catalis" />
-       <item label="Open4" />
+    <item label="Файл" >
+       <item label="Завантажити" />
+       <item label="Зберегти" />
+       <item label="Вихід" />
     </item>
 
-    <item label="Edit" >
+    <item label="Розрахунок" >
        <item label="Open1" />
        <item label="Open2" />
        <item label="Open3" />
        <item label="Open4" />
+    </item>
+
+    <item label="Налагодження" >
+       <item label="Open1" />
+       <item label="Open2" />
+       <item label="Open3" />
+       <item label="Open4" />
+    </item>
+
+    <item label="Допомога" >
+       <item label="Як користуватися" />
+       <item label="Про програму" />
+       <item label="Відвідати сайт програми" />
     </item>
 </menu>
