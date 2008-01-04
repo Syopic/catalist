@@ -1,13 +1,26 @@
 
     Application {
-       backgroundColor: #cccccc;
+        backgroundColor: #cccccc;
     }
 
     ApplicationControlBar {
-       cornerRadius: 0;
-       shadowDistance: 2;
+        cornerRadius: 0;
+        shadowDistance: 2;
+        shadowDirection: "bottom";
+
     }
 
     Label {
-       color: #666666;
+        color: #666666;
+    }
+
+    MenuBar {
+        borderColor: #d8d8d8;
+        highlightAlphas: 0.5, 0.5;
+        fillAlphas: 0, 0;
+        fontWeight: bold;
+        color: #666666;
+        themeColor: #666666;
+        fontSize: 12;
+        textRollOverColor: #ffffff;
     }
