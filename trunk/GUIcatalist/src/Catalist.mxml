@@ -24,8 +24,9 @@
         <mx:Spacer width="100%" height="3" />
         <mx:MenuBar dataProvider="{menuBarXml.item}" labelField="@label" width="100%"></mx:MenuBar>
 
-        <mx:ApplicationControlBar height="40" width="100%" >
+        <mx:ApplicationControlBar height="50" width="100%" >
             <mx:ComboBox></mx:ComboBox>
+            <mx:Button label="Button"/>
         </mx:ApplicationControlBar>
 
         <mx:HBox width="100%" height="100%">
