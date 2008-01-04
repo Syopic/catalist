@@ -1,37 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id: barMenu.xml,v 1.8 2007/12/10 13:53:15 sekr Exp $  -->
-<navigator>
-    <menu id="booking">
-        <menu id="new_booking"/>
-        <menu id="booking_manager"/>
-        <menu id="new_group_booking"/>
-        <menu id="pax_list"/>
-        <menu id="ssr_queue" permissions="SSR_VIEW,SSR_EDIT"/>
-        <menu id="waiting_list_queue"/>
-    </menu>
-    <menu id="settings">
-        <menu id="agent_list" enabled ="false"/>
-        <menu id="fare_basis"/>
-        <menu id="segment_fares"/>
-    </menu>
-    <menu id="flights">
-        <menu id="schedule_manager"/>
-        <menu id="inventory_manager"/>
-    </menu>
-    <menu id="reports">
-        <menu id="reservation_report"/>
-        <menu id="ticket_report"/>
-        <menu id="bulk_report"/>
-    </menu>
-    <menu id="options">
-      <menu id="dictionaries"/>
-      <menu id="language"/>
-    </menu>
-    <menu id="windows">
-      <menu id="close_all_windows" />
-      <menu id="show_navigator" type="check" selected="true" toggled="true"/>
-    </menu>
-    <menu id="logout">
-        <menu id="logout"/>
-    </menu>
-</navigator>
+<menu>
+    <item label="File" >
+       <item label="Open1" />
+       <item label="Open2" />
+       <item label="GUIcatalist\bin\Catalis" />
+       <item label="Open4" />
+    </item>
+
+    <item label="Edit" >
+       <item label="Open1" />
+       <item label="Open2" />
+       <item label="Open3" />
+       <item label="Open4" />
+    </item>
+</menu>
