@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <actionScriptProperties mainApplicationPath="Catalist.mxml" version="1">
-  <compiler additionalCompilerArguments="-locale en_US" copyDependentFiles="true" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersion="9.0.0" htmlPlayerVersionCheck="true" outputFolderPath="bin" strict="true" warn="true">
+  <compiler additionalCompilerArguments="-locale en_US" copyDependentFiles="true" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersion="9.0.0" htmlPlayerVersionCheck="true" outputFolderPath="bin" sourceFolderPath="src" strict="true" warn="true">
     <compilerSourcePath>
       <compilerSourcePathEntry kind="1" linkType="1" path="\GUIcatalist\src"/>
     </compilerSourcePath>
@@ -21,6 +21,8 @@
   </compiler>
   <applications>
     <application path="Catalist.mxml"/>
+    <application path="src\src\Catalist.mxml"/>
+    <application path="src\Catalist.mxml"/>
   </applications>
   <buildCSSFiles/>
 </actionScriptProperties>
