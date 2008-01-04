@@ -1,1 +1,13 @@
-/* CSS file */
+
+    Application {
+       backgroundColor: #cccccc;
+    }
+
+    ApplicationControlBar {
+       cornerRadius: 0;
+       shadowDistance: 2;
+    }
+
+    Label {
+       color: #666666;
+    }
