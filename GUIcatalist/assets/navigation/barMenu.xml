@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <menu>
-    <item label="Файл" >
-       <item label="Завантажити" />
-       <item label="Зберегти" />
-       <item label="Вихід" />
+    <item label="Файл">
+        <item id="loadData" label="Завантажити дані"/>
+        <item id="saveData" label="Зберегти результат"/>
     </item>
-
-    <item label="Розрахунок" >
-       <item label="Open1" />
-       <item label="Open2" />
-       <item label="Open3" />
-       <item label="Open4" />
+    <item label="Вихідні дані">
+    	<item id="correctParams" label="Коригування параметрів"/>
+    	<item id="" label="Коефіцієнти поліномів"/>
     </item>
-
-    <item label="Налагодження" >
-       <item label="Open1" />
-       <item label="Open2" />
-       <item label="Open3" />
-       <item label="Open4" />
+    <item label="Розрахунок">
+        <item id="" label="Відтворення циклу"/>
+        <item id="" label="Енергетичні показники"/>
+        <item id="" label="Економічні показники"/>
+        <item id="" label="Екологічні показники"/>
     </item>
-
-    <item label="Допомога" >
-       <item label="Як користуватися" />
-       <item label="Про програму" />
-       <item label="Відвідати сайт програми" />
+    <item label="Налаштування">
+    	<item label="Параметри">
+        	<item id="" label="Параметри КТЗ і його двигуна"/>
+        	<item id="" label="Параметри для визначення екологічних показників КТЗ"/>
+        	<item id="" label="Параметри оточуючого середовища і фізичні константи"/>
+        </item>
+    </item>
+    <item label="Довідка">
+    	<item id="about" label="Про програму"/>
     </item>
 </menu>
