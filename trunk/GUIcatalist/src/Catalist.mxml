@@ -9,34 +9,53 @@
 
     <mx:Script>
         <![CDATA[
-            import ua.com.syo.catalist.views.data.CatalistStrings;
+        	
+
+
         ]]>
     </mx:Script>
-
+	
+	<mx:Script source="ua/com/syo/catalist/controllers/CatalistController.as"/>
+	
     <mx:VBox width="100%" height="100%" verticalGap="0">
-        <mx:ApplicationControlBar height="50" width="100%" >
-            <!--<mx:Image source="@Embed('/../assets/images/logo.png')"  width="150" height="40"/> -->
+        <mx:ApplicationControlBar height="40" width="100%" >
+            <mx:Image source="@Embed('/../assets/images/logo.png')"/>
 
-            <mx:Spacer width="100%" height="40"/>
+            <mx:Spacer width="100%" height="30"/>
 
             <mx:Label id="titleLabel" text="{CatalistStrings.TITLE_LABEL}" fontWeight="bold"/>
             <mx:VRule height="50%"/>
             <mx:Label id="versionLabel" text="{CatalistStrings.VERSION}" fontWeight="bold"/>
         </mx:ApplicationControlBar>
         <mx:Spacer width="100%" height="3" />
-        <mx:MenuBar dataProvider="{menuBarXml.item}" labelField="@label" width="100%"></mx:MenuBar>
+        <mx:MenuBar dataProvider="{menuBarXml.item}" labelField="@label" width="100%"
+        	itemClick="onClickMenuBarHandler(event)"/>
 
         <mx:ApplicationControlBar height="40" width="100%" >
-            <mx:ComboBox></mx:ComboBox>
-            <mx:Button label="Button"/>
+            <mx:Button toolTip="Завантажити дані"
+            	icon="@Embed('/../assets/images/icons/folder_database.png')" width="26" height="26"/>
+            <mx:Button toolTip="Зберегти результати обчислень"
+            	icon="@Embed('/../assets/images/icons/disk.png')" width="26" height="26"/>
+            	
+            <mx:VRule height="100%"/>
+            <mx:Button toolTip="Розрахувати"
+            	icon="@Embed('/../assets/images/icons/calculator.png')" label="Розрахувати" height="26"/>
+            <mx:VRule height="100%"/>
+            	
+            <mx:PopUpButton toolTip="Налаштування"  id="setPopupButton" label="PopUpButton" height="26"
+            	creationComplete="{initMenu();}"
+            	click="{setMenuButtonClickHandler(event);}"
+            	icon="@Embed('/../assets/images/icons/cog_edit.png')"/>
+            	
         </mx:ApplicationControlBar>
 
         <mx:HBox width="100%" height="100%">
-        	<advFlexLib:SuperTabNavigator id="tabNav" dropShadowEnabled="true"
-						width="100%" height="100%" />	
+        	<advFlexLib:SuperTabNavigator id="tabNav" dropShadowEnabled="true" 
+        				backgroundColor="#e2e2e2" paddingTop="0"
+						width="100%" height="100%"/>	
         </mx:HBox>
 
-        <mx:ApplicationControlBar height="40" width="100%" >
+        <mx:ApplicationControlBar height="36" width="100%" >
             <mx:Image source="@Embed('/../assets/images/icons/comment.png')" />
             <mx:Label id="statusLabel" text="Status Label" width="100%" color="#e5e5e5"/>
         </mx:ApplicationControlBar>
