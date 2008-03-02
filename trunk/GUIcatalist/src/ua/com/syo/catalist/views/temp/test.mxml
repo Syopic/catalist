@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="750" height="650">
+	<mx:Script>
+        <![CDATA[
+        	import ua.com.syo.catalist.view.UIManager;
+
+            private function close():void  
+            {
+                   UIManager.getInstance().hideParamForm();
+            }
+
+         ]]>
+    </mx:Script>
+	<mx:Panel id="hPanel" width="750" height="650" layout="absolute" title="Параметри КТЗ і його двигуна" verticalCenter="0" horizontalCenter="0"  borderStyle="solid" backgroundColor="#8EA4AF" backgroundAlpha="0.76">
+		<mx:TabNavigator x="10" y="10" width="710" height="560">
+			<mx:Canvas label="Основні характеристики (паспортні дані):" width="100%" height="95%">
+				<mx:Label x="10" y="0" fontWeight="bold" fontSize="10" color="#63858f"/>
+				<mx:Grid y="0" width="690" height="487" paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10" verticalGap="2" horizontalGap="2" horizontalCenter="-1.5">
+					<mx:GridRow width="100%" height="100%" >
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleTint">
+							<mx:Label text="Модель КТЗ" fontSize="10" color="#000000"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" >
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:TextInput width="100" text="ЗАЗ-1102 «Таврія»"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" styleName="GridItemStyleTint">
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Повна вага КТЗ"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Image source="_img/Ga.png" scaleContent="false"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" >
+							<mx:NumericStepper width="100%"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Label text="кг" fontSize="10" color="#000000" textAlign="left" width="100%" height="20"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label fontSize="10" text="Радіус кочення коліс КТЗ"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Image source="_img/rk.png" scaleContent="false"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="м" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Динамічний радіус колеса"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Image source="_img/rdin.png" scaleContent="false"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Label text="м" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label text="Максимальна швидкість руху на вищій передачі при повній масі" width="417" styleName="GridItemStyleTint"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Image source="_img/Vmax.png" scaleContent="false"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="км/год" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Витрата палива в міському циклі"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+								<mx:Image source="_img/g100.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Label text="л/100 км" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label fontSize="10" text="Максимальний крутний момент двигуна"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+								<mx:Image source="_img/Mkmax.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="Н ∙ м" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label text="Мнімальна частота обертання колінчастого валу двигуна в режимі хол. ходу" width="444"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+								<mx:Image source="_img/nXXmin.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Label text="хв-1" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label text="Передаткове число головної передачі" fontSize="10"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+								<mx:Image source="_img/U0.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Коефіцієнт корисної дії трансмісії"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+								<mx:Image source="_img/nTrans.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label fontSize="10" text="Коефіцієнт запасу зчеплення:"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+								<mx:Image source="_img/beta.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Момент інерції двигуна"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+								<mx:Image source="_img/Idv.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Label text="кг ∙ м2" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label fontSize="10" text="Сумарний момент інерції усіх коліс КТЗ"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+								<mx:Image source="_img/sum.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="кг ∙ м2" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Коефіцієнт опору коченню"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+								<mx:Image source="_img/f0.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Label text="кгс/кг" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label fontSize="10" text="Фактор обтічності КТЗ"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+							<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+								<mx:Image source="_img/W.png" scaleContent="false"/>
+							</mx:GridItem>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="Н ∙ с2/м4" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					
+				</mx:Grid>
+				<mx:Label fontSize="10" text="Передаткові числа коробки передач:" x="20" y="496"/>
+				<mx:Label fontSize="10" text="UI:" x="255" y="496"/>
+				<mx:NumericStepper x="278" y="495" width="54" value="0" maximum="100000000" stepSize="0.01"/>
+				<mx:NumericStepper x="364" y="495" width="54" value="0" maximum="55555" stepSize="0.01"/>
+				<mx:NumericStepper x="456" y="495" width="54" value="0" maximum="55555" stepSize="0.01"/>
+				<mx:NumericStepper x="545" y="495" width="54" value="0" maximum="55555" stepSize="0.01"/>
+				<mx:NumericStepper x="630" y="495" width="54" value="0" maximum="55555" stepSize="0.01"/>
+				<mx:Label fontSize="10" text="UII:" x="336" y="496"/>
+				<mx:Label fontSize="10" text="UIII:" x="423" y="496"/>
+				<mx:Label fontSize="10" text="UIV:" x="515" y="496"/>
+				<mx:Label fontSize="10" text="UV:" x="605" y="496"/>
+			</mx:Canvas>
+			<mx:Canvas label="Експериментальні дані" width="100%" height="100%">
+				<mx:Grid x="10" y="0" width="685" height="517" paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10" verticalGap="2" horizontalGap="2">
+					<mx:GridRow width="100%" height="100%" >
+						<mx:GridItem width="100%" height="100%"  styleName="GridItemStyleTint">
+							<mx:Label text="Частота обертання колінчастого валу двигуна, що відповідає моменту включення зчеплення:" fontSize="10" color="#000000" width="505" height="20"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" >
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleTint">
+							<mx:NumericStepper width="80"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="хв-1" fontSize="10" color="#000000" textAlign="left" width="100%" height="20"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Коефіцієнт пропорційності, визначений за експериментальною швидкісною характеристикою холостого ходу з вимірюванням положення дросельних заслінок" width="504" height="20"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Image source="_img/Ga.png" scaleContent="false"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:NumericStepper width="100%"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Label text="%/хв-1" fontSize="10" color="#000000" textAlign="left" width="100%" height="20"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label fontSize="10" text="Швидкість відкриття дросельних заслінок"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleTint">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="%/с" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Швидкість зростання моменту тертя зчеплення"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Label text="Н ∙ м/с" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label fontSize="10" text="Експериментальний коефіцієнт для визначення коефіцієнту опору коченню коліс КТЗ – умовний опір" width="504" height="20"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleTint">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="с2/м2" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Кінцеве положення дросельних заслінок в процесі переміщення"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+							<mx:Label text="град" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label text="Максимальний кут відкриття дросельних заслінок" fontSize="10"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleTint">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="град" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Експериментальний коефіцієнт неусталеного режиму"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label fontSize="10" text="Час, що минув з моменту роз’єднання зчеплення"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleTint">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+							<mx:Label text="с" fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+							<mx:Label fontSize="10" color="#000000" width="100%" height="20" textAlign="left"/>
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:Label fontSize="10" text="Експериментальний коефіцієнт для обчислення моменту механічних втрат двигуна, визначають за швидкісними характе-ристиками примусового холостого ходу" width="503" height="20"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleWhite">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" styleName="GridItemStyleWhite">
+						</mx:GridItem>
+					</mx:GridRow>
+					<mx:GridRow width="100%" height="100%">
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4" styleName="GridItemStyleTint">
+							<mx:Label fontSize="10" text="Експериментальні коефіцієнти для визначення розрідження у впускному трубопроводі" width="444"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" backgroundColor="#f0f4f4">
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" styleName="GridItemStyleTint">
+							<mx:NumericStepper width="100%" stepSize="0.1" maximum="500"/>
+						</mx:GridItem>
+						<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#f0f4f4">
+						</mx:GridItem>
+					</mx:GridRow>
+				</mx:Grid>
+			</mx:Canvas>
+		</mx:TabNavigator>
+		<mx:Button x="677" y="578" label="ОК" click="close()"/>
+		<mx:Button x="591" y="578" label="Прийняти"/>
+		<mx:Button x="10" y="578" label="Скасувати"/>
+	</mx:Panel>
+</mx:Canvas>
+

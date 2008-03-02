@@ -8,9 +8,12 @@ import mx.events.MenuEvent;
 import mx.managers.PopUpManager;
 import mx.managers.PopUpManagerChildList;
 import flash.events.MouseEvent;
+import ua.com.syo.catalist.views.ExperimentParamsView;
 
 private var aboutPopup:AboutView = new AboutView();
 private var ktzParams:KTZParamsView = new KTZParamsView();
+private var expParams:ExperimentParamsView = new ExperimentParamsView();
+
 private var setMenu:Menu;
 
 private var setList:Object = [{label: "КТЗ і його двигуна", id: "ktzParams"}, 
@@ -35,9 +38,12 @@ private function switchMenuItems(idStr:String): void {
 		case "about": 	
 			showAboutPopup();
 		break;
-		
 		case "ktzParams": 
-			addTab("Параметри КТЗ і його двигуна", ktzParams);
+			addTab("Параметри КТЗ", ktzParams);
+			tabNav.selectedIndex = tabNav.numChildren - 1;
+		break;
+		case "expParams": 
+			addTab("Параметри двигуна", expParams);
 			tabNav.selectedIndex = tabNav.numChildren - 1;
 		break;
 		default: break;
@@ -67,9 +73,4 @@ private function setMenuItemClickHandler(event:MenuEvent):void {
     setMenu.selectedIndex = event.index;
 }
 private function setMenuButtonClickHandler(event:MouseEvent):void {
-	/* switchMenuItems(event.item.id); 
-    var label:String = event.item.label;        
-    setPopupButton.label = "Параметри: " + label;
-    setPopupButton.close();
-    setMenu.selectedIndex = event.index; */
 }

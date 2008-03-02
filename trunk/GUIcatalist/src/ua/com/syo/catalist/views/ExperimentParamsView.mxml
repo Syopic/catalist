@@ -3,100 +3,72 @@
 	cornerRadius="0" verticalGap="4" width="100%" height="100%" headerHeight="10">
 <mx:VBox width="100%" height="100%">
 	<mx:HBox width="100%" height="100%">
-		<mx:VBox width="100%" height="100%" verticalAlign="top">
-			<mx:Form height="100%" width="100%" >
-		        <mx:FormItem height="50" width="100%" label="Модель КТЗ" horizontalAlign="left" >
-			    	<mx:TextInput text="ЗАЗ-1102 «Таврія»"/>
-		        </mx:FormItem>
-			</mx:Form>
-			<mx:Label fontSize="10" text="Передаткові числа коробки передач:" x="20" y="496"/>
-	    	<mx:Form height="100%" width="100%" >
-		    	<mx:FormItem label="UI:">
-		            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-		        </mx:FormItem>
-		    	<mx:FormItem label="UII:">
-		            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-		        </mx:FormItem>
-		    	<mx:FormItem label="UIII:">
-		            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-		        </mx:FormItem>
-		    	<mx:FormItem label="UIV:">
-		            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-		        </mx:FormItem>
-		    	<mx:FormItem label="UV:">
-		            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-		        </mx:FormItem>
-	        </mx:Form>
-		</mx:VBox>
-		<mx:HBox height="100%">
-	    	<mx:VRule height="100%"/>
-	    </mx:HBox>
 		<mx:HBox width="100%" height="100%">
 			<mx:Form height="100%" width="100%" verticalGap="5">
-		        <mx:FormItem label="Повна вага КТЗ">
+		        <mx:FormItem label="Частота обертання колінчастого валу двигуна, що відповідає моменту включення зчеплення">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/Ga.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="кг" />
+			            <mx:Label text="хв-1" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Радіус кочення коліс КТ">
+		        <mx:FormItem label="Коефіцієнт пропорційності, визначений за експериментальною швидкісною характеристикою холостого ходу з вимірюванням положення дросельних заслінок">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/rk.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="м" />
+			            <mx:Label text="%/хв-1" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Динамічний радіус колеса">
+		        <mx:FormItem label="Швидкість відкриття дросельних заслінок">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/rdin.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="м" />
+			            <mx:Label text="%/с" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Максимальна швидкість руху на вищій передачі при повній масі">
+		        <mx:FormItem label="Швидкість зростання моменту тертя зчеплення">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/Vmax.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="км/год" />
+			            <mx:Label text="Н ∙ м/с" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Витрата палива в міському циклі">
+		        <mx:FormItem label="Експериментальний коефіцієнт для визначення коефіцієнту опору коченню коліс КТЗ – умовний опір">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/g100.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="л/100 км" />
+			            <mx:Label text="с2/м2" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Максимальний крутний момент двигуна">
+		        <mx:FormItem label="Кінцеве положення дросельних заслінок в процесі переміщення">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/Mkmax.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="Н ∙ м" />
+			            <mx:Label text="град" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Мнімальна частота обертання колінчастого валу двигуна в режимі хол. ходу">
+		        <mx:FormItem label="Кінцеве положення дросельних заслінок в процесі переміщення">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/nXXmin.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="хв-1" />
+			            <mx:Label text="град" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Передаткове число головної передачі">
+		        <mx:FormItem label="Максимальний кут відкриття дросельних заслінок">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/U0.png')" scaleContent="false"/>
@@ -105,16 +77,16 @@
 			            <mx:Label text="" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Коефіцієнт корисної дії трансмісії">
+		        <mx:FormItem label="Експериментальний коефіцієнт неусталеного режиму">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/nTrans.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="" />
+			            <mx:Label text="с" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Коефіцієнт запасу зчеплення">
+		        <mx:FormItem label="Час, що минув з моменту роз’єднання зчеплення">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/beta.png')" scaleContent="false"/>
@@ -123,46 +95,25 @@
 			            <mx:Label text="" />
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Момент інерції двигуна">
+		        <mx:FormItem label="Експериментальний коефіцієнт для обчислення моменту механічних втрат двигуна, визначають за швидкісними характе-ристиками примусового холостого ходу">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/Idv.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="кг ∙ м2" />
+			            <mx:Label/>
 		        	</mx:HBox>
 		        </mx:FormItem>
-		        <mx:FormItem label="Сумарний момент інерції усіх коліс КТЗ">
+		        <mx:FormItem label="Експериментальні коефіцієнти для визначення розрідження у впускному трубопроводі">
 		        	<mx:HBox>
 		        		<mx:HBox width="55">
 			            	<mx:Image source="@Embed('/../assets/images/icons/params/sum.png')" scaleContent="false"/>
 			            </mx:HBox>
 			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="кг ∙ м2" />
-		        	</mx:HBox>
-		        </mx:FormItem>
-		        <mx:FormItem label="Коефіцієнт опору коченню">
-		        	<mx:HBox>
-		        		<mx:HBox width="55">
-			            	<mx:Image source="@Embed('/../assets/images/icons/params/f0.png')" scaleContent="false"/>
-			            </mx:HBox>
-			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="кгс/кг" />
-		        	</mx:HBox>
-		        </mx:FormItem>
-		        <mx:FormItem label="Фактор обтічності КТЗ">
-		        	<mx:HBox>
-		        		<mx:HBox width="55">
-			            	<mx:Image source="@Embed('/../assets/images/icons/params/W.png')" scaleContent="false"/>
-			            </mx:HBox>
-			            <mx:NumericStepper stepSize="0.1" maximum="500"/>
-			            <mx:Label text="Н ∙ с2/м4" />
+			            <mx:Label/>
 		        	</mx:HBox>
 		        </mx:FormItem>
 		    </mx:Form>
-	    </mx:HBox>
-	    <mx:HBox height="100%">
-	    	<mx:VRule height="100%"/>
 	    </mx:HBox>
     </mx:HBox>
 	</mx:VBox>
