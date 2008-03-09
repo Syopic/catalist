@@ -4,8 +4,8 @@
 <mx:VBox width="100%" height="100%">
 	<mx:HBox width="100%" height="100%">
 		<mx:VBox width="100%" height="100%" verticalAlign="top">
-			<mx:Form height="100%" width="100%" >
-		        <mx:FormItem height="50" width="100%" label="Модель КТЗ" horizontalAlign="left" >
+			<mx:Form height="59" width="100%" >
+		        <mx:FormItem height="27" width="100%" label="Модель КТЗ" horizontalAlign="left" >
 			    	<mx:TextInput text="ЗАЗ-1102 «Таврія»"/>
 		        </mx:FormItem>
 			</mx:Form>
