@@ -40,13 +40,8 @@
             <mx:VRule height="100%"/>
             <mx:Button toolTip="Розрахувати"
             	icon="@Embed('/../assets/images/icons/calculator.png')" label="Розрахувати" height="26"/>
-            <mx:VRule height="100%"/>
-            	
-            <mx:PopUpButton toolTip="Налаштування"  id="setPopupButton" label="PopUpButton" height="26"
-            	creationComplete="{initMenu();}"
-            	click="{setMenuButtonClickHandler(event);}"
-            	icon="@Embed('/../assets/images/icons/cog_edit.png')"/>
-            	
+            <mx:Spacer width="100%" />
+            
         </mx:ApplicationControlBar>
 
         <mx:HBox width="100%" height="100%">
