@@ -1,6 +1,6 @@
 package ua.com.syo.catalist.model {
 	[Bindable]	
-	public class KTZParamsModel	{
+	public class KTZParams	{
 		
 		// Параметри КТЗ
 		public var ktzModel:String = "ЗАЗ-1102 «Таврія»";
@@ -27,7 +27,7 @@ package ua.com.syo.catalist.model {
 		public var W:Number = 0.051;
 		
 		//Constructor
-		public function KTZParamsModel() {
+		public function KTZParams() {
 			
 		}
 	}
