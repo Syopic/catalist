@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:advFlexLib="flexlib.containers.*"
 	layout="absolute"
+	frameRate="60"
     backgroundColor="#cccccc">
 
     <mx:Style source="/../assets/styles/main.css" />
@@ -9,13 +10,12 @@
 
     <mx:Script>
         <![CDATA[
-        	
 
 
         ]]>
     </mx:Script>
 	
-	<mx:Script source="ua/com/syo/catalist/controllers/CatalistController.as"/>
+	<mx:Script source="ua/com/syo/catalist/controller/CatalistController.as"/>
 	
     <mx:VBox width="100%" height="100%" verticalGap="0">
         <mx:ApplicationControlBar height="40" width="100%" >
@@ -57,4 +57,4 @@
     </mx:VBox>
 
 
-</mx:Application>
+</mx:WindowedApplication>

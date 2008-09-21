@@ -6,7 +6,7 @@
 	
 	<mx:Script>
 		<![CDATA[
-			import ua.com.syo.catalist.views.data.CatalistStrings;
+			import ua.com.syo.catalist.view.data.CatalistStrings;
 			import mx.managers.PopUpManager;
 			
 			private function removeMe(): void {
