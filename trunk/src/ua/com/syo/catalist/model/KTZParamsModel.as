@@ -1,4 +1,4 @@
-package ua.com.syo.catalist.models {
+package ua.com.syo.catalist.model {
 	[Bindable]	
 	public class KTZParamsModel	{
 		

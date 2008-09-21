@@ -1,4 +1,4 @@
-package ua.com.syo.catalist.views.data
+package ua.com.syo.catalist.view.data
 {
     public class CatalistStrings {
         public static const TITLE_LABEL:String="Програма для розрахунку";

@@ -1,14 +1,14 @@
 import mx.controls.Menu;
-import ua.com.syo.catalist.views.KTZParamsView;
-import ua.com.syo.catalist.views.AboutView;
+import ua.com.syo.catalist.view.KTZParamsView;
+import ua.com.syo.catalist.view.AboutView;
 import mx.managers.PopUpManager;
-import ua.com.syo.catalist.views.data.CatalistStrings;
+import ua.com.syo.catalist.view.data.CatalistStrings;
 import mx.core.Application;
 import mx.events.MenuEvent;
 import mx.managers.PopUpManager;
 import mx.managers.PopUpManagerChildList;
 import flash.events.MouseEvent;
-import ua.com.syo.catalist.views.ExperimentParamsView;
+import ua.com.syo.catalist.view.ExperimentParamsView;
 import mx.core.Container;
 
 private var aboutPopup:AboutView = new AboutView();
