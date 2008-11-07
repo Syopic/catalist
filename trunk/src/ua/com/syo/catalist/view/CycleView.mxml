@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
-	<mx:HBox width="100%" paddingLeft="10">
-		<mx:Button label="Дистанція"/>
-		<mx:Button label="Швидкість"/>
-		<mx:Button label="Прискорення"/>
-	</mx:HBox>
-	<mx:HBox width="100%" height="100%">
-		<mx:LineChart id="linechart1" width="100%" height="100%"/>
-	</mx:HBox>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+		creationComplete="init();" 
+		width="100%" height="100%"
+		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
+	<mx:Script>
+		<![CDATA[
+			import ua.com.syo.catalist.data.CycleData;
+			import mx.collections.ArrayCollection;
+			[Bindable]
+			private var cycleDP:ArrayCollection;
+			
+			public function init():void {
+				cycleDP = new ArrayCollection();
+				for (var i:int = 0; i < 195; i++) {
+					var o:Object = {time : i, 
+									speed : CycleData.getSpeed(i), 
+									dist : CycleData.getDistance(i), 
+									accel : CycleData.getAcceleration(i), 
+									mode : CycleData.getMode(i), 
+									u : CycleData.getU(i)}
+					
+					cycleDP.addItem(o);
+				}
+				//showGraph(distSer);
+			}
+			
+			private function showGraph(ls:LineSeries):void {
+				linechart.series = [];
+				linechart.series.push(ls);
+				linechart.updateAllDataTips();
+			}
+		]]>
+	</mx:Script>	
+	<mx:Stroke id = "s1" color="#0099ff" weight="3"/>
+    <mx:Stroke id = "s2" color="red" weight="2"/>
+    <mx:Stroke id = "s3" color="green" weight="2"/>
+    
+    <mx:LineSeries id="speedSer" yField="speed" displayName="Швидкість" lineStroke="{s1}"/>
+    <mx:LineSeries id="distSer" yField="dist" displayName="Дистанція" lineStroke="{s2}"/>
+    <mx:LineSeries id="accelSer" yField="accel" displayName="Прискорення" lineStroke="{s3}"/>
+    
+	<mx:VDividedBox width="100%" height="100%">
+		<mx:HBox width="100%" height="100%">
+			<mx:LineChart id="linechart" height="100%" width="100%"
+	            showDataTips="true" dataProvider="{cycleDP}">
+	        </mx:LineChart>
+		    <mx:VBox height="100%" >
+		    	<mx:LinkButton label="Швидкість" click="showGraph(speedSer)"/>
+		    	<mx:LinkButton label="Дистанція" click="showGraph(distSer)"/>
+		    	<mx:LinkButton label="Прискорення" click="showGraph(accelSer)"/>
+		    </mx:VBox>   	 
+		</mx:HBox>
+		
+		       
+		<mx:DataGrid width="100%" height="300" dataProvider="{cycleDP}">
+			<mx:columns>
+				<mx:DataGridColumn width="5" headerText="Час (сек.)" dataField="time" />
+				<mx:DataGridColumn width="10" headerText="Швидкість" dataField="speed" />
+				<mx:DataGridColumn width="10" headerText="Дистанція" dataField="dist"/>
+				<mx:DataGridColumn width="10" headerText="Прискорення" dataField="accel"/>
+				<mx:DataGridColumn width="10" headerText="Режим" dataField="mode"/>
+				<mx:DataGridColumn width="10" headerText="Передача" dataField="u"/>
+			</mx:columns>
+		</mx:DataGrid>
+	</mx:VDividedBox>
 </mx:VBox>

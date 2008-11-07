@@ -60,10 +60,10 @@
 		<!-- <resizable></resizable> -->
 
 		<!-- The window's initial width. Optional. -->
-		<width>800</width>
+		<width>1020</width>
 
 		<!-- The window's initial height. Optional. -->
-		<height>600</height>
+		<height>760</height>
 
 		<!-- The window's initial x position. Optional. -->
 		<!-- <x></x> -->

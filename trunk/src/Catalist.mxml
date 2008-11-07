@@ -3,17 +3,16 @@
 	xmlns:advFlexLib="flexlib.containers.*"
 	layout="absolute"
 	frameRate="60"
+	creationComplete="init()"
     backgroundColor="#cccccc">
+    <mx:Script>
+    	<![CDATA[
+    		import ua.com.syo.catalist.view.data.CatalistStrings;
+    	]]>
+    </mx:Script>
 
     <mx:Style source="/../assets/styles/main.css" />
     <mx:XML id="menuBarXml" source="/../assets/navigation/barMenu.xml" format="e4x"/>
-
-    <mx:Script>
-        <![CDATA[
-
-
-        ]]>
-    </mx:Script>
 	
 	<mx:Script source="ua/com/syo/catalist/controller/CatalistController.as"/>
 	
@@ -32,9 +31,9 @@
         	itemClick="onClickMenuBarHandler(event)"/>
 
         <mx:ApplicationControlBar height="40" width="100%" >
-            <mx:Button toolTip="Завантажити дані"
+            <mx:Button toolTip="Завантажити дані" click="fileManager.showOpenFileDialog()"
             	icon="@Embed('/../assets/images/icons/folder_database.png')" width="26" height="26"/>
-            <mx:Button toolTip="Зберегти результати обчислень"
+            <mx:Button toolTip="Зберегти результати обчислень" click="fileManager.showSaveDialog()"
             	icon="@Embed('/../assets/images/icons/disk.png')" width="26" height="26"/>
             	
             <mx:VRule height="100%"/>

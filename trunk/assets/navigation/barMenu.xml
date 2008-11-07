@@ -5,7 +5,7 @@
         <item id="saveData" label="Зберегти результат"/>
     </item>
     <item label="Розрахунок">
-        <item id="" label="Відтворення циклу"/>
+        <item id="cycleReproduce" label="Відтворення циклу"/>
         <item id="" label="Тягово-швидкісні показники"/>
         <item id="" label="Екологічні та паливно-економічні показники"/>
     </item>
