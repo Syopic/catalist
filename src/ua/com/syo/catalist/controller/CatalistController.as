@@ -1,43 +1,51 @@
-import mx.controls.Menu;
-import ua.com.syo.catalist.view.KTZParamsView;
-import ua.com.syo.catalist.view.AboutView;
-import mx.managers.PopUpManager;
-import ua.com.syo.catalist.view.data.CatalistStrings;
+import flash.events.Event;
+
 import mx.core.Application;
+import mx.core.Container;
 import mx.events.MenuEvent;
 import mx.managers.PopUpManager;
-import mx.managers.PopUpManagerChildList;
-import flash.events.MouseEvent;
+
+import ua.com.syo.catalist.model.FileManager;
+import ua.com.syo.catalist.view.AboutView;
+import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
-import mx.core.Container;
+import ua.com.syo.catalist.view.KTZParamsView;
 
 private var aboutPopup:AboutView = new AboutView();
+private var fileManager:FileManager = new FileManager();
 
 private static const views:Object = {
 	ktzParams:KTZParamsView,
+	cycleReproduce:CycleView,
 	expParams:ExperimentParamsView
 }
-private static const viewsLabels:Object = {
-	ktzParams:"Параметри КТЗ",
-	expParams:"Параметри двигуна"
+
+private function init():void {
+	fileManager.addEventListener(Event.OPEN, cicleDataFileOpenHandler);
 }
 
 private function onClickMenuBarHandler(event:MenuEvent): void {
-	switchMenuItems(XML(event.menu.selectedItem).@id);
+	switchMenuItems(XML(event.menu.selectedItem).@id, XML(event.menu.selectedItem).@label);
 }
 
-private function switchMenuItems(viewId:String): void {
+private function switchMenuItems(viewId:String, label:String): void {
 	switch (viewId) {
 		case "about": 	
 			showAboutPopup();
 		break;
+		case "loadData": 	
+			fileManager.showOpenFileDialog();
+		break;
+		case "saveData": 	
+			fileManager.showSaveDialog();
+		break;
 		default: 
-			showView(viewId);
+			showView(viewId, label);
 		break;
 	}
 }
 
-private function showView(viewId:String): void {
+private function showView(viewId:String, label:String): void {
 	var view:Container;
 	var viewClass:Class = views[viewId];
 	
@@ -45,7 +53,7 @@ private function showView(viewId:String): void {
 		view = getViewByClass(viewClass);
 		if (!view) {
             view = new viewClass();
-            view.label = viewsLabels[viewId];
+            view.label = label;
             
             if (tabNav.selectedIndex == -1) {
 				tabNav.addChild(view);
@@ -73,3 +81,6 @@ private function showAboutPopup(): void {
 	PopUpManager.centerPopUp(aboutPopup);
 }
 
+private function cicleDataFileOpenHandler(event:Event):void  {
+	//event.currentTarget.currentCycleDataXML
+}
