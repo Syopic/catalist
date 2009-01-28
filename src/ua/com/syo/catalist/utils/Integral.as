@@ -26,7 +26,7 @@ package ua.com.syo.catalist.utils {
 	            s2 = s2 * h;
 	        }
 	        
-	        while( Math.abs(s2-s1)>3*epsilon );
+	        while( Math.abs(s2 - s1) > 3 * epsilon );
 	        result = s2;
 	        
 	        return result;
