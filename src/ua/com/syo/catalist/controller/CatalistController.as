@@ -6,6 +6,7 @@ import mx.events.MenuEvent;
 import mx.managers.PopUpManager;
 
 import ua.com.syo.catalist.model.FileManager;
+import ua.com.syo.catalist.utils.Integral;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
@@ -22,7 +23,15 @@ private static const views:Object = {
 
 private function init():void {
 	fileManager.addEventListener(Event.OPEN, cicleDataFileOpenHandler);
+	//trace(Integral.rectangleRule(0, 0.6, 0.01, testFunction));
 }
+
+/* public function testFunction(x:Number):Number {
+	var result:Number = 1 / Math.sqrt(1 - x*x*x*x);
+	return result;
+} */
+
+
 
 private function onClickMenuBarHandler(event:MenuEvent): void {
 	switchMenuItems(XML(event.menu.selectedItem).@id, XML(event.menu.selectedItem).@label);
