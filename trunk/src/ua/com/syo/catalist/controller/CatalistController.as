@@ -23,13 +23,14 @@ private static const views:Object = {
 
 private function init():void {
 	fileManager.addEventListener(Event.OPEN, cicleDataFileOpenHandler);
-	//trace(Integral.rectangleRule(0, 0.6, 0.01, testFunction));
+	trace(Integral.rectangleRule(2, 4, 0.00000001, testFunction));
 }
 
-/* public function testFunction(x:Number):Number {
-	var result:Number = 1 / Math.sqrt(1 - x*x*x*x);
+public function testFunction(x:Number):Number {
+	//var result:Number = 1 / Math.sqrt(1 - x*x*x*x);
+	var result:Number = Math.sin(x)/ (x + 1)
 	return result;
-} */
+}
 
 
 
