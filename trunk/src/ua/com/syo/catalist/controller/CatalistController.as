@@ -6,11 +6,11 @@ import mx.events.MenuEvent;
 import mx.managers.PopUpManager;
 
 import ua.com.syo.catalist.model.FileManager;
-import ua.com.syo.catalist.utils.Integral;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
 import ua.com.syo.catalist.view.KTZParamsView;
+import ua.com.syo.catalist.view.PolinomsCoefficientsView;
 
 private var aboutPopup:AboutView = new AboutView();
 private var fileManager:FileManager = new FileManager();
@@ -18,12 +18,13 @@ private var fileManager:FileManager = new FileManager();
 private static const views:Object = {
 	ktzParams:KTZParamsView,
 	cycleReproduce:CycleView,
-	expParams:ExperimentParamsView
+	expParams:ExperimentParamsView,
+	poliKoef:PolinomsCoefficientsView
 }
 
 private function init():void {
 	fileManager.addEventListener(Event.OPEN, cicleDataFileOpenHandler);
-	trace(Integral.rectangleRule(2, 4, 0.00000001, testFunction));
+	//trace(Integral.rectangleRule(2, 4, 0.00000001, testFunction));
 }
 
 public function testFunction(x:Number):Number {

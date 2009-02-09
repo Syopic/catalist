@@ -10,7 +10,7 @@
 			import mx.managers.PopUpManager;
 			
 			private function removeMe(): void {
-				PopUpManager.removePopUp(this)
+				PopUpManager.removePopUp(this);
 			}
 		]]>
 	</mx:Script>
