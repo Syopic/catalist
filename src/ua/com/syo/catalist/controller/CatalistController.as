@@ -10,7 +10,7 @@ import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
 import ua.com.syo.catalist.view.KTZParamsView;
-import ua.com.syo.catalist.view.PolinomsCoefficientsView;
+import ua.com.syo.catalist.view.polinoms.PolinomsCoefficientsView;
 
 private var aboutPopup:AboutView = new AboutView();
 private var fileManager:FileManager = new FileManager();

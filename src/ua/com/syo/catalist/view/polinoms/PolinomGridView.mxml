@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+<mx:Script>
+	<![CDATA[
+		[Bindable]
+		public var title:String;
+		
+		[Bindable]
+		private var polGridDP:Array = 
+            [
+                {gasName: "CO"},
+                {gasName: "CO2"},
+                {gasName: "HCs"},
+                {gasName: "NOx"},
+                {gasName: "O2"},
+                {gasName: "Gпал"},
+                {gasName: "Gпов"}
+            ];
+
+		
+		public function loadData(url:String):void {
+			var loader:URLLoader = new URLLoader();
+		    loader.dataFormat = URLLoaderDataFormat.TEXT;
+		    loader.addEventListener(Event.COMPLETE, dataLoadedHandler);
+		    loader.load(new URLRequest(url));
+		}
+		
+		private function dataLoadedHandler(event:Event):void {
+			var allStr:String = event.currentTarget.data;
+			var pArr:Array = allStr.split("\n");
+			for (var i:int = 0; i< pArr.length; i++) {
+				var inArray:Array = (pArr[i] as String).split(";");
+				for (var j:int = 0; j< inArray.length; j++) {
+					polGridDP[i]["col" + (j+1)] = inArray[j]*1;
+				}
+			}
+			polGrid.dataProvider = polGridDP;
+		}
+	]]>
+</mx:Script>
+	
+	<mx:Label text="{title}"  fontWeight="normal"/>
+	<mx:DataGrid id="polGrid" dataProvider="{polGridDP}" width="100%" rowHeight="20" rowCount="7" editable="true" draggableColumns="false">
+		<mx:columns>
+			<mx:DataGridColumn headerText="" dataField="gasName" fontWeight="bold" editable="false"/>
+			<mx:DataGridColumn headerText="A0" dataField="col1"/>
+			<mx:DataGridColumn headerText="A1" dataField="col2"/>
+			<mx:DataGridColumn headerText="A2" dataField="col3"/>
+			<mx:DataGridColumn headerText="A11" dataField="col4"/>
+			<mx:DataGridColumn headerText="A22" dataField="col5"/>
+			<mx:DataGridColumn headerText="A12" dataField="col6"/>
+			<mx:DataGridColumn headerText="A111" dataField="col7"/>
+			<mx:DataGridColumn headerText="A222" dataField="col8"/>
+		</mx:columns>
+	</mx:DataGrid>
+</mx:VBox>
