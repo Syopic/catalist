@@ -17,13 +17,13 @@ package ua.com.syo.catalist.data {
 		public static var cycleTimeLength:int = 0;
 		
 		public static function parseXML(xml:XML):void {
-			var xmlLen:Number = xml.children().length(); 
+			var xmlLen:Number = xml.child("cycle").children().length(); 
 	        for (var i:Number = 0; i<xmlLen; i++) {
-	            timePointArray[i] = xml.children()[i].localName();
-	            speedPointArray[i] = xml.children()[i].attribute("speed");
-	            accelerationPointArray[i] = xml.children()[i].attribute("acceleration");
-	            modePointArray[i] = xml.children()[i].attribute("mode");
-				uPointArray[i] = xml.children()[i].attribute("u");
+	            timePointArray[i] = xml.child("cycle").children()[i].localName();
+	            speedPointArray[i] = xml.child("cycle").children()[i].attribute("speed");
+	            accelerationPointArray[i] = xml.child("cycle").children()[i].attribute("acceleration");
+	            modePointArray[i] = xml.child("cycle").children()[i].attribute("mode");
+				uPointArray[i] = xml.child("cycle").children()[i].attribute("u");
 	        }
 	        cycleTimeLength = timePointArray[timePointArray.length - 1];
 	        
