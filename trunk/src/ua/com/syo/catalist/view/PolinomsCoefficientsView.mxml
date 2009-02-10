@@ -3,11 +3,12 @@
 	
 	<mx:Accordion width="100%" height="100%">
 		<mx:HBox id="navantagHBox" label="Навантаж" width="100%" height="100%" paddingLeft="10" paddingBottom="10" paddingRight="10" paddingTop="10">
-			<mx:TabNavigator width="100%" height="100%" paddingLeft="10" paddingBottom="10" paddingRight="10" paddingTop="10">
+			<mx:VBox width="100%" height="100%">
+				<mx:Label text="Бензин"  fontWeight="bold"/>
 				<mx:HBox label="Без нейтралізатора" width="100%" height="100%" >
 					<mx:VBox width="100%" height="100%">
-						<mx:Label text="Бензин"  fontWeight="bold"/>
-						<mx:DataGrid height="100%" width="100%" >
+						<mx:Label text="Без нейтралізатора"  fontWeight="normal"/>
+						<mx:DataGrid width="100%" rowCount="7" editable="true" draggableColumns="false">
 							<mx:columns>
 								<mx:DataGridColumn headerText="" dataField="col1"/>
 								<mx:DataGridColumn headerText="A0" dataField="col2"/>
@@ -21,11 +22,51 @@
 							</mx:columns>
 						</mx:DataGrid>
 					</mx:VBox>
-					<mx:VRule height="100%"/>
 					
 					<mx:VBox width="100%" height="100%">
-						<mx:Label text="Газ"  fontWeight="bold"/>
-						<mx:DataGrid height="100%" width="100%" rowCount="7">
+						<mx:Label text="До нейтралізатора"  fontWeight="normal"/>
+						<mx:DataGrid width="100%" rowCount="7">
+							<mx:columns>
+								<mx:DataGridColumn headerText="" dataField="col1"/>
+								<mx:DataGridColumn headerText="A0" dataField="col2"/>
+								<mx:DataGridColumn headerText="A1" dataField="col2"/>
+								<mx:DataGridColumn headerText="A2" dataField="col2"/>
+								<mx:DataGridColumn headerText="A11" dataField="col2"/>
+								<mx:DataGridColumn headerText="A22" dataField="col2"/>
+								<mx:DataGridColumn headerText="A12" dataField="col2"/>
+								<mx:DataGridColumn headerText="A111" dataField="col2"/>
+								<mx:DataGridColumn headerText="A222" dataField="col2"/>
+							</mx:columns>
+						</mx:DataGrid>
+						
+					</mx:VBox>
+					
+					<mx:VBox width="100%" height="100%">
+						<mx:Label text="Після нейтралізатора"  fontWeight="normal"/>
+						<mx:DataGrid width="100%" rowCount="7">
+							<mx:columns>
+								<mx:DataGridColumn headerText="" dataField="col1"/>
+								<mx:DataGridColumn headerText="A0" dataField="col2"/>
+								<mx:DataGridColumn headerText="A1" dataField="col2"/>
+								<mx:DataGridColumn headerText="A2" dataField="col2"/>
+								<mx:DataGridColumn headerText="A11" dataField="col2"/>
+								<mx:DataGridColumn headerText="A22" dataField="col2"/>
+								<mx:DataGridColumn headerText="A12" dataField="col2"/>
+								<mx:DataGridColumn headerText="A111" dataField="col2"/>
+								<mx:DataGridColumn headerText="A222" dataField="col2"/>
+							</mx:columns>
+						</mx:DataGrid>
+						
+					</mx:VBox>
+				</mx:HBox>
+				
+				<mx:Label text="Газ"  fontWeight="bold"/>
+				
+				<mx:HBox label="Без нейтралізатора" width="100%" height="100%" >
+					
+					<mx:VBox width="100%" height="100%">
+						<mx:Label text="Без нейтралізатора"  fontWeight="normal"/>
+						<mx:DataGrid width="100%" rowCount="7" editable="true" draggableColumns="false">
 							<mx:columns>
 								<mx:DataGridColumn headerText="" dataField="col1"/>
 								<mx:DataGridColumn headerText="A0" dataField="col2"/>
@@ -39,10 +80,44 @@
 							</mx:columns>
 						</mx:DataGrid>
 					</mx:VBox>
+					
+					<mx:VBox width="100%" height="100%">
+						<mx:Label text="До нейтралізатора"  fontWeight="normal"/>
+						<mx:DataGrid width="100%" rowCount="7">
+							<mx:columns>
+								<mx:DataGridColumn headerText="" dataField="col1"/>
+								<mx:DataGridColumn headerText="A0" dataField="col2"/>
+								<mx:DataGridColumn headerText="A1" dataField="col2"/>
+								<mx:DataGridColumn headerText="A2" dataField="col2"/>
+								<mx:DataGridColumn headerText="A11" dataField="col2"/>
+								<mx:DataGridColumn headerText="A22" dataField="col2"/>
+								<mx:DataGridColumn headerText="A12" dataField="col2"/>
+								<mx:DataGridColumn headerText="A111" dataField="col2"/>
+								<mx:DataGridColumn headerText="A222" dataField="col2"/>
+							</mx:columns>
+						</mx:DataGrid>
+						
+					</mx:VBox>
+					
+					<mx:VBox width="100%" height="100%">
+						<mx:Label text="Після нейтралізатора"  fontWeight="normal"/>
+						<mx:DataGrid width="100%" rowCount="7">
+							<mx:columns>
+								<mx:DataGridColumn headerText="" dataField="col1"/>
+								<mx:DataGridColumn headerText="A0" dataField="col2"/>
+								<mx:DataGridColumn headerText="A1" dataField="col2"/>
+								<mx:DataGridColumn headerText="A2" dataField="col2"/>
+								<mx:DataGridColumn headerText="A11" dataField="col2"/>
+								<mx:DataGridColumn headerText="A22" dataField="col2"/>
+								<mx:DataGridColumn headerText="A12" dataField="col2"/>
+								<mx:DataGridColumn headerText="A111" dataField="col2"/>
+								<mx:DataGridColumn headerText="A222" dataField="col2"/>
+							</mx:columns>
+						</mx:DataGrid>
+						
+					</mx:VBox>
 				</mx:HBox>
-				<mx:HBox label="До нейтралізатора" width="100%" height="100%"  />
-				<mx:HBox label="Після нейтралізатора" width="100%" height="100%"  />
-			</mx:TabNavigator>
+			</mx:VBox>	
 		</mx:HBox>
 		
 		<mx:HBox id="xxHBox" label="ХХ" width="100%" height="100%"  />
