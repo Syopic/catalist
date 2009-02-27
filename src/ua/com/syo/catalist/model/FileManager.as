@@ -59,10 +59,15 @@ package ua.com.syo.catalist.model {
 			var str:String = stream.readUTFBytes(stream.bytesAvailable);
 			stream.close();
 			var lineEndPattern:RegExp = new RegExp(File.lineEnding, "g");
-			str = str.replace(lineEndPattern, "\n");
+			//str = str.replace(lineEndPattern, "\n");
 			// 
 			currentCycleDataXML = new XML(str);
 			stream.close();
+			
+			var allStr:String = currentCycleDataXML.polynoms.load.gasoline.withoutNeutralizer.children()[0];	
+			var pArr:Array = allStr.split("\n");
+			
+			
 			
 			CycleData.parseXML(currentCycleDataXML);
 			dispatchEvent(new Event(Event.OPEN));
