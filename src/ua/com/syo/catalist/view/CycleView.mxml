@@ -36,23 +36,23 @@
     <mx:Stroke id = "s2" color="red" weight="2"/>
     <mx:Stroke id = "s3" color="green" weight="2"/>
     
-    <mx:LineSeries id="speedSer" yField="speed" displayName="Швидкість" lineStroke="{s1}"/>
-    <mx:LineSeries id="distSer" yField="dist" displayName="Дистанція" lineStroke="{s2}"/>
-    <mx:LineSeries id="accelSer" yField="accel" displayName="Прискорення" lineStroke="{s3}"/>
-    
+	<mx:HBox width="100%" height="100%">
+	    
+	    <mx:LineSeries id="speedSer" yField="speed" displayName="Швидкість" lineStroke="{s1}"/>
+	    <mx:LineSeries id="distSer" yField="dist" displayName="Дистанція" lineStroke="{s2}"/>
+	    <mx:LineSeries id="accelSer" yField="accel" displayName="Прискорення" lineStroke="{s3}"/>
+		<mx:LineChart id="linechart" height="100%" width="100%"
+            showDataTips="true" dataProvider="{cycleDP}">
+		    
+        </mx:LineChart>
+	    <mx:VBox height="100%" >
+	    	<mx:LinkButton label="Швидкість" click="showGraph(speedSer)"/>
+	    	<mx:LinkButton label="Дистанція" click="showGraph(distSer)"/>
+	    	<mx:LinkButton label="Прискорення" click="showGraph(accelSer)"/>
+	    </mx:VBox>   	 
+	</mx:HBox>
+	
 	<mx:VDividedBox width="100%" height="100%">
-		<mx:HBox width="100%" height="100%">
-			<mx:LineChart id="linechart" height="100%" width="100%"
-	            showDataTips="true" dataProvider="{cycleDP}">
-	        </mx:LineChart>
-		    <mx:VBox height="100%" >
-		    	<mx:LinkButton label="Швидкість" click="showGraph(speedSer)"/>
-		    	<mx:LinkButton label="Дистанція" click="showGraph(distSer)"/>
-		    	<mx:LinkButton label="Прискорення" click="showGraph(accelSer)"/>
-		    </mx:VBox>   	 
-		</mx:HBox>
-		
-		       
 		<mx:DataGrid width="100%" height="300" dataProvider="{cycleDP}">
 			<mx:columns>
 				<mx:DataGridColumn width="5" headerText="Час (сек.)" dataField="time" />
