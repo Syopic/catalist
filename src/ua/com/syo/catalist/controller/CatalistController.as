@@ -10,7 +10,7 @@ import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
 import ua.com.syo.catalist.view.KTZParamsView;
-import ua.com.syo.catalist.view.polinoms.PolinomsCoefficientsView;
+import ua.com.syo.catalist.view.polinoms.PolynomsCoefficientsView;
 
 private var aboutPopup:AboutView = new AboutView();
 private var fileManager:FileManager = new FileManager();
@@ -19,7 +19,7 @@ private static const views:Object = {
 	ktzParams:KTZParamsView,
 	cycleReproduce:CycleView,
 	expParams:ExperimentParamsView,
-	poliKoef:PolinomsCoefficientsView
+	poliKoef:PolynomsCoefficientsView
 }
 
 private function init():void {
@@ -93,5 +93,6 @@ private function showAboutPopup(): void {
 }
 
 private function cicleDataFileOpenHandler(event:Event):void  {
+	showView("poliKoef", "test");
 	//event.currentTarget.currentCycleDataXML
 }

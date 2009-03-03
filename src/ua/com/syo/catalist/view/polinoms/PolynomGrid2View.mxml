@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
+	creationComplete="runTimer();">
+<mx:Script>
+	<![CDATA[
+		import ua.com.syo.catalist.model.polynoms.Polynoms;
+		
+		[Bindable]
+		public var title:String;
+		
+		public var labelArray:Array;
+		
+		public var cycleMode:String;
+		public var fuel:String;
+		public var mode:String;
+		
+		[Bindable]
+		public var polGridDP:Array = 
+            [
+                {gasName: "CO"},
+                {gasName: "CO2"},
+                {gasName: "HCs"},
+                {gasName: "NOx"},
+                {gasName: "O2"},
+                {gasName: "Gпал"},
+                {gasName: "Gпов"}
+            ];
+		
+		 private function runTimer():void {
+        	var t:Timer = new Timer(200);
+        	t.addEventListener(TimerEvent.TIMER, timerHandler);
+        	t.start();
+        }    
+        
+        private function timerHandler(event:TimerEvent):void {
+        	if (labelArray && cycleMode && fuel && mode) {
+        		fillData();
+        		event.currentTarget.removeEventListener(TimerEvent.TIMER, timerHandler);
+        	}
+        }
+		
+		private function fillData():void {
+			for (var i:int = 0; i< polGridDP.length; i++) {
+				for (var j:int = 0; j< labelArray.length; j++) {
+					polGridDP[i][labelArray[j]] = Polynoms.getP(labelArray[j], polGridDP[i].gasName, mode, fuel, cycleMode);
+				}
+			}
+			polGrid.dataProvider = polGridDP;
+		}
+		
+	]]>
+</mx:Script>
+	<mx:Label text="{title}"  fontWeight="normal"/>
+	<mx:DataGrid id="polGrid" dataProvider="{polGridDP}" width="100%" rowHeight="20" rowCount="7" editable="true" draggableColumns="false">
+		<mx:columns>
+			<mx:DataGridColumn headerText="" dataField="gasName" fontWeight="bold" editable="false"/>
+			<mx:DataGridColumn headerText="B0" dataField="B0"/>
+			<mx:DataGridColumn headerText="B1" dataField="B1"/>
+			<mx:DataGridColumn headerText="B11" dataField="B11"/>
+			<mx:DataGridColumn headerText="B111" dataField="B111"/>
+			<mx:DataGridColumn headerText="B1111" dataField="B1111"/>
+			<mx:DataGridColumn headerText="B11111" dataField="B11111"/>
+		</mx:columns>
+	</mx:DataGrid>
+</mx:VBox>

@@ -7,6 +7,7 @@ package ua.com.syo.catalist.model {
 	import flash.net.FileFilter;
 	
 	import ua.com.syo.catalist.data.CycleData;
+	import ua.com.syo.catalist.model.polynoms.PolynomsParser;
 	
 	public class FileManager extends EventDispatcher {
 		
@@ -64,9 +65,10 @@ package ua.com.syo.catalist.model {
 			currentCycleDataXML = new XML(str);
 			stream.close();
 			
-			var allStr:String = currentCycleDataXML.polynoms.load.gasoline.withoutNeutralizer.children()[0];	
-			var pArr:Array = allStr.split("\n");
+			PolynomsParser.parse(currentCycleDataXML.polynoms);
 			
+			//var pc:PolynomsCollection = new PolynomsCollection(currentCycleDataXML.polynoms.load.gasoline.withoutNeutralizer.children()[0]);
+			//Polynoms.addPolinomsCollection(pc, "gazoline", "withoutNeutralizer");
 			
 			
 			CycleData.parseXML(currentCycleDataXML);
