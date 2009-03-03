@@ -23,7 +23,7 @@ private static const views:Object = {
 }
 
 private function init():void {
-	fileManager.addEventListener(Event.OPEN, cicleDataFileOpenHandler);
+	fileManager.addEventListener(Event.OPEN, cycleDataFileOpenHandler);
 	//trace(Integral.rectangleRule(2, 4, 0.00000001, testFunction));
 }
 
@@ -92,7 +92,7 @@ private function showAboutPopup(): void {
 	PopUpManager.centerPopUp(aboutPopup);
 }
 
-private function cicleDataFileOpenHandler(event:Event):void  {
-	showView("poliKoef", "test");
+private function cycleDataFileOpenHandler(event:Event):void  {
+	showView("cycleReproduce", "Відтворення циклу");
 	//event.currentTarget.currentCycleDataXML
 }
