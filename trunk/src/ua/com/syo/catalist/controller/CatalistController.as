@@ -6,6 +6,9 @@ import mx.events.MenuEvent;
 import mx.managers.PopUpManager;
 
 import ua.com.syo.catalist.model.FileManager;
+import ua.com.syo.catalist.model.KTZParams;
+import ua.com.syo.catalist.model.polynoms.Polynoms;
+import ua.com.syo.catalist.utils.Integral;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
@@ -24,13 +27,19 @@ private static const views:Object = {
 
 private function init():void {
 	fileManager.addEventListener(Event.OPEN, cycleDataFileOpenHandler);
-	//trace(Integral.rectangleRule(2, 4, 0.00000001, testFunction));
 }
 
 public function testFunction(x:Number):Number {
-	//var result:Number = 1 / Math.sqrt(1 - x*x*x*x);
-	var result:Number = Math.sin(x)/ (x + 1)
+	var b0:Number = Polynoms.getP("B0", "Gпал", "withoutNeutralizer", "gasoline", "XX");
+	var b1:Number = Polynoms.getP("B1", "Gпал", "withoutNeutralizer", "gasoline", "XX");
+	var b11:Number = Polynoms.getP("B11", "Gпал", "withoutNeutralizer", "gasoline", "XX");
+	
+	var result:Number = b0 + b1*getN(x) + b11*getN(x)*getN(x);
 	return result;
+}
+
+private function getN(t:Number):Number {
+	return KTZParams.nXXmin+0*t;
 }
 
 
@@ -94,5 +103,6 @@ private function showAboutPopup(): void {
 
 private function cycleDataFileOpenHandler(event:Event):void  {
 	showView("cycleReproduce", "Відтворення циклу");
+	trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
 	//event.currentTarget.currentCycleDataXML
 }
