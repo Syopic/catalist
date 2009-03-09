@@ -6,31 +6,29 @@
 	    	import ua.com.syo.catalist.model.KTZParams;
 	    	
 	    	[Bindable]
-	    	private var ktzParams:KTZParams = new KTZParams();
-	    	
 	    	private function applyButtonClickHandler():void {
-	    		ktzParams.ktzModel = modelTextInput.text;
+	    		KTZParams.ktzModel = modelTextInput.text;
 	    		
-	    		ktzParams.UI = uINumStepper.value;
-	    		ktzParams.UII = uIINumStepper.value;
-	    		ktzParams.UIII = uIIINumStepper.value;
-	    		ktzParams.UIV = uIVNumStepper.value;
-	    		ktzParams.UV = uVNumStepper.value;
+	    		KTZParams.UI = uINumStepper.value;
+	    		KTZParams.UII = uIINumStepper.value;
+	    		KTZParams.UIII = uIIINumStepper.value;
+	    		KTZParams.UIV = uIVNumStepper.value;
+	    		KTZParams.UV = uVNumStepper.value;
 	    		
-	    		ktzParams.Ga = GaNumStepper.value;
-				ktzParams.rk = rkNumStepper.value;
-				ktzParams.rd = rdNumStepper.value;
-				ktzParams.vMax = vMaxNumStepper.value;
-				ktzParams.g100km = g100kmNumStepper.value;
-				ktzParams.MkMax = MkMaxNumStepper.value;
-				ktzParams.nXXmin = nXXminNumStepper.value;
-				ktzParams.u0 = u0NumStepper.value;
-				ktzParams.etaTrans = etaTransNumStepper.value;
-				ktzParams.beta = betaNumStepper.value;
-				ktzParams.Idv = IdvNumStepper.value;
-				ktzParams.IkSum = IkSumNumStepper.value;
-				ktzParams.f0 = f0NumStepper.value;
-				ktzParams.W = WNumStepper.value;
+	    		KTZParams.Ga = GaNumStepper.value;
+				KTZParams.rk = rkNumStepper.value;
+				KTZParams.rd = rdNumStepper.value;
+				KTZParams.vMax = vMaxNumStepper.value;
+				KTZParams.g100km = g100kmNumStepper.value;
+				KTZParams.MkMax = MkMaxNumStepper.value;
+				KTZParams.nXXmin = nXXminNumStepper.value;
+				KTZParams.u0 = u0NumStepper.value;
+				KTZParams.etaTrans = etaTransNumStepper.value;
+				KTZParams.beta = betaNumStepper.value;
+				KTZParams.Idv = IdvNumStepper.value;
+				KTZParams.IkSum = IkSumNumStepper.value;
+				KTZParams.f0 = f0NumStepper.value;
+				KTZParams.W = WNumStepper.value;
 	    	}
 			
 	
@@ -41,25 +39,25 @@
 			<mx:VBox width="100%" height="100%" verticalAlign="top">
 				<mx:Form height="59" width="100%" >
 			        <mx:FormItem height="27" width="100%" label="Модель КТЗ" horizontalAlign="left" >
-				    	<mx:TextInput id="modelTextInput" text="{ktzParams.ktzModel}"/>
+				    	<mx:TextInput id="modelTextInput" text="{KTZParams.ktzModel}"/>
 			        </mx:FormItem>
 				</mx:Form>
 				<mx:Label fontSize="10" text="Передаткові числа коробки передач:" x="20" y="496"/>
 		    	<mx:Form height="100%" width="100%" >
 			    	<mx:FormItem label="UI:">
-			            <mx:NumericStepper id="uINumStepper" value="{ktzParams.UI}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uINumStepper" value="{KTZParams.UI}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 			    	<mx:FormItem label="UII:">
-			            <mx:NumericStepper id="uIINumStepper" value="{ktzParams.UII}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uIINumStepper" value="{KTZParams.UII}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 			    	<mx:FormItem label="UIII:">
-			            <mx:NumericStepper id="uIIINumStepper" value="{ktzParams.UIII}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uIIINumStepper" value="{KTZParams.UIII}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 			    	<mx:FormItem label="UIV:">
-			            <mx:NumericStepper id="uIVNumStepper" value="{ktzParams.UIV}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uIVNumStepper" value="{KTZParams.UIV}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 			    	<mx:FormItem label="UV:">
-			            <mx:NumericStepper id="uVNumStepper" value="{ktzParams.UV}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uVNumStepper" value="{KTZParams.UV}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 		        </mx:Form>
 			</mx:VBox>
@@ -73,7 +71,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/Ga.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="GaNumStepper" value="{ktzParams.Ga}" stepSize="1" maximum="10000"/>
+				            <mx:NumericStepper id="GaNumStepper" value="{KTZParams.Ga}" stepSize="1" maximum="10000"/>
 				            <mx:Label text="кг" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -82,7 +80,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/rk.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="rkNumStepper" value="{ktzParams.rk}" stepSize="0.1"/>
+				            <mx:NumericStepper id="rkNumStepper" value="{KTZParams.rk}" stepSize="0.1"/>
 				            <mx:Label text="м" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -91,7 +89,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/rdin.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="rdNumStepper" value="{ktzParams.rd}" stepSize="0.1"/>
+				            <mx:NumericStepper id="rdNumStepper" value="{KTZParams.rd}" stepSize="0.1"/>
 				            <mx:Label text="м" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -100,7 +98,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/Vmax.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="vMaxNumStepper" value="{ktzParams.vMax}" stepSize="0.1"/>
+				            <mx:NumericStepper id="vMaxNumStepper" value="{KTZParams.vMax}" stepSize="0.1"/>
 				            <mx:Label text="км/год" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -109,7 +107,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/g100.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="g100kmNumStepper" value="{ktzParams.g100km}" stepSize="0.1"/>
+				            <mx:NumericStepper id="g100kmNumStepper" value="{KTZParams.g100km}" stepSize="0.1"/>
 				            <mx:Label text="л/100 км" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -118,7 +116,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/Mkmax.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="MkMaxNumStepper" value="{ktzParams.MkMax}" stepSize="0.1"/>
+				            <mx:NumericStepper id="MkMaxNumStepper" value="{KTZParams.MkMax}" stepSize="0.1"/>
 				            <mx:Label text="Н ∙ м" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -127,7 +125,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/nXXmin.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="nXXminNumStepper" value="{ktzParams.nXXmin}" stepSize="0.1"/>
+				            <mx:NumericStepper id="nXXminNumStepper" value="{KTZParams.nXXmin}" stepSize="0.1"/>
 				            <mx:Label text="хв-1" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -136,7 +134,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/U0.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="u0NumStepper" value="{ktzParams.u0}" stepSize="0.1"/>
+				            <mx:NumericStepper id="u0NumStepper" value="{KTZParams.u0}" stepSize="0.1"/>
 				            <mx:Label text="" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -145,7 +143,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/nTrans.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="etaTransNumStepper" value="{ktzParams.etaTrans}" stepSize="0.1"/>
+				            <mx:NumericStepper id="etaTransNumStepper" value="{KTZParams.etaTrans}" stepSize="0.1"/>
 				            <mx:Label text="" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -154,7 +152,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/beta.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="betaNumStepper" value="{ktzParams.beta}" stepSize="0.1"/>
+				            <mx:NumericStepper id="betaNumStepper" value="{KTZParams.beta}" stepSize="0.1"/>
 				            <mx:Label text="" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -163,7 +161,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/Idv.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="IdvNumStepper" value="{ktzParams.Idv}" stepSize="0.1"/>
+				            <mx:NumericStepper id="IdvNumStepper" value="{KTZParams.Idv}" stepSize="0.1"/>
 				            <mx:Label text="кг ∙ м2" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -172,7 +170,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/sum.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="IkSumNumStepper" value="{ktzParams.IkSum}" stepSize="0.1"/>
+				            <mx:NumericStepper id="IkSumNumStepper" value="{KTZParams.IkSum}" stepSize="0.1"/>
 				            <mx:Label text="кг ∙ м2" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -181,7 +179,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/f0.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="f0NumStepper" value="{ktzParams.f0}" stepSize="0.1"/>
+				            <mx:NumericStepper id="f0NumStepper" value="{KTZParams.f0}" stepSize="0.1"/>
 				            <mx:Label text="кгс/кг" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -190,7 +188,7 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/W.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="WNumStepper" value="{ktzParams.W}" stepSize="0.1"/>
+				            <mx:NumericStepper id="WNumStepper" value="{KTZParams.W}" stepSize="0.1"/>
 				            <mx:Label text="Н ∙ с2/м4" />
 			        	</mx:HBox>
 			        </mx:FormItem>
