@@ -16,9 +16,9 @@ package ua.com.syo.catalist.model.polynoms {
 				for (var f:int = 0; f < fuelArray.length; f++) {
 					for (var m:int = 0; m < modeArray.length; m++) {
 						
-						Polynoms.currentCycleMode = cycleModeArray[c];
-						Polynoms.currentFuel = fuelArray[f];
-						Polynoms.currentMode = modeArray[m];
+						PolyKoef.currentCycleMode = cycleModeArray[c];
+						PolyKoef.currentFuel = fuelArray[f];
+						PolyKoef.currentMode = modeArray[m];
 						
 						
 						var tStr:String = xml.child(cycleModeArray[c]).child(fuelArray[f]).child(modeArray[m]).children()[0];
@@ -27,10 +27,10 @@ package ua.com.syo.catalist.model.polynoms {
 						for (var g:int = 0; g < gasArray.length; g++) {
 							var vArray:Array = (lines[g] as String).split(";");
 							for (var v:int = 0; v < vArray.length; v++) {
-								if (Polynoms.currentCycleMode == "load") {
-									Polynoms.addPolynom(vArray[v], label1Array[v], gasArray[g]);
+								if (PolyKoef.currentCycleMode == "load") {
+									PolyKoef.addPolynom(vArray[v], label1Array[v], gasArray[g]);
 								} else {
-									Polynoms.addPolynom(vArray[v], label2Array[v], gasArray[g]);
+									PolyKoef.addPolynom(vArray[v], label2Array[v], gasArray[g]);
 								}
 							}
 						}

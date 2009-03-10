@@ -3,7 +3,7 @@
 	creationComplete="runTimer();">
 <mx:Script>
 	<![CDATA[
-		import ua.com.syo.catalist.model.polynoms.Polynoms;
+		import ua.com.syo.catalist.model.polynoms.PolyKoef;
 		
 		[Bindable]
 		public var title:String;
@@ -42,7 +42,7 @@
 		private function fillData():void {
 			for (var i:int = 0; i< polGridDP.length; i++) {
 				for (var j:int = 0; j< labelArray.length; j++) {
-					polGridDP[i][labelArray[j]] = Polynoms.getP(labelArray[j], polGridDP[i].gasName, mode, fuel, cycleMode);
+					polGridDP[i][labelArray[j]] = PolyKoef.getP(labelArray[j], polGridDP[i].gasName, mode, fuel, cycleMode);
 				}
 			}
 			polGrid.dataProvider = polGridDP;

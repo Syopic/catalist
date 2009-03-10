@@ -7,7 +7,7 @@ import mx.managers.PopUpManager;
 
 import ua.com.syo.catalist.model.FileManager;
 import ua.com.syo.catalist.model.KTZParams;
-import ua.com.syo.catalist.model.polynoms.Polynoms;
+import ua.com.syo.catalist.model.polynoms.PolyKoef;
 import ua.com.syo.catalist.utils.Integral;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
@@ -30,9 +30,9 @@ private function init():void {
 }
 
 public function testFunction(x:Number):Number {
-	var b0:Number = Polynoms.getP("B0", "Gпал", "withoutNeutralizer", "gasoline", "XX");
-	var b1:Number = Polynoms.getP("B1", "Gпал", "withoutNeutralizer", "gasoline", "XX");
-	var b11:Number = Polynoms.getP("B11", "Gпал", "withoutNeutralizer", "gasoline", "XX");
+	var b0:Number = PolyKoef.getP("B0", "Gпал", "withoutNeutralizer", "gasoline", "XX");
+	var b1:Number = PolyKoef.getP("B1", "Gпал", "withoutNeutralizer", "gasoline", "XX");
+	var b11:Number = PolyKoef.getP("B11", "Gпал", "withoutNeutralizer", "gasoline", "XX");
 	
 	var result:Number = b0 + b1*getN(x) + b11*getN(x)*getN(x);
 	return result;
