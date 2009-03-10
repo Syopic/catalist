@@ -4,7 +4,7 @@
 	<mx:Script>
 		<![CDATA[
 			import ua.com.syo.catalist.model.polynoms.PolynomsParser;
-			import ua.com.syo.catalist.model.polynoms.Polynoms;
+			import ua.com.syo.catalist.model.polynoms.PolyKoef;
 			
 			public function init():void {
 			}

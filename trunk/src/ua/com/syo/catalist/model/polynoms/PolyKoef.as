@@ -1,7 +1,7 @@
 package ua.com.syo.catalist.model.polynoms {
 	import flash.utils.Dictionary;
 	
-	public class Polynoms {
+	public class PolyKoef {
 		
 		public static var pDict:Dictionary = new Dictionary(true);
 		
