@@ -5,7 +5,6 @@
 	    <![CDATA[
 	    	import ua.com.syo.catalist.model.KTZParams;
 	    	
-	    	//[Bindable]
 	    	private function applyButtonClickHandler():void {
 	    		KTZParams.ktzModel = modelTextInput.text;
 	    		
