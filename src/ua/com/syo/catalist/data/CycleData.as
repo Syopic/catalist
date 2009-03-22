@@ -1,4 +1,6 @@
 package ua.com.syo.catalist.data {
+	import ua.com.syo.catalist.model.ModePhase;
+	
 	public class CycleData {
 		//масив для часових точок
 	    public static var timePointArray:Array = new Array();
@@ -18,10 +20,10 @@ package ua.com.syo.catalist.data {
 		
 		public static function parseXML(xml:XML):void {
 			var xmlLen:Number = xml.child("cycle").children().length(); 
-	        for (var i:Number = 0; i<xmlLen; i++) {
+	        for (var i:Number = 0; i < xmlLen; i++) {
 	            timePointArray[i] = xml.child("cycle").children()[i].localName();
 	            speedPointArray[i] = xml.child("cycle").children()[i].attribute("speed");
-	            accelerationPointArray[i] = xml.child("cycle").children()[i].attribute("acceleration");
+            	accelerationPointArray[i] = xml.child("cycle").children()[i].attribute("acceleration");
 	            modePointArray[i] = xml.child("cycle").children()[i].attribute("mode");
 				uPointArray[i] = xml.child("cycle").children()[i].attribute("u");
 	        }
@@ -64,11 +66,33 @@ package ua.com.syo.catalist.data {
 	        for (var i:Number = 0; i < accelerationPointArray.length; i++) {
 	            //якщо це відома точка
 	            if (time == timePointArray[i]) {
-	                //вертаємо її
-	                result = accelerationPointArray[i];
+	            	if (accelerationPointArray[i] == "-") {
+	            		//формула прямої k*time+b;
+		                var dt:Number = timePointArray[i-1]-timePointArray[i+1];
+		                var da:Number = accelerationPointArray[i-1] - accelerationPointArray[i+1];
+		                
+		                //
+		                var k:Number = da/dt;
+		                var b:Number = accelerationPointArray[i-1] - k * timePointArray[i-1];
+		                result = k * time + b;
+	            	} else {
+	                	//вертаємо її
+	                	result = accelerationPointArray[i];
+	             	}
 	                break;
 	            } else if (time > timePointArray[i] && time < timePointArray[i + 1]) {
-	                result = accelerationPointArray[i];
+	            	if (accelerationPointArray[i] == "-") {
+	            		//формула прямої k*time+b;
+		                var dt:Number = timePointArray[i-1]-timePointArray[i+1];
+		                var da:Number = accelerationPointArray[i-1] - accelerationPointArray[i+1];
+		                
+		                //
+		                var k:Number = da/dt;
+		                var b:Number = accelerationPointArray[i-1] - k * timePointArray[i-1];
+		                result = k * time + b;
+	            	} else {
+	                	result = accelerationPointArray[i];
+	             	}
 	                break;
 	            }
 	        }
@@ -124,6 +148,22 @@ package ua.com.syo.catalist.data {
 					break;
 				}
 			}
+			return result;
+		}
+		
+		
+		//вертає тривалість (початок, кінець) режиму
+		public static function getModeTime(time:Number):ModePhase {
+			var result:ModePhase;
+			var currentMode:String = getMode(time);
+			//проходимось по всім точкам
+			for (var i:Number = 0; i < timePointArray.length; i++) {
+				if (time >= timePointArray[i] && time <= timePointArray[i+1]) {
+					result = new ModePhase(timePointArray[i], timePointArray[i + 1]);
+					trace("time: " + time + " mode: "+currentMode+" t1: "+timePointArray[i]+" t2: "+timePointArray[i+1])
+				}
+			}
+			
 			return result;
 		}
 	}
