@@ -13,6 +13,7 @@
 			public function init():void {
 				cycleDP = new ArrayCollection();
 				for (var i:int = 0; i < 195; i++) {
+					CycleData.getModeTime(i);
 					var o:Object = {time : i, 
 									speed : CycleData.getSpeed(i), 
 									dist : CycleData.getDistance(i), 
