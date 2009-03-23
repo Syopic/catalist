@@ -10,11 +10,11 @@ package ua.com.syo.catalist.model.polynoms {
 		public static function Gpal(nd:Number):Number {
 			var result:Number;
 			
-			var A0 = PolyKoef.getP("A0", "Gпал");
-			var A1 = PolyKoef.getP("A1", "Gпал");
-			var A11 = PolyKoef.getP("A11", "Gпал");
-			
-			return A0 + A1 * nd + A11 * nd * nd;
+			var B0:Number = PolyKoef.getP("B0", "Gпал");
+			var B1:Number = PolyKoef.getP("B1", "Gпал");
+			var B11:Number = PolyKoef.getP("B11", "Gпал");
+			result = B0 + B1 * nd + B11 * nd * nd;
+			return result;
 		}
 		
 		public static function Gpov(nd:Number):Number {
@@ -47,10 +47,11 @@ package ua.com.syo.catalist.model.polynoms {
 			return result;
 		}
 		
-		public static function FIDR(nd:Number):Number {
-			var result:Number;
+		public static function fiDr(nd:Number):Number {
+			var A0:Number = 1.29399;
+			var A1:Number = 0.00332;
 			
-			return result;
+			return A0 + A1 * nd;
 		}
 		
 		public static function deltaPk(nd:Number):Number {

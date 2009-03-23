@@ -8,6 +8,7 @@ import mx.managers.PopUpManager;
 import ua.com.syo.catalist.model.FileManager;
 import ua.com.syo.catalist.model.KTZParams;
 import ua.com.syo.catalist.model.polynoms.PolyKoef;
+import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
@@ -105,7 +106,8 @@ private function showAboutPopup(): void {
 }
 
 private function cycleDataFileOpenHandler(event:Event):void  {
-	showView("cycleReproduce", "Відтворення циклу");
+	//showView("cycleReproduce", "Відтворення циклу");
 	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
 	//event.currentTarget.currentCycleDataXML
+	PolyModelsXX.setCurrentModes("XX", "gasoline", "withoutNeutralizer");
 }

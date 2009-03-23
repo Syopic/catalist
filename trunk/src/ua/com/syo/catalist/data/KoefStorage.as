@@ -18,6 +18,7 @@ package ua.com.syo.catalist.data {
 		public static var g100km	: Number=	6.8;
 		public static var MkMax		: Number=	121.6;
 		public static var nXXmin	: Number=	900;
+		public static var deltaPkXX	: Number=	62;
 		//TODO
 		public static var dPkXX		: Number=	63;
 		
