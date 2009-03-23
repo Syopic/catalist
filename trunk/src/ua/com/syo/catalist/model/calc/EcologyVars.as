@@ -1,8 +1,8 @@
 package ua.com.syo.catalist.model.calc
 {
-	public class EconomVars
+	public class EcologyVars
 	{
-		public function EconomVars()
+		public function EcologyVars()
 		{
 		}
 

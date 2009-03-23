@@ -62,18 +62,22 @@ package ua.com.syo.catalist.data {
 	    //вертає прискорення
 	    public static function getAcceleration(time:Number):Number {
 	        var result:Number;
+	        var dt:Number;
+	        var da:Number;
+	        var k:Number;
+	        var b:Number;
 	        //проходимось по всім точкам
 	        for (var i:Number = 0; i < accelerationPointArray.length; i++) {
 	            //якщо це відома точка
 	            if (time == timePointArray[i]) {
 	            	if (accelerationPointArray[i] == "-") {
 	            		//формула прямої k*time+b;
-		                var dt:Number = timePointArray[i-1]-timePointArray[i+1];
-		                var da:Number = accelerationPointArray[i-1] - accelerationPointArray[i+1];
+		                dt = timePointArray[i-1]-timePointArray[i+1];
+		                da = accelerationPointArray[i-1] - accelerationPointArray[i+1];
 		                
 		                //
-		                var k:Number = da/dt;
-		                var b:Number = accelerationPointArray[i-1] - k * timePointArray[i-1];
+		                k = da/dt;
+		                b = accelerationPointArray[i-1] - k * timePointArray[i-1];
 		                result = k * time + b;
 	            	} else {
 	                	//вертаємо її
@@ -83,12 +87,12 @@ package ua.com.syo.catalist.data {
 	            } else if (time > timePointArray[i] && time < timePointArray[i + 1]) {
 	            	if (accelerationPointArray[i] == "-") {
 	            		//формула прямої k*time+b;
-		                var dt:Number = timePointArray[i-1]-timePointArray[i+1];
-		                var da:Number = accelerationPointArray[i-1] - accelerationPointArray[i+1];
+		                dt = timePointArray[i-1]-timePointArray[i+1];
+		                da = accelerationPointArray[i-1] - accelerationPointArray[i+1];
 		                
 		                //
-		                var k:Number = da/dt;
-		                var b:Number = accelerationPointArray[i-1] - k * timePointArray[i-1];
+		                k = da/dt;
+		                b = accelerationPointArray[i-1] - k * timePointArray[i-1];
 		                result = k * time + b;
 	            	} else {
 	                	result = accelerationPointArray[i];
