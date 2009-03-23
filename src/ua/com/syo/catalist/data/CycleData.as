@@ -164,7 +164,7 @@ package ua.com.syo.catalist.data {
 			for (var i:Number = 0; i < timePointArray.length; i++) {
 				if (time >= timePointArray[i] && time <= timePointArray[i+1]) {
 					result = new ModePhase(timePointArray[i], timePointArray[i + 1]);
-					trace("time: " + time + " mode: "+currentMode+" t1: "+timePointArray[i]+" t2: "+timePointArray[i+1])
+					//trace("time: " + time + " mode: "+currentMode+" t1: "+timePointArray[i]+" t2: "+timePointArray[i+1])
 				}
 			}
 			
