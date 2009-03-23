@@ -8,12 +8,13 @@ import mx.managers.PopUpManager;
 import ua.com.syo.catalist.model.FileManager;
 import ua.com.syo.catalist.model.KTZParams;
 import ua.com.syo.catalist.model.polynoms.PolyKoef;
-import ua.com.syo.catalist.utils.Integral;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
 import ua.com.syo.catalist.view.KTZParamsView;
 import ua.com.syo.catalist.view.polinoms.PolynomsCoefficientsView;
+import ua.com.syo.catalist.view.vars.EcoVarsView;
+import ua.com.syo.catalist.view.vars.EnergyVarsView;
 
 private var aboutPopup:AboutView = new AboutView();
 private var fileManager:FileManager = new FileManager();
@@ -21,6 +22,8 @@ private var fileManager:FileManager = new FileManager();
 private static const views:Object = {
 	ktzParams:KTZParamsView,
 	cycleReproduce:CycleView,
+	energyVars:EnergyVarsView,
+	ecoVars:EcoVarsView,
 	expParams:ExperimentParamsView,
 	poliKoef:PolynomsCoefficientsView
 }
@@ -103,6 +106,6 @@ private function showAboutPopup(): void {
 
 private function cycleDataFileOpenHandler(event:Event):void  {
 	showView("cycleReproduce", "Відтворення циклу");
-	trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
+	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
 	//event.currentTarget.currentCycleDataXML
 }
