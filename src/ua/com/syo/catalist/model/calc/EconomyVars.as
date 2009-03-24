@@ -23,12 +23,24 @@ package ua.com.syo.catalist.model.calc {
 		//витрата повітря
 		public static function getGpov(time:Number): Number {
 			var result:Number = Math.random()*1000;
+			
+			switch (CycleData.getMode(time)) {
+				case "ХХ":
+					var mf:ModePhase = CycleData.getModeTime(time);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f2);
+					break;
+			}
+			
 			return result;
 		}
 		
 		/** Integrals functions **/
 		public static function f1(x:Number):Number {
 			return PolyModelsXX.Gpal(EnergyVars.getNdv(x));
+		}
+		
+		public static function f2(x:Number):Number {
+			return PolyModelsXX.Gpov(EnergyVars.getNdv(x));
 		}
 	}
 }

@@ -45,6 +45,13 @@ package ua.com.syo.catalist.data {
 		public static var k			: Number=	7;
 		public static var deltaTPal	: Number=	2;
 		
+		public static var L0		: Number=	14.7;
+		
+		public static var muCO		: Number=	28;
+		public static var muCO2		: Number=	44;
+		public static var muCH		: Number=	82;
+		public static var muNOX		: Number=	46;
+		
 		public static var _a0		: Number=	89.89322;
 		public static var _a1		: Number=	0.0053;
 		public static var _a2		: Number=	-1.45345;
@@ -76,6 +83,7 @@ package ua.com.syo.catalist.data {
 		public static var Mco2		: Number=	44;
 		
 		public static var g			: Number=	9.81;
+		
 		
 	}
 }
