@@ -50,16 +50,16 @@
 		<mx:VBox width="100%" height="100%">
 				<mx:Label text="Бензин"  fontWeight="bold"/>
 				<mx:HBox width="100%" height="100%" >
-					<polinoms:PolynomGrid2View id="grid13" title="Без нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gasoline" mode="withoutNeutralizer"/>
-					<polinoms:PolynomGrid2View id="grid14" title="До нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gasoline" mode="beforeNeutralizer"/>
-					<polinoms:PolynomGrid2View id="grid15" title="Після нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gasoline" mode="afterNeutralizer"/>
+					<polinoms:PolynomGrid3View id="grid13" title="Без нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gasoline" mode="withoutNeutralizer"/>
+					<polinoms:PolynomGrid3View id="grid14" title="До нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gasoline" mode="beforeNeutralizer"/>
+					<polinoms:PolynomGrid3View id="grid15" title="Після нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gasoline" mode="afterNeutralizer"/>
 				</mx:HBox>
 				
 				<mx:Label text="Газ"  fontWeight="bold"/>
 				<mx:HBox width="100%" height="100%" >
-					<polinoms:PolynomGrid2View id="grid16" title="Без нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gas" mode="withoutNeutralizer"/>
-					<polinoms:PolynomGrid2View id="grid17" title="До нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gas" mode="beforeNeutralizer"/>
-					<polinoms:PolynomGrid2View id="grid18" title="Після нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gas" mode="afterNeutralizer"/>
+					<polinoms:PolynomGrid3View id="grid16" title="Без нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gas" mode="withoutNeutralizer"/>
+					<polinoms:PolynomGrid3View id="grid17" title="До нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gas" mode="beforeNeutralizer"/>
+					<polinoms:PolynomGrid3View id="grid18" title="Після нейтралізатора" labelArray="{PolynomsParser.label2Array}" cycleMode="PXX" fuel="gas" mode="afterNeutralizer"/>
 				</mx:HBox>
 			</mx:VBox>	
 		</mx:HBox>
