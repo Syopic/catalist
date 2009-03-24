@@ -63,9 +63,12 @@ package ua.com.syo.catalist.model.polynoms {
 			return A0 + A1 * nd + A11 * nd * nd;
 		}
 		
-		public static function GCO(nd:Number):Number {
-			var t:Number = EconomyVars.getMvgS(nd);
-			return KoefStorage.muCO * CO(nd) * EconomyVars.getMvgS(nd) / 100;
+		public static function GCO(nd:Number, time:Number):Number {
+			var t:Number = CO(nd);
+			var t2:Number = EconomyVars.getMvgS(time);
+			var result:Number = (KoefStorage.muCO * CO(nd) * EconomyVars.getMvgS(time)) / 100;
+			
+			return (KoefStorage.muCO * CO(nd) * EconomyVars.getMvgS(time)) / 100;
 		}
 		
 		public static function GCO2(nd:Number):Number {
