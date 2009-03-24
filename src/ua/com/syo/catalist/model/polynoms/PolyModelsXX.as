@@ -1,5 +1,6 @@
 package ua.com.syo.catalist.model.polynoms {
 	import ua.com.syo.catalist.data.KoefStorage;
+	import ua.com.syo.catalist.model.calc.EconomyVars;
 	
 	public class PolyModelsXX {
 		
@@ -63,9 +64,8 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function GCO(nd:Number):Number {
-			var result:Number;
-			
-			return result;
+			var t:Number = EconomyVars.getMvgS(nd);
+			return KoefStorage.muCO * CO(nd) * EconomyVars.getMvgS(nd) / 100;
 		}
 		
 		public static function GCO2(nd:Number):Number {
@@ -98,10 +98,6 @@ package ua.com.syo.catalist.model.polynoms {
 			var result:Number;
 			// mock
 			return result;
-		}
-		
-		public static function alpha(nd:Number):Number {
-			return Gpov(nd) / (Gpal(nd) * KoefStorage.L0);
 		}
 		
 	}
