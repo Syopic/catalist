@@ -5,6 +5,8 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
+			import ua.com.syo.catalist.model.polynoms.PolyKoef;
 			import ua.com.syo.catalist.model.calc.EconomyVars;
 			import ua.com.syo.catalist.model.calc.EcologyVars;
 			import ua.com.syo.catalist.model.calc.EnergyVars;
@@ -13,27 +15,40 @@
 			[Bindable]
 			private var ecoDP:ArrayCollection;
 			
+			[Bindable]
+			private var isN:Boolean = true; 
+			[Bindable]
+			private var timeW:int = 5; 
+			
 			public function init():void {
 				ecoDP = new ArrayCollection();
+				isN = (PolyKoef.currentMode == "withoutNeutralizer");
 				for (var i:int = 0; i < 195; i++) {
-					//CycleData.getModeTime(i);
-					var o:Object = {time : i, 
-									CO : EcologyVars.getCO(i), 
-									CO2 : EcologyVars.getCO2(i), 
-									NOx : EcologyVars.getNOx(i), 
-									HCs : EcologyVars.getHCs(i), 
-									O2 : EcologyVars.getO2(i), 
-									
-									GCO : EcologyVars.getGCO(i), 
-									GCO2 : EcologyVars.getGCO2(i), 
-									GNOx : EcologyVars.getGNOx(i), 
-									GHCs : EcologyVars.getGHCs(i), 
-									GO2 : EcologyVars.getGO2(i),
-									 
-									Gpal : EconomyVars.getGpal(i), 
-									Gpov : EconomyVars.getGpov(i)}
+					var o:Object;
+					if (isN) {
+						o = {time : i, 
+								CO : EcologyVars.getCO(i), 
+								CO2 : EcologyVars.getCO2(i), 
+								NOx : EcologyVars.getNOx(i), 
+								HCs : EcologyVars.getHCs(i), 
+								O2 : EcologyVars.getO2(i)}
+					} else {
+						o = {time : i, 
+								CO : EcologyVars.getCO(i), 
+								CO2 : EcologyVars.getCO2(i), 
+								NOx : EcologyVars.getNOx(i), 
+								HCs : EcologyVars.getHCs(i), 
+								O2 : EcologyVars.getO2(i),
+								
+								NCO : EcologyVars.getCO(i), 
+								NCO2 : EcologyVars.getCO2(i), 
+								NNOx : EcologyVars.getNOx(i), 
+								NHCs : EcologyVars.getHCs(i), 
+								NO2 : EcologyVars.getO2(i)}
+					}
 					
 					ecoDP.addItem(o);
+					timeW = 8;
 				}
 				//showGraph(distSer);
 			}
@@ -52,20 +67,17 @@
 	<mx:VDividedBox width="100%" height="100%">
 	<mx:HBox width="100%" height="100%">
 	
-	    <mx:LineSeries id="COSer" yField="CO2" displayName="CO" lineStroke="{s1}"/>
+	    <mx:LineSeries id="COSer" yField="CO2" displayName="CO" lineStroke="{s1}" />
 	    <mx:LineSeries id="CO2Ser" yField="CO2" displayName="CO2" lineStroke="{s1}"/>
 	    <mx:LineSeries id="NOxSer" yField="NOx" displayName="NOx" lineStroke="{s1}"/>
 	    <mx:LineSeries id="HCsSer" yField="HCs" displayName="HCs" lineStroke="{s1}"/>
 	    <mx:LineSeries id="O2Ser" yField="O2" displayName="O2" lineStroke="{s1}"/>
 	    
-	    <mx:LineSeries id="GCOSer" yField="GCO" displayName="GCO" lineStroke="{s1}"/>
-	    <mx:LineSeries id="GCO2Ser" yField="GCO2" displayName="GCO2" lineStroke="{s2}"/>
-	    <mx:LineSeries id="GNOxSer" yField="GNOx" displayName="GNOx" lineStroke="{s2}"/>
-	    <mx:LineSeries id="GHCsSer" yField="GHCs" displayName="GHCs" lineStroke="{s2}"/>
-	    <mx:LineSeries id="GO2Ser" yField="GO2" displayName="GO2" lineStroke="{s2}"/>
-	    
-	    <mx:LineSeries id="GpalSer" yField="Gpal" displayName="Gpal" lineStroke="{s3}"/>
-	    <mx:LineSeries id="GpovSer" yField="Gpov" displayName="Gpov" lineStroke="{s3}"/>
+	    <mx:LineSeries id="NCOSer" yField="NCO" displayName="NCO" lineStroke="{s1}"/>
+	    <mx:LineSeries id="NCO2Ser" yField="NCO2" displayName="NCO2" lineStroke="{s2}"/>
+	    <mx:LineSeries id="NNOxSer" yField="NNOx" displayName="NNOx" lineStroke="{s2}"/>
+	    <mx:LineSeries id="NHCsSer" yField="NHCs" displayName="NHCs" lineStroke="{s2}"/>
+	    <mx:LineSeries id="NO2Ser" yField="NO2" displayName="NO2" lineStroke="{s2}"/>
 	    
 		<mx:LineChart id="linechart" height="100%" width="100%"
             showDataTips="true" dataProvider="{ecoDP}">
@@ -73,40 +85,35 @@
         </mx:LineChart>
         <mx:HBox>
 		    <mx:VBox height="100%" >
-		    	<mx:LinkButton label="CO" click="showGraph(COSer)"/>
+		    	<mx:LinkButton label="CO" click="showGraph(COSer)" />
 		    	<mx:LinkButton label="CO2" click="showGraph(CO2Ser)"/>
 		    	<mx:LinkButton label="NOx" click="showGraph(NOxSer)"/>
-		    	<mx:LinkButton label="HCs" click="showGraph(HCsSer)"/>
-		    	<mx:LinkButton label="O2" click="showGraph(O2Ser)"/>
+		    	<mx:LinkButton label="HCs" click="showGraph(HCsSer)" />
+		    	<mx:LinkButton label="O2" click="showGraph(O2Ser)" />
 		    </mx:VBox>   	 
-		    <mx:VBox height="100%" >
-		    	<mx:LinkButton label="GCO" click="showGraph(GCOSer)"/>
-		    	<mx:LinkButton label="GCO2" click="showGraph(GCO2Ser)"/>
-		    	<mx:LinkButton label="GNOx" click="showGraph(GNOxSer)"/>
-		    	<mx:LinkButton label="GHCs" click="showGraph(GHCsSer)"/>
-		    	<mx:LinkButton label="GO2" click="showGraph(GO2Ser)"/>
-		    	<mx:Spacer height="20" />
-		    	<mx:LinkButton label="Gpal" click="showGraph(GpalSer)"/>
-		    	<mx:LinkButton label="Gpov" click="showGraph(GpovSer)"/>
+		    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
+		    	<mx:LinkButton label="NCO" click="showGraph(NCOSer)" />
+		    	<mx:LinkButton label="NCO2" click="showGraph(NCO2Ser)"/>
+		    	<mx:LinkButton label="NNOx" click="showGraph(NNOxSer)"/>
+		    	<mx:LinkButton label="NHCs" click="showGraph(NHCsSer)"/>
+		    	<mx:LinkButton label="NO2" click="showGraph(NO2Ser)"/>
 		    </mx:VBox>   	 
         </mx:HBox>
 	</mx:HBox>
 	
 		<mx:DataGrid width="100%" height="300" dataProvider="{ecoDP}">
 			<mx:columns>
-				<mx:DataGridColumn width="5" headerText="Час (сек.)" dataField="time" />
-				<mx:DataGridColumn width="10" headerText="CO" dataField="CO" />
-				<mx:DataGridColumn width="10" headerText="CO2" dataField="CO2"/>
-				<mx:DataGridColumn width="10" headerText="NOx" dataField="NOx"/>
-				<mx:DataGridColumn width="10" headerText="HCs" dataField="HCs"/>
-				<mx:DataGridColumn width="10" headerText="O2" dataField="O2"/>
-				<mx:DataGridColumn width="10" headerText="GCO" dataField="GCO" />
-				<mx:DataGridColumn width="10" headerText="GCO2" dataField="GCO2"/>
-				<mx:DataGridColumn width="10" headerText="GNOx" dataField="GNOx"/>
-				<mx:DataGridColumn width="10" headerText="GHCs" dataField="GHCs"/>
-				<mx:DataGridColumn width="10" headerText="GO2" dataField="GO2"/>
-				<mx:DataGridColumn width="10" headerText="Gpal" dataField="Gpal"/>
-				<mx:DataGridColumn width="10" headerText="Gpov" dataField="Gpov"/>
+				<mx:DataGridColumn  headerText="Час (сек.)" dataField="time" visible="true"/>
+				<mx:DataGridColumn  headerText="CO" dataField="CO" />
+				<mx:DataGridColumn  headerText="CO2" dataField="CO2" />
+				<mx:DataGridColumn  headerText="NOx" dataField="NOx"/>
+				<mx:DataGridColumn  headerText="HCs" dataField="HCs"/>
+				<mx:DataGridColumn  headerText="O2" dataField="O2" />
+				<mx:DataGridColumn  headerText="NCO" dataField="NCO" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="NCO2" dataField="NCO2" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="NNOx" dataField="NNOx" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="NHCs" dataField="NHCs" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="NO2" dataField="NO2" visible="{!isN}"/>
 			</mx:columns>
 		</mx:DataGrid>
 	</mx:VDividedBox>
