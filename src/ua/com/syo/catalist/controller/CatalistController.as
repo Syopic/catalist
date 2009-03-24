@@ -14,6 +14,7 @@ import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
 import ua.com.syo.catalist.view.KTZParamsView;
 import ua.com.syo.catalist.view.polinoms.PolynomsCoefficientsView;
+import ua.com.syo.catalist.view.vars.EcoVars2View;
 import ua.com.syo.catalist.view.vars.EcoVarsView;
 import ua.com.syo.catalist.view.vars.EnergyVarsView;
 
@@ -25,6 +26,7 @@ private static const views:Object = {
 	cycleReproduce:CycleView,
 	energyVars:EnergyVarsView,
 	ecoVars:EcoVarsView,
+	ecoVars2:EcoVars2View,
 	expParams:ExperimentParamsView,
 	poliKoef:PolynomsCoefficientsView
 }
@@ -106,8 +108,11 @@ private function showAboutPopup(): void {
 }
 
 private function cycleDataFileOpenHandler(event:Event):void  {
-	//showView("cycleReproduce", "Відтворення циклу");
+	PolyModelsXX.setCurrentModes("XX", "gasoline", "withoutNeutralizer");
+	//PolyModelsXX.setCurrentModes("XX", "gasoline", "beforeNeutralizer");
+	//showView("ecoVars", "ecoVars1");
+	showView("ecoVars2", "ecoVars2");
+
 	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
 	//event.currentTarget.currentCycleDataXML
-	PolyModelsXX.setCurrentModes("XX", "gasoline", "withoutNeutralizer");
 }

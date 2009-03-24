@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+		creationComplete="init();" 
+		width="100%" height="100%"
+		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
+	<mx:Script>
+		<![CDATA[
+			import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
+			import ua.com.syo.catalist.model.polynoms.PolyKoef;
+			import ua.com.syo.catalist.model.calc.EconomyVars;
+			import ua.com.syo.catalist.model.calc.EcologyVars;
+			import ua.com.syo.catalist.model.calc.EnergyVars;
+			import ua.com.syo.catalist.data.CycleData;
+			import mx.collections.ArrayCollection;
+			[Bindable]
+			private var ecoDP:ArrayCollection;
+			
+			[Bindable]
+			private var isN:Boolean = true; 
+			[Bindable]
+			private var timeW:int = 5; 
+			
+			public function init():void {
+				ecoDP = new ArrayCollection();
+				isN = (PolyKoef.currentMode == "withoutNeutralizer");
+				for (var i:int = 0; i < 195; i++) {
+					var o:Object;
+					if (isN) {
+						o = {time : i, 
+								GCO : EcologyVars.getGCO(i), 
+								GCO2 : EcologyVars.getGCO2(i), 
+								GNOx : EcologyVars.getGNOx(i), 
+								GHCs : EcologyVars.getGHCs(i), 
+								GO2 : EcologyVars.getGO2(i),
+								 
+								Gpal : EconomyVars.getGpal(i), 
+								Gpov : EconomyVars.getGpov(i)}
+					} else {
+						o = {time : i, 
+								GCO : EcologyVars.getGCO(i), 
+								GCO2 : EcologyVars.getGCO2(i), 
+								GNOx : EcologyVars.getGNOx(i), 
+								GHCs : EcologyVars.getGHCs(i), 
+								GO2 : EcologyVars.getGO2(i),
+								
+								NGCO : EcologyVars.getGCO(i), 
+								NGCO2 : EcologyVars.getGCO2(i), 
+								NGNOx : EcologyVars.getGNOx(i), 
+								NGHCs : EcologyVars.getGHCs(i), 
+								NGO2 : EcologyVars.getGO2(i),
+								 
+								Gpal : EconomyVars.getGpal(i), 
+								Gpov : EconomyVars.getGpov(i)}
+					}
+					
+					ecoDP.addItem(o);
+					timeW = 8;
+				}
+				//showGraph(distSer);
+			}
+			
+			private function showGraph(ls:LineSeries):void {
+				linechart.series = [];
+				linechart.series.push(ls);
+				linechart.updateAllDataTips();
+			}
+		]]>
+	</mx:Script>	
+	<mx:Stroke id = "s1" color="#0099ff" weight="2"/>
+    <mx:Stroke id = "s2" color="red" weight="2"/>
+    <mx:Stroke id = "s3" color="green" weight="2"/>
+    
+	<mx:VDividedBox width="100%" height="100%">
+	<mx:HBox width="100%" height="100%">
+	
+	    <mx:LineSeries id="GCOSer" yField="GCO" displayName="GCO" lineStroke="{s1}"/>
+	    <mx:LineSeries id="GCO2Ser" yField="GCO2" displayName="GCO2" lineStroke="{s2}"/>
+	    <mx:LineSeries id="GNOxSer" yField="GNOx" displayName="GNOx" lineStroke="{s2}"/>
+	    <mx:LineSeries id="GHCsSer" yField="GHCs" displayName="GHCs" lineStroke="{s2}"/>
+	    <mx:LineSeries id="GO2Ser" yField="GO2" displayName="GO2" lineStroke="{s2}"/>
+	    
+	    <mx:LineSeries id="NGCOSer" yField="NGCO" displayName="NGCO" lineStroke="{s1}"/>
+	    <mx:LineSeries id="NGCO2Ser" yField="NGCO2" displayName="NGCO2" lineStroke="{s2}"/>
+	    <mx:LineSeries id="NGNOxSer" yField="NGNOx" displayName="NGNOx" lineStroke="{s2}"/>
+	    <mx:LineSeries id="NGHCsSer" yField="NGHCs" displayName="NGHCs" lineStroke="{s2}"/>
+	    <mx:LineSeries id="NGO2Ser" yField="NGO2" displayName="NGO2" lineStroke="{s2}"/>
+	    
+	    <mx:LineSeries id="GpalSer" yField="Gpal" displayName="Gpal" lineStroke="{s3}"/>
+	    <mx:LineSeries id="GpovSer" yField="Gpov" displayName="Gpov" lineStroke="{s3}"/>
+	    
+		<mx:LineChart id="linechart" height="100%" width="100%"
+            showDataTips="true" dataProvider="{ecoDP}">
+		    
+        </mx:LineChart>
+        <mx:HBox>
+		    <mx:VBox height="100%" >
+		    	<mx:LinkButton label="GCO" click="showGraph(GCOSer)" />
+		    	<mx:LinkButton label="GCO2" click="showGraph(GCO2Ser)"/>
+		    	<mx:LinkButton label="GNOx" click="showGraph(GNOxSer)"/>
+		    	<mx:LinkButton label="GHCs" click="showGraph(GHCsSer)"/>
+		    	<mx:LinkButton label="GO2" click="showGraph(GO2Ser)"/>
+		    	<mx:Spacer height="20" />
+		    	<mx:LinkButton label="Gpal" click="showGraph(GpalSer)"/>
+		    	<mx:LinkButton label="Gpov" click="showGraph(GpovSer)"/>
+		    </mx:VBox>   	 
+		    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
+		    	<mx:LinkButton label="NGCO" click="showGraph(GCOSer)" />
+		    	<mx:LinkButton label="NGCO2" click="showGraph(GCO2Ser)"/>
+		    	<mx:LinkButton label="NGNOx" click="showGraph(GNOxSer)"/>
+		    	<mx:LinkButton label="NGHCs" click="showGraph(GHCsSer)"/>
+		    	<mx:LinkButton label="NGO2" click="showGraph(GO2Ser)"/>
+		    </mx:VBox>   	 
+        </mx:HBox>
+	</mx:HBox>
+	
+		<mx:DataGrid width="100%" height="300" dataProvider="{ecoDP}">
+			<mx:columns>
+				<mx:DataGridColumn headerText="Час (сек.)" dataField="time" visible="true"/>
+				<mx:DataGridColumn headerText="GCO" dataField="GCO" />
+				<mx:DataGridColumn headerText="GCO2" dataField="GCO2" />
+				<mx:DataGridColumn headerText="GNOx" dataField="GNOx" />
+				<mx:DataGridColumn headerText="GHCs" dataField="GHCs" />
+				<mx:DataGridColumn headerText="GO2" dataField="GO2" />
+				<mx:DataGridColumn headerText="NGCO" dataField="NGCO" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="NGCO2" dataField="NGCO2" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="NGNOx" dataField="NGNOx" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="NGHCs" dataField="NGHCs" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="NGO2" dataField="NGO2" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="Gpal" dataField="Gpal" />
+				<mx:DataGridColumn headerText="Gpov" dataField="Gpov" />
+			</mx:columns>
+		</mx:DataGrid>
+	</mx:VDividedBox>
+</mx:VBox>

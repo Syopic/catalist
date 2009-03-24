@@ -10,9 +10,9 @@ package ua.com.syo.catalist.model.polynoms {
 		public static function Gpal(nd:Number):Number {
 			var result:Number;
 			
-			var B0:Number = PolyKoef.getP("B0", "Gпал");
-			var B1:Number = PolyKoef.getP("B1", "Gпал");
-			var B11:Number = PolyKoef.getP("B11", "Gпал");
+			var B0:Number = PolyKoef.getP("A0", "Gпал");
+			var B1:Number = PolyKoef.getP("A1", "Gпал");
+			var B11:Number = PolyKoef.getP("A11", "Gпал");
 			result = B0 + B1 * nd + B11 * nd * nd;
 			return result;
 		}
