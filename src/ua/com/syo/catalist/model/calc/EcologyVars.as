@@ -96,7 +96,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		/** Integrals functions **/
 		public static function f1(x:Number):Number {
-			return PolyModelsXX.GCO(x);
+			return PolyModelsXX.GCO(EnergyVars.getNdv(x), x);
 		}
 		
 	}
