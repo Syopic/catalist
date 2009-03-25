@@ -22,6 +22,8 @@ package ua.com.syo.catalist.data {
 		//TODO
 		public static var dPkXX		: Number=	63;
 		
+		public static var koef		: Number=	0.8;
+		
 		public static var u0		: Number=	4.1;
 		public static var etaTrans	: Number=	0.9;
 		public static var beta		: Number=	1.5;
@@ -30,7 +32,7 @@ package ua.com.syo.catalist.data {
 		public static var W			: Number=	0.051;
 		public static var f0		: Number=	0.014;
 		public static var f1		: Number=	0.014+0.005;
-		public static var nDvZchep	: Number=	1700;
+		public static var nDvZchep	: Number=	2100;
 		public static var vDros		: Number=	172;
 		public static var tDrosMin	: Number=	1.035*60/6.6/nXXmin;
 		public static var vZchep	: Number=	112;

@@ -1,17 +1,19 @@
 package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.data.CycleData;
 	import ua.com.syo.catalist.data.KoefStorage;
+	import ua.com.syo.catalist.model.ModePhase;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 	
 	public class EnergyVars	{
 		
 		// частота обертання колінчастого валу двигуна
 		public static function getNdv(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
-				case "ХХ":
-					result = KoefStorage.nXXmin;
+				case "ХХ": result = KoefStorage.nXXmin; break;
+				case "рушання":
+					result = getOmega(time) * 30 / Math.PI;
 					break;
 			}
 			
@@ -20,11 +22,13 @@ package ua.com.syo.catalist.model.calc {
 		
 		//кутова швидкість обертання колінвалу
 		public static function getOmega(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
-				case "ХХ":
-					result = getNdv(time) * Math.PI / 30;
+				case "ХХ": result = getNdv(time) * Math.PI / 30; break;
+				case "рушання":	
+					var mf:ModePhase = CycleData.getModeTime(time);
+					result = KoefStorage.nXXmin * Math.PI / 30 + (((KoefStorage.nDvZchep - KoefStorage.nXXmin) * Math.PI ) /( 30 * KoefStorage.koef ))* (time - mf.startTime);
 					break;
 			}
 			
@@ -33,7 +37,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//крутний момент
 		public static function getMk(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
@@ -46,7 +50,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//розрідження за дросельними заслінками (дельта пека)
 		public static function getDeltaPk(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
@@ -59,7 +63,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//кут відкриття дросельних заслінок (фі дроселя)
 		public static function getPhiDros(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
@@ -72,7 +76,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//швидкість КТЗ
 		public static function getV(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			return result;
 		}
 	}

@@ -111,7 +111,8 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	PolyModelsXX.setCurrentModes("XX", "gasoline", "withoutNeutralizer");
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "beforeNeutralizer");
 	//showView("ecoVars", "ecoVars1");
-	showView("ecoVars2", "ecoVars2");
+	//showView("ecoVars2", "ecoVars2");
+	showView("energyVars", "energyVars");
 
 	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
 	//event.currentTarget.currentCycleDataXML

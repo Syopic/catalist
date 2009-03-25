@@ -10,7 +10,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//витрата палива
 		public static function getGpal(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
@@ -24,7 +24,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//витрата повітря
 		public static function getGpov(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
