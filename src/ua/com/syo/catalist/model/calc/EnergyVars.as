@@ -3,6 +3,7 @@ package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.data.KoefStorage;
 	import ua.com.syo.catalist.model.ModePhase;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
+	import ua.com.syo.catalist.utils.DiffUr;
 	
 	public class EnergyVars	{
 		
@@ -43,6 +44,9 @@ package ua.com.syo.catalist.model.calc {
 				case "ХХ":
 					result = 0;
 					break;
+				case "рушання":
+					result = KoefStorage.Idv * DiffUr.rungeKutta((time-0.1), getNdv(time - 0.1), time, 10, df1);
+					break;	
 			}
 			
 			return result;
@@ -78,6 +82,11 @@ package ua.com.syo.catalist.model.calc {
 		public static function getV(time:Number): Number {
 			var result:Number = 0;
 			return result;
+		}
+		
+		/** Diff functions **/
+		public static function df1(x:Number, y:Number):Number {
+			return getOmega(x);
 		}
 	}
 }
