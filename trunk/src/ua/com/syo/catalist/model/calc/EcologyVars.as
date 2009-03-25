@@ -7,7 +7,7 @@ package ua.com.syo.catalist.model.calc {
 		/** Концентрації **/
 		//
 		public static function getCO(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 					result = PolyModelsXX.CO(EnergyVars.getNdv(time));
@@ -18,7 +18,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//
 		public static function getCO2(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 					result = PolyModelsXX.CO2(EnergyVars.getNdv(time));
@@ -29,7 +29,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//
 		public static function getNOx(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 					result = PolyModelsXX.NOX(EnergyVars.getNdv(time));
@@ -40,7 +40,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//
 		public static function getHCs(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 					result = PolyModelsXX.CH(EnergyVars.getNdv(time));
@@ -51,14 +51,14 @@ package ua.com.syo.catalist.model.calc {
 		
 		//
 		public static function getO2(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			return result;
 		}
 		
 		/** Масові викиди **/
 		//
 		public static function getGCO(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
@@ -72,7 +72,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//
 		public static function getGCO2(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
@@ -86,7 +86,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//
 		public static function getGNOx(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
@@ -100,7 +100,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//
 		public static function getGHCs(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
@@ -114,7 +114,7 @@ package ua.com.syo.catalist.model.calc {
 		
 		//
 		public static function getGO2(time:Number): Number {
-			var result:Number = Math.random()*1000;
+			var result:Number = 0;
 			return result;
 		}
 		

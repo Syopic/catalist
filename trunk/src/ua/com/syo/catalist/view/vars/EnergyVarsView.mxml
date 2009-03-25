@@ -13,7 +13,7 @@
 			
 			public function init():void {
 				energyvarsDP = new ArrayCollection();
-				for (var i:int = 0; i < 195; i++) {
+				for (var i:Number = 10; i < 13; i+=0.1) {
 					//CycleData.getModeTime(i);
 					var o:Object = {time : i, 
 									Ndv : EnergyVars.getNdv(i), 
