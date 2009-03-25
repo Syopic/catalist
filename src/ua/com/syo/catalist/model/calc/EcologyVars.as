@@ -73,18 +73,42 @@ package ua.com.syo.catalist.model.calc {
 		//
 		public static function getGCO2(time:Number): Number {
 			var result:Number = Math.random()*1000;
+			
+			switch (CycleData.getMode(time)) {
+				case "ХХ":
+					var mf:ModePhase = CycleData.getModeTime(time);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f2);
+					break;
+			}
+			
 			return result;
 		}
 		
 		//
 		public static function getGNOx(time:Number): Number {
 			var result:Number = Math.random()*1000;
+			
+			switch (CycleData.getMode(time)) {
+				case "ХХ":
+					var mf:ModePhase = CycleData.getModeTime(time);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f3);
+					break;
+			}
+			
 			return result;
 		}
 		
 		//
 		public static function getGHCs(time:Number): Number {
 			var result:Number = Math.random()*1000;
+			
+			switch (CycleData.getMode(time)) {
+				case "ХХ":
+					var mf:ModePhase = CycleData.getModeTime(time);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f4);
+					break;
+			}
+			
 			return result;
 		}
 		
@@ -97,6 +121,18 @@ package ua.com.syo.catalist.model.calc {
 		/** Integrals functions **/
 		public static function f1(x:Number):Number {
 			return PolyModelsXX.GCO(EnergyVars.getNdv(x), x);
+		}
+		
+		public static function f2(x:Number):Number {
+			return PolyModelsXX.GCO2(EnergyVars.getNdv(x), x);
+		}
+		
+		public static function f3(x:Number):Number {
+			return PolyModelsXX.GNOX(EnergyVars.getNdv(x), x);
+		}
+		
+		public static function f4(x:Number):Number {
+			return PolyModelsXX.GCH(EnergyVars.getNdv(x), x);
 		}
 		
 	}
