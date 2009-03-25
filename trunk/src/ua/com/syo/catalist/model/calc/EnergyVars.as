@@ -45,7 +45,7 @@ package ua.com.syo.catalist.model.calc {
 					result = 0;
 					break;
 				case "рушання":
-					result = KoefStorage.Idv * DiffUr.rungeKutta((time-0.1), getNdv(time - 0.1), time, 10, df1);
+					result = KoefStorage.Idv * DiffUr.rungeKutta((time-1), getNdv(time - 1), time, 10, df1);
 					break;	
 			}
 			
