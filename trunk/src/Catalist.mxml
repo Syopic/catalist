@@ -37,7 +37,7 @@
             	icon="@Embed('/../assets/images/icons/disk.png')" width="26" height="26"/>
             	
             <mx:VRule height="100%"/>
-            <mx:Button toolTip="Розрахувати"
+            <mx:Button toolTip="Розрахувати" click="fileManager.loadDefaultFile('/../../assets/cycleData.xml')"
             	icon="@Embed('/../assets/images/icons/calculator.png')" label="Розрахувати" height="26"/>
             <mx:Spacer width="100%" />
             

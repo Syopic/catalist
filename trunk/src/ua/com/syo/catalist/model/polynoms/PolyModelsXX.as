@@ -71,21 +71,20 @@ package ua.com.syo.catalist.model.polynoms {
 			return (KoefStorage.muCO * CO(nd) * EconomyVars.getMvgS(time)) / 100;
 		}
 		
-		public static function GCO2(nd:Number):Number {
-			// TODO
-			var result:Number = CO(nd) / 100 * KoefStorage.muCO;
+		public static function GCO2(nd:Number, time:Number):Number {
+			var result:Number = (KoefStorage.muCO2 * CO2(nd) * EconomyVars.getMvgS(time)) / 100;
 			
 			return result;
 		}
 		
-		public static function GCH(nd:Number):Number {
-			var result:Number;
+		public static function GCH(nd:Number, time:Number):Number {
+			var result:Number = (KoefStorage.muCH * CH(nd) * EconomyVars.getMvgS(time)) / 1000000;
 			
 			return result;
 		}
 		
-		public static function GNOX(nd:Number):Number {
-			var result:Number;
+		public static function GNOX(nd:Number, time:Number):Number {
+			var result:Number = (KoefStorage.muNOX * NOX(nd) * EconomyVars.getMvgV(time)) / 1000000;
 			
 			return result;
 		}

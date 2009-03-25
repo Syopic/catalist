@@ -5,6 +5,9 @@ package ua.com.syo.catalist.model {
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
 	import flash.net.FileFilter;
+	import flash.net.URLLoader;
+	import flash.net.URLLoaderDataFormat;
+	import flash.net.URLRequest;
 	
 	import ua.com.syo.catalist.data.CycleData;
 	import ua.com.syo.catalist.model.polynoms.PolynomsParser;
@@ -71,6 +74,20 @@ package ua.com.syo.catalist.model {
 			//Polynoms.addPolinomsCollection(pc, "gazoline", "withoutNeutralizer");
 			
 			
+			CycleData.parseXML(currentCycleDataXML);
+			dispatchEvent(new Event(Event.OPEN));
+		}
+		
+		public function loadDefaultFile(url:String):void {
+			var xmlContainer:URLLoader = new URLLoader();
+		    xmlContainer.dataFormat = URLLoaderDataFormat.TEXT;
+		    xmlContainer.addEventListener(Event.COMPLETE, xmlLoadedHandler);
+		    xmlContainer.load(new URLRequest(url));
+		}
+		
+		private function xmlLoadedHandler(e:Event):void {
+			currentCycleDataXML = XML(e.currentTarget.data);
+			PolynomsParser.parse(currentCycleDataXML.polynoms);
 			CycleData.parseXML(currentCycleDataXML);
 			dispatchEvent(new Event(Event.OPEN));
 		}
