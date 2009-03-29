@@ -6,7 +6,7 @@ package ua.com.syo.catalist.model.polynoms {
 		private static var modeArray:Array=["withoutNeutralizer", "beforeNeutralizer", "afterNeutralizer"];
 		
 		[Bindable]
-		public static var loadArray:Array=["CO", "CO2", "HCs", "NOx", "O2", "Gпал", "Gпов", "dPk"];
+		public static var loadArray:Array=["CO", "CO2", "HCs", "NOx", "O2", "Gпал", "Gпов", "dPk", "phiDros"];
 		[Bindable]
 		public static var xxArray:Array=["CO", "CO2", "HCs", "NOx", "O2", "Gпал", "Gпов", "phiDros"];
 		[Bindable]
