@@ -4,7 +4,7 @@ package ua.com.syo.catalist.model.polynoms {
 	import ua.com.syo.catalist.model.calc.EconomyVars;
 	import ua.com.syo.catalist.model.calc.EnergyVars;
 	
-	public class PolyModelsXX {
+	public class PolyModelsPXX {
 		
 		public static function setCurrentModes(currentCycleMode:String, currentFuel:String, currentMode:String):void {
 			PolyKoef.currentCycleMode = currentCycleMode;
@@ -13,7 +13,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function Gpal(nd:Number):Number {
-			setCurrentModes("XX", "gasoline", "withoutNeutralizer");
+			setCurrentModes("PXX", "gasoline", "withoutNeutralizer");
 			var A0:Number = PolyKoef.getP("A0", "Gпал");
 			var A1:Number = PolyKoef.getP("A1", "Gпал");
 			var A11:Number = PolyKoef.getP("A11", "Gпал");
@@ -22,7 +22,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function Gpov(nd:Number):Number {
-			setCurrentModes("XX", "gasoline", "withoutNeutralizer");
+			setCurrentModes("PXX", "gasoline", "withoutNeutralizer");
 			var A0:Number = PolyKoef.getP("A0", "Gпов");
 			var A1:Number = PolyKoef.getP("A1", "Gпов");
 			var A11:Number = PolyKoef.getP("A11", "Gпов");
@@ -31,7 +31,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function CO(nd:Number):Number {
-			setCurrentModes("XX", "gasoline", "withoutNeutralizer");
+			setCurrentModes("PXX", "gasoline", "withoutNeutralizer");
 			var A0:Number = PolyKoef.getP("A0", "CO");
 			var A1:Number = PolyKoef.getP("A1", "CO");
 			var A11:Number = PolyKoef.getP("A11", "CO");
@@ -41,7 +41,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function CO2(nd:Number):Number {
-			setCurrentModes("XX", "gasoline", "withoutNeutralizer");
+			setCurrentModes("PXX", "gasoline", "withoutNeutralizer");
 			var A0:Number = PolyKoef.getP("A0", "CO2");
 			var A1:Number = PolyKoef.getP("A1", "CO2");
 			var A11:Number = PolyKoef.getP("A11", "CO2");
@@ -51,7 +51,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function CH(nd:Number):Number {
-			setCurrentModes("XX", "gasoline", "withoutNeutralizer");
+			setCurrentModes("PXX", "gasoline", "withoutNeutralizer");
 			var A0:Number = PolyKoef.getP("A0", "HCs");
 			var A1:Number = PolyKoef.getP("A1", "HCs");
 			var A11:Number = PolyKoef.getP("A11", "HCs");
@@ -63,7 +63,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function NOX(nd:Number):Number {
-			setCurrentModes("XX", "gasoline", "withoutNeutralizer");
+			setCurrentModes("PXX", "gasoline", "withoutNeutralizer");
 			var A0:Number = PolyKoef.getP("A0", "NOx");
 			var A1:Number = PolyKoef.getP("A1", "NOx");
 			var A11:Number = PolyKoef.getP("A11", "NOx");
@@ -72,7 +72,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function O2(nd:Number):Number {
-			setCurrentModes("XX", "gasoline", "withoutNeutralizer");
+			setCurrentModes("PXX", "gasoline", "withoutNeutralizer");
 			var A0:Number = PolyKoef.getP("A0", "O2");
 			var A1:Number = PolyKoef.getP("A1", "O2");
 			var A11:Number = PolyKoef.getP("A11", "O2");
@@ -117,18 +117,27 @@ package ua.com.syo.catalist.model.polynoms {
 			return result;
 		}
 		
-		public static function fiDr(nd:Number):Number {
-			setCurrentModes("XX", "gasoline", "withoutNeutralizer");
-			var A0:Number = PolyKoef.getP("A0", "phiDros");
-			var A1:Number = PolyKoef.getP("A1", "phiDros");
+		public static function Mk(nd:Number):Number {
+			setCurrentModes("PXX", "gasoline", "withoutNeutralizer");
+			var A0:Number = PolyKoef.getP("A0", "Mk");
+			var A1:Number = PolyKoef.getP("A1", "Mk");
 			
 			return A0 + A1 * nd;
 		}
 		
-		public static function deltaPk(nd:Number):Number {
-			var result:Number;
-			// mock
-			return result;
+		public static function deltaPk(time:Number):Number {
+			setCurrentModes("PXX", "gasoline", "withoutNeutralizer");
+			var A0:Number = PolyKoef.getP("A0", "dPk");
+			var A1:Number = PolyKoef.getP("A1", "dPk");
+			var A2:Number = PolyKoef.getP("A2", "dPk");
+			var A11:Number = PolyKoef.getP("A11", "dPk");
+			var A22:Number = PolyKoef.getP("A22", "dPk");
+			var A12:Number = PolyKoef.getP("A12", "dPk");
+			
+			var nd:Number = EnergyVars.getNdv(time);
+			var Mk:Number = EnergyVars.getMk(time);
+			
+			return A0 + A1 * nd + A2 * Mk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(Mk, 2) + A12 * nd * Mk;
 		}
 		
 	}

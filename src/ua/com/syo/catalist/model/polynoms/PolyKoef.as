@@ -45,11 +45,15 @@ package ua.com.syo.catalist.model.polynoms {
 											mode:String = null, 
 											fuel:String = null, 
 											cycleMode:String = null):Number {
+			if (cycleMode == "PXX") {
+				
+			}
 			
 			if (!gas) gas = currentGas;
 			if (!mode) mode = currentMode;
 			if (!fuel) fuel = currentFuel;
 			if (!cycleMode) cycleMode = currentCycleMode;
+			
 			
 			return pDict[cycleMode + fuel + mode + gas + label];
 		}
