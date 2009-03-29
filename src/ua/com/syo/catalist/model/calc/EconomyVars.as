@@ -3,6 +3,7 @@ package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.data.KoefStorage;
 	import ua.com.syo.catalist.model.ModePhase;
 	import ua.com.syo.catalist.model.polynoms.PolyKoef;
+	import ua.com.syo.catalist.model.polynoms.PolyModelsNav;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 	import ua.com.syo.catalist.utils.Integral;
 	
@@ -11,12 +12,19 @@ package ua.com.syo.catalist.model.calc {
 		//витрата палива
 		public static function getGpal(time:Number): Number {
 			var result:Number = 0;
+			var mf:ModePhase;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
-					var mf:ModePhase = CycleData.getModeTime(time);
+				case "рушання":
+					mf = CycleData.getModeTime(time);
 					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f1);
 					break;
+				case "розгін-":
+					mf = CycleData.getModeTime(time);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f3);
+					break;
+				break;
 			}
 			
 			return result;
@@ -28,6 +36,7 @@ package ua.com.syo.catalist.model.calc {
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
+				case "рушання":
 					var mf:ModePhase = CycleData.getModeTime(time);
 					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f2);
 					break;
@@ -131,6 +140,10 @@ package ua.com.syo.catalist.model.calc {
 		
 		public static function f2(x:Number):Number {
 			return PolyModelsXX.Gpov(EnergyVars.getNdv(x));
+		}
+		
+		public static function f3(x:Number):Number {
+			return PolyModelsNav.Gpal(x);
 		}
 	}
 }

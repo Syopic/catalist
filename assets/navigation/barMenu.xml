@@ -6,8 +6,9 @@
     </item>
     <item label="Розрахунок">
         <item id="cycleReproduce" label="Відтворення циклу"/>
-        <item id="energyVars" label="Тягово-швидкісні показники"/>
-        <item id="ecoVars" label="Екологічні та паливно-економічні показники"/>
+        <item id="energyVars" label="Енергетичні показники"/>
+        <item id="ecoVars" label="Екологічні показники"/>
+        <item id="ecoVars2" label="Економічні показники"/>
     </item>
     <item label="Налаштування">
     	<item id="ktzParams" label="Параметри КТЗ"/>

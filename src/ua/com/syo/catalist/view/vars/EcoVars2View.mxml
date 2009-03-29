@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 			import ua.com.syo.catalist.model.polynoms.PolyKoef;
 			import ua.com.syo.catalist.model.calc.EconomyVars;
@@ -23,7 +24,8 @@
 			public function init():void {
 				ecoDP = new ArrayCollection();
 				isN = (PolyKoef.currentMode == "withoutNeutralizer");
-				for (var i:int = 0; i < 195; i++) {
+				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
+					//i = Math.round(i * 10) / 10;
 					var o:Object;
 					if (isN) {
 						o = {time : i, 

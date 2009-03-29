@@ -8,6 +8,7 @@ import mx.managers.PopUpManager;
 import ua.com.syo.catalist.model.FileManager;
 import ua.com.syo.catalist.model.KTZParams;
 import ua.com.syo.catalist.model.polynoms.PolyKoef;
+import ua.com.syo.catalist.model.polynoms.PolyModelsNav;
 import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
@@ -109,6 +110,7 @@ private function showAboutPopup(): void {
 
 private function cycleDataFileOpenHandler(event:Event):void  {
 	PolyModelsXX.setCurrentModes("XX", "gasoline", "withoutNeutralizer");
+	PolyModelsNav.setCurrentModes("load", "gasoline", "withoutNeutralizer");
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "beforeNeutralizer");
 	//showView("ecoVars", "ecoVars1");
 	//showView("ecoVars2", "ecoVars2");

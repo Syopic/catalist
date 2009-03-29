@@ -27,7 +27,7 @@ package ua.com.syo.catalist.data {
 		public static var u0		: Number=	4.1;
 		public static var etaTrans	: Number=	0.9;
 		public static var beta		: Number=	1.5;
-		public static var Idv		: Number=	0.1;
+		public static var Idv		: Number=	0.09;
 		public static var IkSum		: Number=	2.94;
 		public static var W			: Number=	0.051;
 		public static var f0		: Number=	0.014;
@@ -54,31 +54,8 @@ package ua.com.syo.catalist.data {
 		public static var muCO2		: Number=	44;
 		public static var muCH		: Number=	82;
 		public static var muNOX		: Number=	46;
-		
-		public static var _a0		: Number=	89.89322;
-		public static var _a1		: Number=	0.0053;
-		public static var _a2		: Number=	-1.45345;
-		public static var _a12		: Number=	-0.00005;
-		
-		public static var _b0		: Number=	83.97809;
-		public static var _b1		: Number=	-0.00131;
-		public static var _b2		: Number=	-0.00131;
-		public static var _b11		: Number=	0.00001;
-		public static var _b22		: Number=	0.1611;
-		public static var _b12		: Number=	-0.00018;
-		public static var _b111		: Number=	-2.9195e-9;
-		public static var _b222		: Number=	-0.00094;
-		
-		public static var _c0		: Number=	1.294;
-		public static var _c1		: Number=	3.32e-3;
-		
-		public static var _f0		: Number=	6.6514e+1;
-		public static var _f1		: Number=	2.5470e-2;
-		public static var _f11		: Number=	-3.3098e-6;
-		
-		public static var _z0		: Number=	-286.7839;
-		public static var _z1		: Number=	281.8211;
-		
+		public static var muO2		: Number=	32;
+					
 		public static var deltaT	: Number=	1;
 		public static var Mco		: Number=	28;
 		public static var Mhcs		: Number=	86;

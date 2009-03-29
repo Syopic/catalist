@@ -1,6 +1,8 @@
 package ua.com.syo.catalist.model.polynoms {
+	import ua.com.syo.catalist.data.CycleData;
 	import ua.com.syo.catalist.data.KoefStorage;
 	import ua.com.syo.catalist.model.calc.EconomyVars;
+	import ua.com.syo.catalist.model.calc.EnergyVars;
 	
 	public class PolyModelsXX {
 		
@@ -63,7 +65,16 @@ package ua.com.syo.catalist.model.polynoms {
 			return A0 + A1 * nd + A11 * nd * nd;
 		}
 		
-		public static function GCO(nd:Number, time:Number):Number {
+		public static function O2(nd:Number):Number {
+			var A0:Number = PolyKoef.getP("A0", "O2");
+			var A1:Number = PolyKoef.getP("A1", "O2");
+			var A11:Number = PolyKoef.getP("A11", "O2");
+			
+			return A0 + A1 * nd + A11 * nd * nd;
+		}
+		
+		public static function GCO(time:Number):Number {
+			var nd:Number = EnergyVars.getNdv(time);
 			var t:Number = CO(nd);
 			var t2:Number = EconomyVars.getMvgS(time);
 			var result:Number = (KoefStorage.muCO * CO(nd) * EconomyVars.getMvgS(time)) / 100;
@@ -71,20 +82,30 @@ package ua.com.syo.catalist.model.polynoms {
 			return (KoefStorage.muCO * CO(nd) * EconomyVars.getMvgS(time)) / 100;
 		}
 		
-		public static function GCO2(nd:Number, time:Number):Number {
+		public static function GCO2(time:Number):Number {
+			var nd:Number = EnergyVars.getNdv(time);
 			var result:Number = (KoefStorage.muCO2 * CO2(nd) * EconomyVars.getMvgS(time)) / 100;
 			
 			return result;
 		}
 		
-		public static function GCH(nd:Number, time:Number):Number {
+		public static function GCH(time:Number):Number {
+			var nd:Number = EnergyVars.getNdv(time);
 			var result:Number = (KoefStorage.muCH * CH(nd) * EconomyVars.getMvgS(time)) / 1000000;
 			
 			return result;
 		}
 		
-		public static function GNOX(nd:Number, time:Number):Number {
+		public static function GNOX(time:Number):Number {
+			var nd:Number = EnergyVars.getNdv(time);
 			var result:Number = (KoefStorage.muNOX * NOX(nd) * EconomyVars.getMvgV(time)) / 1000000;
+			
+			return result;
+		}
+		
+		public static function GO2(time:Number):Number {
+			var nd:Number = EnergyVars.getNdv(time);
+			var result:Number = (KoefStorage.muO2 * O2(nd) * EconomyVars.getMvgS(time)) / 100;
 			
 			return result;
 		}
