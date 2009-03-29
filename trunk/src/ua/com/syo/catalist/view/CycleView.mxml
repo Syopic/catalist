@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.data.CycleData;
 			import mx.collections.ArrayCollection;
 			[Bindable]
@@ -12,7 +13,7 @@
 			
 			public function init():void {
 				cycleDP = new ArrayCollection();
-				for (var i:int = 0; i < 195; i++) {
+				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
 					//CycleData.getModeTime(i);
 					var o:Object = {time : i, 
 									speed : CycleData.getSpeed(i), 

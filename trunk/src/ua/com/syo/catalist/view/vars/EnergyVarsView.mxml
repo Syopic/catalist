@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.model.calc.EnergyVars;
 			import ua.com.syo.catalist.data.CycleData;
 			import mx.collections.ArrayCollection;
@@ -13,7 +14,7 @@
 			
 			public function init():void {
 				energyvarsDP = new ArrayCollection();
-				for (var i:Number = 10; i < 13; i+=0.1) {
+				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
 					//CycleData.getModeTime(i);
 					var o:Object = {time : i, 
 									Ndv : EnergyVars.getNdv(i), 
