@@ -10,7 +10,7 @@ package ua.com.syo.catalist.model.polynoms {
 		[Bindable]
 		public static var xxArray:Array=["CO", "CO2", "HCs", "NOx", "O2", "Gпал", "Gпов", "phiDros"];
 		[Bindable]
-		public static var pxxArray:Array=["CO", "CO2", "HCs", "NOx", "O2", "Gпал", "Gпов", "Mk", "phiDros"];
+		public static var pxxArray:Array=["CO", "CO2", "HCs", "NOx", "O2", "Gпал", "Gпов", "Mk", "phiDros", "dPk"];
 		
 		[Bindable]
 		public static var label1Array:Array=["A0", "A1", "A2", "A11", "A22", "A12", "A111", "A222"];

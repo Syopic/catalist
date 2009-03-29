@@ -3,6 +3,7 @@ package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.data.KoefStorage;
 	import ua.com.syo.catalist.model.ModePhase;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsNav;
+	import ua.com.syo.catalist.model.polynoms.PolyModelsPXX;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 	import ua.com.syo.catalist.utils.DiffUr;
 	
@@ -19,8 +20,11 @@ package ua.com.syo.catalist.model.calc {
 				case "рушання":
 				case "розгін-":
 				case "розгін+":
+				case "стала":
+				case "упов.+":
 					result = getOmega(time) * 30 / Math.PI;
 					break;
+				
 					
 			}
 			
@@ -31,24 +35,43 @@ package ua.com.syo.catalist.model.calc {
 		public static function getOmega(time:Number): Number {
 			var result:Number = 0;
 			var mf:ModePhase = CycleData.getModeTime(time);
+			var OmegaTStart:Number;
+			var OmegaTEnd:Number;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ": result = getNdv(time) * Math.PI / 30; break;
 				case "рушання":	
-					var OmegaTStart:Number = KoefStorage.nXXmin * Math.PI / 30;
-					var OmegaTEnd:Number = KoefStorage.nDvZchep * Math.PI / 30;
+					OmegaTStart = KoefStorage.nXXmin * Math.PI / 30;
+					OmegaTEnd = KoefStorage.nDvZchep * Math.PI / 30;
 					
 					result = OmegaTStart + ((OmegaTEnd - OmegaTStart) * (time - mf.startTime)) / (mf.endTime - mf.startTime);
 					break;
 				case "розгін-":	
-				    var OmegaTStart:Number = KoefStorage.nDvZchep * Math.PI / 30;
-					var OmegaTEnd:Number = (CycleData.getSpeed(mf.endTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
+				    OmegaTStart = KoefStorage.nDvZchep * Math.PI / 30;
+					OmegaTEnd = (CycleData.getSpeed(mf.endTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
 					
 					result = OmegaTStart + ((OmegaTEnd - OmegaTStart) * (time - mf.startTime)) / (mf.endTime - mf.startTime);
 					break;
 				case "розгін+":
 					result = (CycleData.getSpeed(time) * KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0) / (KoefStorage.rd * 3.6); 
 					break;
+				case "стала":
+					result = CycleData.getSpeed(time) * KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0 / (3.6 * KoefStorage.rd);
+					break;	
+				case "упов.+":	
+				    OmegaTStart = (CycleData.getSpeed(mf.startTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
+					OmegaTEnd = (CycleData.getSpeed(mf.endTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
+					var OmegaCycle:Number = (CycleData.getSpeed(time) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
+					
+					result = OmegaTStart + ((OmegaTEnd - OmegaTStart) * (time - mf.startTime)) / (mf.endTime - mf.startTime);
+					var nt:Number = result * 30 / Math.PI;
+					if (result > OmegaCycle) {
+						var Mop:Number = (KoefStorage.Ga * KoefStorage.f0 * KoefStorage.rd * KoefStorage.g * (1 + KoefStorage.A * Math.pow(((omegaZchep(time) * KoefStorage.rd * 3.6) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0)), 2))) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0 * KoefStorage.etaTrans); 
+						var Mgalm:Number = (CycleData.getAcceleration(time)* KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) * (KoefStorage.Idv + iZchep(time)) / (KoefStorage.rd * 3.6) + Mop * KoefStorage.etaTrans + PolyModelsPXX.Mk(nt) / KoefStorage.etaTrans;
+						result = (CycleData.getSpeed(mf.startTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6) - (Mgalm) * (time - mf.startTime) / (KoefStorage.Idv + iZchep(time));
+					}
+					break;
+				
 			}
 			
 			
@@ -86,6 +109,12 @@ package ua.com.syo.catalist.model.calc {
 					Mop = (KoefStorage.Ga * KoefStorage.f0 * KoefStorage.rd * KoefStorage.g * (1 + KoefStorage.A * Math.pow(((omegaZchep(time) * KoefStorage.rd * 3.6) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0)), 2))) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0 * KoefStorage.etaTrans);
 					result = Mop + ((iZchep(time) / KoefStorage.etaTrans + KoefStorage.Idv) * (CycleData.getAcceleration(time) * KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0) / (KoefStorage.rd * 3.6));
 					break;	
+				case "стала":
+					result = (KoefStorage.Ga * KoefStorage.f0 * KoefStorage.rd * KoefStorage.g * (1 + KoefStorage.A * Math.pow(CycleData.getSpeed(time), 2))) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0 * KoefStorage.etaTrans);
+					break;	
+				case "упов.+":
+					result = PolyModelsPXX.Mk(getNdv(time)) / KoefStorage.etaTrans;
+					break;	
 			}
 			
 			return result;
@@ -102,8 +131,12 @@ package ua.com.syo.catalist.model.calc {
 					break;
 				case "розгін-":
 				case "розгін+":
+				case "стала":
 					result = PolyModelsNav.deltaPk(time);
 					break;	
+				case "упов.+":
+					result = PolyModelsPXX.deltaPk(time);
+					break;		
 			}
 			
 			return result;
@@ -123,6 +156,7 @@ package ua.com.syo.catalist.model.calc {
 					break;
 				case "розгін-":
 				case "розгін+":
+				case "стала":
 					result = PolyModelsNav.fiDr(getNdv(time));
 					break;		
 			}
