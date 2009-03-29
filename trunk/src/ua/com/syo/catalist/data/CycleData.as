@@ -56,7 +56,7 @@ package ua.com.syo.catalist.data {
 	            }
 	        }
 	        // 
-	        return result * 1000 / 3600;
+	        return result;
 	    }
 	    
 	    //вертає прискорення
