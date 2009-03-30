@@ -25,7 +25,7 @@
                 {gasName: "Gпал"},
                 {gasName: "Gпов"},
                 {gasName: "Mk"},
-                {gasName: "phiDros"}
+                {gasName: "dPk"}
             ];
 		
 		 private function runTimer():void {

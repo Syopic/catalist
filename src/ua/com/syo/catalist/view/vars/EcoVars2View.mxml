@@ -23,7 +23,7 @@
 			
 			public function init():void {
 				ecoDP = new ArrayCollection();
-				isN = (PolyKoef.currentMode == "withoutNeutralizer");
+				isN = (PolyKoef.currentMode == "withoutN");
 				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
 					//i = Math.round(i * 10) / 10;
 					var o:Object;

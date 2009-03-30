@@ -45,9 +45,6 @@ package ua.com.syo.catalist.model.polynoms {
 											mode:String = null, 
 											fuel:String = null, 
 											cycleMode:String = null):Number {
-			if (cycleMode == "PXX") {
-				
-			}
 			
 			if (!gas) gas = currentGas;
 			if (!mode) mode = currentMode;
