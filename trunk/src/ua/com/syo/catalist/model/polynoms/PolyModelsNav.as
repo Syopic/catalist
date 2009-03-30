@@ -12,7 +12,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function Gpal(time:Number):Number {
-			setCurrentModes("load", "gasoline", "withoutNeutralizer");
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "Gпал");
 			var A1:Number = PolyKoef.getP("A1", "Gпал");
 			var A2:Number = PolyKoef.getP("A2", "Gпал");
@@ -29,7 +29,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function Gpov(nd:Number):Number {
-			setCurrentModes("load", "gasoline", "withoutNeutralizer");
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "Gпов");
 			var A1:Number = PolyKoef.getP("A1", "Gпов");
 			var A11:Number = PolyKoef.getP("A11", "Gпов");
@@ -38,7 +38,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function CO(nd:Number):Number {
-			setCurrentModes("load", "gasoline", "withoutNeutralizer");
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "CO");
 			var A1:Number = PolyKoef.getP("A1", "CO");
 			var A11:Number = PolyKoef.getP("A11", "CO");
@@ -48,7 +48,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function CO2(nd:Number):Number {
-			setCurrentModes("load", "gasoline", "withoutNeutralizer");
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "CO2");
 			var A1:Number = PolyKoef.getP("A1", "CO2");
 			var A11:Number = PolyKoef.getP("A11", "CO2");
@@ -58,7 +58,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function CH(nd:Number):Number {
-			setCurrentModes("load", "gasoline", "withoutNeutralizer");
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "HCs");
 			var A1:Number = PolyKoef.getP("A1", "HCs");
 			var A11:Number = PolyKoef.getP("A11", "HCs");
@@ -70,7 +70,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function NOX(nd:Number):Number {
-			setCurrentModes("load", "gasoline", "withoutNeutralizer");
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "NOx");
 			var A1:Number = PolyKoef.getP("A1", "NOx");
 			var A11:Number = PolyKoef.getP("A11", "NOx");
@@ -79,7 +79,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function O2(nd:Number):Number {
-			setCurrentModes("load", "gasoline", "withoutNeutralizer");
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "O2");
 			var A1:Number = PolyKoef.getP("A1", "O2");
 			var A11:Number = PolyKoef.getP("A11", "O2");
@@ -120,7 +120,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function fiDr(nd:Number):Number {
-			setCurrentModes("load", "gasoline", "withoutNeutralizer");
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "phiDros");
 			var A1:Number = PolyKoef.getP("A1", "phiDros");
 			
@@ -128,7 +128,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function deltaPk(time:Number):Number {
-			setCurrentModes("load", "gasoline", "withoutNeutralizer");
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var result:Number;
 			
 			var A0:Number = PolyKoef.getP("A0", "dPk");

@@ -13,7 +13,6 @@
 		public var cycleMode:String;
 		public var fuel:String;
 		public var mode:String;
-		
 		[Bindable]
 		public var polGridDP:Array = 
             [
@@ -24,7 +23,8 @@
                 {gasName: "O2"},
                 {gasName: "Gпал"},
                 {gasName: "Gпал"},
-                {gasName: "dPk"}
+                {gasName: "dPk"},
+                {gasName: "phiDros"}
             ];
             
         private function runTimer():void {
@@ -55,7 +55,7 @@
 </mx:Script>
 	
 	<mx:Label text="{title}"  fontWeight="normal"/>
-	<mx:DataGrid id="polGrid" dataProvider="{polGridDP}" width="100%" rowHeight="18" rowCount="8" editable="true" draggableColumns="false">
+	<mx:DataGrid id="polGrid" dataProvider="{polGridDP}" width="100%" rowHeight="18" rowCount="9" editable="true" draggableColumns="false">
 		<mx:columns>
 			<mx:DataGridColumn headerText="" dataField="gasName" fontWeight="bold" editable="false"/>
 			<mx:DataGridColumn headerText="A0" dataField="A0"/>

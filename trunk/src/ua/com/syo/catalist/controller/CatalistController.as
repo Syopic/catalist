@@ -8,9 +8,6 @@ import mx.managers.PopUpManager;
 import ua.com.syo.catalist.model.FileManager;
 import ua.com.syo.catalist.model.KTZParams;
 import ua.com.syo.catalist.model.polynoms.PolyKoef;
-import ua.com.syo.catalist.model.polynoms.PolyModelsNav;
-import ua.com.syo.catalist.model.polynoms.PolyModelsPXX;
-import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
@@ -35,15 +32,6 @@ private static const views:Object = {
 
 private function init():void {
 	fileManager.addEventListener(Event.OPEN, cycleDataFileOpenHandler);
-}
-
-public function testFunction(x:Number):Number {
-	var b0:Number = PolyKoef.getP("B0", "Gпал", "withoutNeutralizer", "gasoline", "XX");
-	var b1:Number = PolyKoef.getP("B1", "Gпал", "withoutNeutralizer", "gasoline", "XX");
-	var b11:Number = PolyKoef.getP("B11", "Gпал", "withoutNeutralizer", "gasoline", "XX");
-	
-	var result:Number = b0 + b1*getN(x) + b11*getN(x)*getN(x);
-	return result;
 }
 
 private function getN(t:Number):Number {
@@ -117,6 +105,9 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	//showView("ecoVars", "ecoVars1");
 	//showView("ecoVars2", "ecoVars2");
 	showView("energyVars", "energyVars");
+	
+	PolyKoef.currentMode = "withoutN";
+	PolyKoef.currentFuel = "gasoline";
 
 	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
 	//event.currentTarget.currentCycleDataXML
