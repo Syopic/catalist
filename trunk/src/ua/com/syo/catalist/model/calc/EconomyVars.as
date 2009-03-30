@@ -4,6 +4,7 @@ package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.model.ModePhase;
 	import ua.com.syo.catalist.model.polynoms.PolyKoef;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsNav;
+	import ua.com.syo.catalist.model.polynoms.PolyModelsPXX;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 	import ua.com.syo.catalist.utils.Integral;
 	
@@ -21,9 +22,15 @@ package ua.com.syo.catalist.model.calc {
 					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f1);
 					break;
 				case "розгін-":
+				case "розгін+":
+				case "стала":
 					mf = CycleData.getModeTime(time);
 					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f3);
-					break;
+				break;
+				case "упов.+":
+				case "упов.-":
+					mf = CycleData.getModeTime(time);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f4);
 				break;
 			}
 			
@@ -144,6 +151,10 @@ package ua.com.syo.catalist.model.calc {
 		
 		public static function f3(x:Number):Number {
 			return PolyModelsNav.Gpal(x);
+		}
+		
+		public static function f4(x:Number):Number {
+			return PolyModelsPXX.Gpal(x);
 		}
 	}
 }

@@ -22,6 +22,7 @@ package ua.com.syo.catalist.model.calc {
 				case "розгін+":
 				case "стала":
 				case "упов.+":
+				case "упов.-":
 					result = getOmega(time) * 30 / Math.PI;
 					break;
 				
@@ -37,6 +38,7 @@ package ua.com.syo.catalist.model.calc {
 			var mf:ModePhase = CycleData.getModeTime(time);
 			var OmegaTStart:Number;
 			var OmegaTEnd:Number;
+			var OmegaCycle:Number;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ": result = getNdv(time) * Math.PI / 30; break;
@@ -71,6 +73,17 @@ package ua.com.syo.catalist.model.calc {
 						result = (CycleData.getSpeed(mf.startTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6) - (Mgalm) * (time - mf.startTime) / (KoefStorage.Idv + iZchep(time));
 					}
 					break;
+				case "упов.-":	
+				    OmegaTStart = (CycleData.getSpeed(mf.startTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
+					OmegaTEnd = (CycleData.getSpeed(mf.endTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
+					var OmegaCycle:Number = (CycleData.getSpeed(time) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
+					
+					result = OmegaTStart + ((KoefStorage.nXXmin * Math.PI / 30 - OmegaTStart) * (time - mf.startTime)) / (mf.endTime - mf.startTime);
+					var nt:Number = result * 30 / Math.PI;
+					if (nt < KoefStorage.nXXmin) {
+						result = KoefStorage.nXXmin * Math.PI / 30;
+					}
+					break;	
 				
 			}
 			
@@ -113,8 +126,10 @@ package ua.com.syo.catalist.model.calc {
 					result = (KoefStorage.Ga * KoefStorage.f0 * KoefStorage.rd * KoefStorage.g * (1 + KoefStorage.A * Math.pow(CycleData.getSpeed(time), 2))) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0 * KoefStorage.etaTrans);
 					break;	
 				case "упов.+":
-					result = PolyModelsPXX.Mk(getNdv(time)) / KoefStorage.etaTrans;
+				case "упов.-":
+					result =  - (PolyModelsPXX.Mk(getNdv(time)) / KoefStorage.etaTrans);
 					break;	
+					
 			}
 			
 			return result;
@@ -135,10 +150,14 @@ package ua.com.syo.catalist.model.calc {
 					result = PolyModelsNav.deltaPk(time);
 					break;	
 				case "упов.+":
+				case "упов.-":
 					result = PolyModelsPXX.deltaPk(time);
 					break;		
 			}
 			
+			if (result < 0) {
+				result = 0;
+			}
 			return result;
 		}
 		
@@ -157,8 +176,12 @@ package ua.com.syo.catalist.model.calc {
 				case "розгін-":
 				case "розгін+":
 				case "стала":
-					result = PolyModelsNav.fiDr(getNdv(time));
-					break;		
+					result = PolyModelsNav.fiDr(time);
+					break;
+				case "упов.+":
+				case "упов.-":
+					result = KoefStorage.phiDrosMin;
+					break;			
 			}
 			
 			return result;
