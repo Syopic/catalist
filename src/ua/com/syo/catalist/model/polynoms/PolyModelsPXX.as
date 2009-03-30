@@ -12,13 +12,19 @@ package ua.com.syo.catalist.model.polynoms {
 			PolyKoef.currentMode = currentMode;
 		}
 		
-		public static function Gpal(nd:Number):Number {
+		public static function Gpal(time:Number):Number {
 			setCurrentModes("PXX", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "Gпал");
 			var A1:Number = PolyKoef.getP("A1", "Gпал");
-			var A11:Number = PolyKoef.getP("A11", "Gпал");
+			var A2:Number = PolyKoef.getP("A11", "Gпал");
+			var A11:Number = PolyKoef.getP("A111", "Gпал");
+			var A22:Number = PolyKoef.getP("A1111", "Gпал");
+			var A12:Number = PolyKoef.getP("A11111", "Gпал");
 			
-			return A0 + A1 * nd + A11 * nd * nd;
+			var nd:Number = EnergyVars.getNdv(time);
+			var deltaPk:Number = Math.abs(EnergyVars.getDeltaPk(time));
+			
+			return A0 + A1 * nd + A2 * deltaPk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(deltaPk, 2) + A12 * nd * deltaPk;
 		}
 		
 		public static function Gpov(nd:Number):Number {
@@ -122,20 +128,21 @@ package ua.com.syo.catalist.model.polynoms {
 			var A0:Number = PolyKoef.getP("A0", "Mk");
 			var A1:Number = PolyKoef.getP("A1", "Mk");
 			
-			return A0 + A1 * nd;
+			return A0 + A1 / nd;
 		}
 		
 		public static function deltaPk(time:Number):Number {
+			// TODO
 			setCurrentModes("PXX", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "dPk");
 			var A1:Number = PolyKoef.getP("A1", "dPk");
-			var A2:Number = PolyKoef.getP("A2", "dPk");
-			var A11:Number = PolyKoef.getP("A11", "dPk");
-			var A22:Number = PolyKoef.getP("A22", "dPk");
-			var A12:Number = PolyKoef.getP("A12", "dPk");
+			var A2:Number = PolyKoef.getP("A11", "dPk");
+			var A11:Number = PolyKoef.getP("A111", "dPk");
+			var A22:Number = PolyKoef.getP("A1111", "dPk");
+			var A12:Number = PolyKoef.getP("A11111", "dPk");
 			
 			var nd:Number = EnergyVars.getNdv(time);
-			var Mk:Number = EnergyVars.getMk(time);
+			var Mk:Number = Math.abs(EnergyVars.getMk(time));
 			
 			return A0 + A1 * nd + A2 * Mk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(Mk, 2) + A12 * nd * Mk;
 		}
