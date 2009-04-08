@@ -13,6 +13,8 @@
 			import ua.com.syo.catalist.model.calc.EnergyVars;
 			import ua.com.syo.catalist.data.CycleData;
 			import mx.collections.ArrayCollection;
+			import ua.com.syo.catalist.utils.ExportUtils;
+			
 			[Bindable]
 			private var ecoDP:ArrayCollection;
 			
@@ -84,25 +86,30 @@
             showDataTips="true" dataProvider="{ecoDP}">
 		    
         </mx:LineChart>
-        <mx:HBox>
-		    <mx:VBox height="100%" >
-		    	<mx:LinkButton label="CO" click="showGraph(COSer)" />
-		    	<mx:LinkButton label="CO2" click="showGraph(CO2Ser)"/>
-		    	<mx:LinkButton label="NOx" click="showGraph(NOxSer)"/>
-		    	<mx:LinkButton label="HCs" click="showGraph(HCsSer)" />
-		    	<mx:LinkButton label="O2" click="showGraph(O2Ser)" />
-		    </mx:VBox>   	 
-		    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
-		    	<mx:LinkButton label="NCO" click="showGraph(NCOSer)" />
-		    	<mx:LinkButton label="NCO2" click="showGraph(NCO2Ser)"/>
-		    	<mx:LinkButton label="NNOx" click="showGraph(NNOxSer)"/>
-		    	<mx:LinkButton label="NHCs" click="showGraph(NHCsSer)"/>
-		    	<mx:LinkButton label="NO2" click="showGraph(NO2Ser)"/>
-		    </mx:VBox>   	 
-        </mx:HBox>
+        <mx:VBox height="100%">
+	        <mx:HBox>
+			    <mx:VBox height="100%" >
+			    	<mx:LinkButton label="CO" click="showGraph(COSer)" />
+			    	<mx:LinkButton label="CO2" click="showGraph(CO2Ser)"/>
+			    	<mx:LinkButton label="NOx" click="showGraph(NOxSer)"/>
+			    	<mx:LinkButton label="HCs" click="showGraph(HCsSer)" />
+			    	<mx:LinkButton label="O2" click="showGraph(O2Ser)" />
+			    </mx:VBox>   	 
+			    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
+			    	<mx:LinkButton label="NCO" click="showGraph(NCOSer)" />
+			    	<mx:LinkButton label="NCO2" click="showGraph(NCO2Ser)"/>
+			    	<mx:LinkButton label="NNOx" click="showGraph(NNOxSer)"/>
+			    	<mx:LinkButton label="NHCs" click="showGraph(NHCsSer)"/>
+			    	<mx:LinkButton label="NO2" click="showGraph(NO2Ser)"/>
+			    </mx:VBox>   	 
+	        </mx:HBox>
+	        <mx:Spacer height="100%" />
+	    	<mx:HRule width="100%" />
+	    	<mx:Button toolTip="Скопіювати в буфер обміну" click="System.setClipboard(ExportUtils.convertDGToHTMLTable(cDG));" icon="@Embed('/../assets/images/icons/page_excel.png')" width="26" height="26"/>
+        </mx:VBox>
 	</mx:HBox>
 	
-		<mx:DataGrid width="100%" height="300" dataProvider="{ecoDP}">
+		<mx:DataGrid id="cDG" width="100%" height="300" dataProvider="{ecoDP}">
 			<mx:columns>
 				<mx:DataGridColumn  headerText="Час (сек.)" dataField="time" visible="true"/>
 				<mx:DataGridColumn  headerText="CO" dataField="CO" />
