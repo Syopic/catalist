@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.utils.MathUtils;
 			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.model.calc.EnergyVars;
 			import ua.com.syo.catalist.data.CycleData;
@@ -18,13 +19,13 @@
 				energyvarsDP = new ArrayCollection();
 				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
 					//CycleData.getModeTime(i);
-					var o:Object = {time : i, 
+					var o:Object = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
 									mode : CycleData.getMode(i),
-									Ndv : EnergyVars.getNdv(i), 
-									Omega : EnergyVars.getOmega(i), 
-									Mk : EnergyVars.getMk(i), 
-									DeltaPk : EnergyVars.getDeltaPk(i), 
-									PhiDros : EnergyVars.getPhiDros(i)}
+									Ndv : MathUtils.pRound(EnergyVars.getNdv(i), Globals.roundDecPlaces), 
+									Omega : MathUtils.pRound(EnergyVars.getOmega(i), Globals.roundDecPlaces), 
+									Mk : MathUtils.pRound(EnergyVars.getMk(i), Globals.roundDecPlaces), 
+									DeltaPk : MathUtils.pRound(EnergyVars.getDeltaPk(i), Globals.roundDecPlaces), 
+									PhiDros : MathUtils.pRound(EnergyVars.getPhiDros(i), Globals.roundDecPlaces)}
 					
 					energyvarsDP.addItem(o);
 				}

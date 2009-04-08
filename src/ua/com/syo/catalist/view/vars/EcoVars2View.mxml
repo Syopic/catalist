@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.utils.MathUtils;
 			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 			import ua.com.syo.catalist.model.polynoms.PolyKoef;
@@ -30,31 +31,31 @@
 					//i = Math.round(i * 10) / 10;
 					var o:Object;
 					if (isN) {
-						o = {time : i, 
-								GCO : EcologyVars.getGCO(i), 
-								GCO2 : EcologyVars.getGCO2(i), 
-								GNOx : EcologyVars.getGNOx(i), 
-								GHCs : EcologyVars.getGHCs(i), 
-								GO2 : EcologyVars.getGO2(i),
+						o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
+								GCO : MathUtils.pRound(EcologyVars.getGCO(i), Globals.roundDecPlaces), 
+								GCO2 : MathUtils.pRound(EcologyVars.getGCO2(i), Globals.roundDecPlaces), 
+								GNOx : MathUtils.pRound(EcologyVars.getGNOx(i), Globals.roundDecPlaces), 
+								GHCs : MathUtils.pRound(EcologyVars.getGHCs(i), Globals.roundDecPlaces), 
+								GO2 : MathUtils.pRound(EcologyVars.getGO2(i), Globals.roundDecPlaces),
 								 
-								Gpal : EconomyVars.getGpal(i), 
-								Gpov : EconomyVars.getGpov(i)}
+								Gpal : MathUtils.pRound(EconomyVars.getGpal(i), Globals.roundDecPlaces), 
+								Gpov : MathUtils.pRound(EconomyVars.getGpov(i), Globals.roundDecPlaces)}
 					} else {
-						o = {time : i, 
-								GCO : EcologyVars.getGCO(i), 
-								GCO2 : EcologyVars.getGCO2(i), 
-								GNOx : EcologyVars.getGNOx(i), 
-								GHCs : EcologyVars.getGHCs(i), 
-								GO2 : EcologyVars.getGO2(i),
+						o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
+								GCO : MathUtils.pRound(EcologyVars.getGCO(i), Globals.roundDecPlaces), 
+								GCO2 : MathUtils.pRound(EcologyVars.getGCO2(i), Globals.roundDecPlaces), 
+								GNOx : MathUtils.pRound(EcologyVars.getGNOx(i), Globals.roundDecPlaces), 
+								GHCs : MathUtils.pRound(EcologyVars.getGHCs(i), Globals.roundDecPlaces), 
+								GO2 : MathUtils.pRound(EcologyVars.getGO2(i), Globals.roundDecPlaces),
 								
-								NGCO : EcologyVars.getGCO(i), 
-								NGCO2 : EcologyVars.getGCO2(i), 
-								NGNOx : EcologyVars.getGNOx(i), 
-								NGHCs : EcologyVars.getGHCs(i), 
-								NGO2 : EcologyVars.getGO2(i),
+								NGCO : MathUtils.pRound(EcologyVars.getGCO(i), Globals.roundDecPlaces), 
+								NGCO2 : MathUtils.pRound(EcologyVars.getGCO2(i), Globals.roundDecPlaces), 
+								NGNOx : MathUtils.pRound(EcologyVars.getGNOx(i), Globals.roundDecPlaces), 
+								NGHCs : MathUtils.pRound(EcologyVars.getGHCs(i), Globals.roundDecPlaces), 
+								NGO2 : MathUtils.pRound(EcologyVars.getGO2(i), Globals.roundDecPlaces),
 								 
-								Gpal : EconomyVars.getGpal(i), 
-								Gpov : EconomyVars.getGpov(i)}
+								Gpal : MathUtils.pRound(EconomyVars.getGpal(i), Globals.roundDecPlaces), 
+								Gpov : MathUtils.pRound(EconomyVars.getGpov(i), Globals.roundDecPlaces)}
 					}
 					
 					ecoDP.addItem(o);

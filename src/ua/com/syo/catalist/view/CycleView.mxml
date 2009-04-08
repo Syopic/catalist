@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.utils.MathUtils;
 			import ua.com.syo.catalist.utils.ExportUtils;
 			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.data.CycleData;
@@ -16,10 +17,10 @@
 				cycleDP = new ArrayCollection();
 				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
 					//CycleData.getModeTime(i);
-					var o:Object = {time : i, 
-									speed : CycleData.getSpeed(i), 
-									dist : CycleData.getDistance(i), 
-									accel : CycleData.getAcceleration(i), 
+					var o:Object = {time : MathUtils.pRound(i, Globals.roundDecPlaces), 
+									speed : MathUtils.pRound(CycleData.getSpeed(i), Globals.roundDecPlaces), 
+									dist : MathUtils.pRound(CycleData.getDistance(i), Globals.roundDecPlaces), 
+									accel : MathUtils.pRound(CycleData.getAcceleration(i), Globals.roundDecPlaces), 
 									mode : CycleData.getMode(i), 
 									u : CycleData.getU(i)}
 					

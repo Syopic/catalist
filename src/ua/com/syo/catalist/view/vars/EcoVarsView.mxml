@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.utils.MathUtils;
 			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 			import ua.com.syo.catalist.model.polynoms.PolyKoef;
@@ -29,25 +30,25 @@
 				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
 					var o:Object;
 					if (isN) {
-						o = {time : i, 
-								CO : EcologyVars.getCO(i), 
-								CO2 : EcologyVars.getCO2(i), 
-								NOx : EcologyVars.getNOx(i), 
-								HCs : EcologyVars.getHCs(i), 
-								O2 : EcologyVars.getO2(i)}
+						o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
+								CO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
+								CO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
+								NOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
+								HCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
+								O2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces)}
 					} else {
-						o = {time : i, 
-								CO : EcologyVars.getCO(i), 
-								CO2 : EcologyVars.getCO2(i), 
-								NOx : EcologyVars.getNOx(i), 
-								HCs : EcologyVars.getHCs(i), 
-								O2 : EcologyVars.getO2(i),
+						o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
+								CO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
+								CO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
+								NOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
+								HCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
+								O2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces),
 								
-								NCO : EcologyVars.getCO(i), 
-								NCO2 : EcologyVars.getCO2(i), 
-								NNOx : EcologyVars.getNOx(i), 
-								NHCs : EcologyVars.getHCs(i), 
-								NO2 : EcologyVars.getO2(i)}
+								NCO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
+								NCO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
+								NNOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
+								NHCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
+								NO2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces)}
 					}
 					
 					ecoDP.addItem(o);
