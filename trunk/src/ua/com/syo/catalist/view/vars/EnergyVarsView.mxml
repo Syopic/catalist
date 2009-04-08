@@ -9,6 +9,8 @@
 			import ua.com.syo.catalist.model.calc.EnergyVars;
 			import ua.com.syo.catalist.data.CycleData;
 			import mx.collections.ArrayCollection;
+			import ua.com.syo.catalist.utils.ExportUtils;
+			
 			[Bindable]
 			private var energyvarsDP:ArrayCollection;
 			
@@ -60,10 +62,13 @@
 	    	<mx:LinkButton label="Mk" click="showGraph(MkSer)"/>
 	    	<mx:LinkButton label="DeltaPk" click="showGraph(DeltaPkSer)"/>
 	    	<mx:LinkButton label="PhiDros" click="showGraph(PhiDrosPkSer)"/>
+	    	<mx:Spacer height="100%" />
+	    	<mx:HRule width="100%" />
+	    	<mx:Button toolTip="Скопіювати в буфер обміну" click="System.setClipboard(ExportUtils.convertDGToHTMLTable(cDG));" icon="@Embed('/../assets/images/icons/page_excel.png')" width="26" height="26"/>
 	    </mx:VBox>   	 
 	</mx:HBox>
 	
-		<mx:DataGrid width="100%" height="300" dataProvider="{energyvarsDP}">
+		<mx:DataGrid id="cDG" width="100%" height="300" dataProvider="{energyvarsDP}">
 			<mx:columns>
 				<mx:DataGridColumn width="5" headerText="Час (сек.)" dataField="time" />
 				<mx:DataGridColumn width="5" headerText="режим" dataField="mode" />

@@ -13,6 +13,8 @@
 			import ua.com.syo.catalist.model.calc.EnergyVars;
 			import ua.com.syo.catalist.data.CycleData;
 			import mx.collections.ArrayCollection;
+			import ua.com.syo.catalist.utils.ExportUtils;
+			
 			[Bindable]
 			private var ecoDP:ArrayCollection;
 			
@@ -94,28 +96,34 @@
             showDataTips="true" dataProvider="{ecoDP}">
 		    
         </mx:LineChart>
-        <mx:HBox>
-		    <mx:VBox height="100%" >
-		    	<mx:LinkButton label="GCO" click="showGraph(GCOSer)" />
-		    	<mx:LinkButton label="GCO2" click="showGraph(GCO2Ser)"/>
-		    	<mx:LinkButton label="GNOx" click="showGraph(GNOxSer)"/>
-		    	<mx:LinkButton label="GHCs" click="showGraph(GHCsSer)"/>
-		    	<mx:LinkButton label="GO2" click="showGraph(GO2Ser)"/>
-		    	<mx:Spacer height="20" />
-		    	<mx:LinkButton label="Gpal" click="showGraph(GpalSer)"/>
-		    	<mx:LinkButton label="Gpov" click="showGraph(GpovSer)"/>
-		    </mx:VBox>   	 
-		    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
-		    	<mx:LinkButton label="NGCO" click="showGraph(GCOSer)" />
-		    	<mx:LinkButton label="NGCO2" click="showGraph(GCO2Ser)"/>
-		    	<mx:LinkButton label="NGNOx" click="showGraph(GNOxSer)"/>
-		    	<mx:LinkButton label="NGHCs" click="showGraph(GHCsSer)"/>
-		    	<mx:LinkButton label="NGO2" click="showGraph(GO2Ser)"/>
-		    </mx:VBox>   	 
-        </mx:HBox>
+        <mx:VBox height="100%">
+        	
+	        <mx:HBox>
+			    <mx:VBox height="100%" >
+			    	<mx:LinkButton label="GCO" click="showGraph(GCOSer)" />
+			    	<mx:LinkButton label="GCO2" click="showGraph(GCO2Ser)"/>
+			    	<mx:LinkButton label="GNOx" click="showGraph(GNOxSer)"/>
+			    	<mx:LinkButton label="GHCs" click="showGraph(GHCsSer)"/>
+			    	<mx:LinkButton label="GO2" click="showGraph(GO2Ser)"/>
+			    	<mx:Spacer height="20" />
+			    	<mx:LinkButton label="Gpal" click="showGraph(GpalSer)"/>
+			    	<mx:LinkButton label="Gpov" click="showGraph(GpovSer)"/>
+			    </mx:VBox>   	 
+			    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
+			    	<mx:LinkButton label="NGCO" click="showGraph(GCOSer)" />
+			    	<mx:LinkButton label="NGCO2" click="showGraph(GCO2Ser)"/>
+			    	<mx:LinkButton label="NGNOx" click="showGraph(GNOxSer)"/>
+			    	<mx:LinkButton label="NGHCs" click="showGraph(GHCsSer)"/>
+			    	<mx:LinkButton label="NGO2" click="showGraph(GO2Ser)"/>
+			    </mx:VBox>   	 
+	        </mx:HBox>
+	        <mx:Spacer height="100%" />
+	    	<mx:HRule width="100%" />
+	    	<mx:Button toolTip="Скопіювати в буфер обміну" click="System.setClipboard(ExportUtils.convertDGToHTMLTable(cDG));" icon="@Embed('/../assets/images/icons/page_excel.png')" width="26" height="26"/>
+        </mx:VBox>
 	</mx:HBox>
 	
-		<mx:DataGrid width="100%" height="300" dataProvider="{ecoDP}">
+		<mx:DataGrid id="cDG" width="100%" height="300" dataProvider="{ecoDP}">
 			<mx:columns>
 				<mx:DataGridColumn headerText="Час (сек.)" dataField="time" visible="true"/>
 				<mx:DataGridColumn headerText="GCO" dataField="GCO" />
