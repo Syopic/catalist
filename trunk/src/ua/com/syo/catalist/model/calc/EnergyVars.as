@@ -39,6 +39,7 @@ package ua.com.syo.catalist.model.calc {
 			var OmegaTStart:Number;
 			var OmegaTEnd:Number;
 			var OmegaCycle:Number;
+			var nt:Number;
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ": result = getNdv(time) * Math.PI / 30; break;
@@ -63,10 +64,10 @@ package ua.com.syo.catalist.model.calc {
 				case "упов.+":	
 				    OmegaTStart = (CycleData.getSpeed(mf.startTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
 					OmegaTEnd = (CycleData.getSpeed(mf.endTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
-					var OmegaCycle:Number = (CycleData.getSpeed(time) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
+					OmegaCycle = (CycleData.getSpeed(time) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
 					
 					result = OmegaTStart + ((OmegaTEnd - OmegaTStart) * (time - mf.startTime)) / (mf.endTime - mf.startTime);
-					var nt:Number = result * 30 / Math.PI;
+					nt = result * 30 / Math.PI;
 					if (result > OmegaCycle) {
 						var Mop:Number = (KoefStorage.Ga * KoefStorage.f0 * KoefStorage.rd * KoefStorage.g * (1 + KoefStorage.A * Math.pow(((omegaZchep(time) * KoefStorage.rd * 3.6) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0)), 2))) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0 * KoefStorage.etaTrans); 
 						var Mgalm:Number = (CycleData.getAcceleration(time)* KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) * (KoefStorage.Idv + iZchep(time)) / (KoefStorage.rd * 3.6) + Mop * KoefStorage.etaTrans + PolyModelsPXX.Mk(nt) / KoefStorage.etaTrans;
@@ -76,10 +77,10 @@ package ua.com.syo.catalist.model.calc {
 				case "упов.-":	
 				    OmegaTStart = (CycleData.getSpeed(mf.startTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
 					OmegaTEnd = (CycleData.getSpeed(mf.endTime) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
-					var OmegaCycle:Number = (CycleData.getSpeed(time) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
+					OmegaCycle = (CycleData.getSpeed(time) * KoefStorage.U[CycleData.getU(mf.endTime)] * KoefStorage.u0) / (KoefStorage.rd * 3.6);
 					
 					result = OmegaTStart + ((KoefStorage.nXXmin * Math.PI / 30 - OmegaTStart) * (time - mf.startTime)) / (mf.endTime - mf.startTime);
-					var nt:Number = result * 30 / Math.PI;
+					nt = result * 30 / Math.PI;
 					if (nt < KoefStorage.nXXmin) {
 						result = KoefStorage.nXXmin * Math.PI / 30;
 					}
