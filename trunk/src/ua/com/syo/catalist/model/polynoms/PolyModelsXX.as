@@ -12,30 +12,36 @@ package ua.com.syo.catalist.model.polynoms {
 			PolyKoef.currentMode = currentMode;
 		}
 		
-		public static function Gpal(nd:Number):Number {
+		public static function Gpal(time:Number):Number {
 			setCurrentModes("XX", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "Gпал");
 			var A1:Number = PolyKoef.getP("A1", "Gпал");
 			var A11:Number = PolyKoef.getP("A11", "Gпал");
 			
+			var nd:Number = EnergyVars.getNdv(time);
+			
 			return A0 + A1 * nd + A11 * nd * nd;
 		}
 		
-		public static function Gpov(nd:Number):Number {
+		public static function Gpov(time:Number):Number {
 			setCurrentModes("XX", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "Gпов");
 			var A1:Number = PolyKoef.getP("A1", "Gпов");
 			var A11:Number = PolyKoef.getP("A11", "Gпов");
 			
+			var nd:Number = EnergyVars.getNdv(time);
+			
 			return A0 + A1 * nd + A11 * nd * nd;
 		}
 		
-		public static function CO(nd:Number):Number {
+		public static function CO(time:Number):Number {
 			setCurrentModes("XX", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "CO");
 			var A1:Number = PolyKoef.getP("A1", "CO");
 			var A11:Number = PolyKoef.getP("A11", "CO");
 			var A111:Number = PolyKoef.getP("A111", "CO");
+			
+			var nd:Number = EnergyVars.getNdv(time);
 			
 			return A0 + A1 * nd + A11 * nd * nd + A111 * Math.pow(nd, 3);
 		}

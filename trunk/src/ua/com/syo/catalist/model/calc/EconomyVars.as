@@ -29,6 +29,7 @@ package ua.com.syo.catalist.model.calc {
 				break;
 				case "упов.+":
 				case "упов.-":
+				case "перемик.":
 					mf = CycleData.getModeTime(time);
 					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f4);
 				break;
@@ -47,6 +48,18 @@ package ua.com.syo.catalist.model.calc {
 					var mf:ModePhase = CycleData.getModeTime(time);
 					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f2);
 					break;
+				case "розгін-":
+				case "розгін+":
+				case "стала":
+					mf = CycleData.getModeTime(time);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f5);
+				break;
+				case "упов.+":
+				case "упов.-":
+				case "перемик.":
+					mf = CycleData.getModeTime(time);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f6);
+				break;	
 			}
 			
 			return result;
@@ -142,11 +155,11 @@ package ua.com.syo.catalist.model.calc {
 		
 		/** Integrals functions **/
 		public static function f1(x:Number):Number {
-			return PolyModelsXX.Gpal(EnergyVars.getNdv(x));
+			return PolyModelsXX.Gpal(x);
 		}
 		
 		public static function f2(x:Number):Number {
-			return PolyModelsXX.Gpov(EnergyVars.getNdv(x));
+			return PolyModelsXX.Gpov(x);
 		}
 		
 		public static function f3(x:Number):Number {
@@ -155,6 +168,14 @@ package ua.com.syo.catalist.model.calc {
 		
 		public static function f4(x:Number):Number {
 			return PolyModelsPXX.Gpal(x);
+		}
+		
+		public static function f5(x:Number):Number {
+			return PolyModelsNav.Gpov(x);
+		}
+		
+		public static function f6(x:Number):Number {
+			return PolyModelsPXX.Gpov(x);
 		}
 	}
 }

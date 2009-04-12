@@ -28,23 +28,30 @@ package ua.com.syo.catalist.model.polynoms {
 			return A0 + A1 * nd + A2 * dPk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(dPk, 2) + A12 * nd * dPk + A111 * Math.pow(nd, 3) + A222 * Math.pow(dPk, 3);
 		}
 		
-		public static function Gpov(nd:Number):Number {
+		public static function Gpov(time:Number):Number {
 			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "Gпов");
 			var A1:Number = PolyKoef.getP("A1", "Gпов");
 			var A11:Number = PolyKoef.getP("A11", "Gпов");
 			
+			var nd:Number = EnergyVars.getNdv(time);
+			
 			return A0 + A1 * nd + A11 * nd * nd;
 		}
 		
-		public static function CO(nd:Number):Number {
+		public static function CO(time:Number):Number {
 			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "CO");
 			var A1:Number = PolyKoef.getP("A1", "CO");
+			var A2:Number = PolyKoef.getP("A2", "CO");
 			var A11:Number = PolyKoef.getP("A11", "CO");
-			var A111:Number = PolyKoef.getP("A111", "CO");
+			var A22:Number = PolyKoef.getP("A22", "CO");
+			var A12:Number = PolyKoef.getP("A12", "CO");
 			
-			return A0 + A1 * nd + A11 * nd * nd + A111 * Math.pow(nd, 3);
+			var nd:Number = EnergyVars.getNdv(time);
+			var deltaPk:Number = Math.abs(EnergyVars.getDeltaPk(time));
+			
+			return A0 + A1 * nd + A2 * deltaPk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(deltaPk, 2) + A12 * nd * deltaPk;
 		}
 		
 		public static function CO2(nd:Number):Number {
