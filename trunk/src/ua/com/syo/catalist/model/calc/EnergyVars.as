@@ -2,6 +2,7 @@ package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.data.CycleData;
 	import ua.com.syo.catalist.data.KoefStorage;
 	import ua.com.syo.catalist.model.ModePhase;
+	import ua.com.syo.catalist.model.polynoms.PolyKoef;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsNav;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsPXX;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
@@ -202,7 +203,19 @@ package ua.com.syo.catalist.model.calc {
 				    result = KoefStorage.phiDrosMin;
 					break;
 				case "перемик.":
-					result = PolyModelsPXX.fiDr(getNdv(time));
+					if (PolyKoef.currentFuel == "gasoline") {
+						if (PolyKoef.currentMode == "withoutN") {
+							result = KoefStorage.phiDrosStalaBW;
+						} else {
+							result = KoefStorage.phiDrosStalaB;
+						}
+					} else {
+						if (PolyKoef.currentMode == "withoutN") {
+							result = KoefStorage.phiDrosStalaGW;
+						} else {
+							result = KoefStorage.phiDrosStalaG;
+						}
+					}
 					break;			
 			}
 			
