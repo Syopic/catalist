@@ -70,33 +70,23 @@ package ua.com.syo.catalist.data {
 	        for (var i:Number = 0; i < accelerationPointArray.length; i++) {
 	            //якщо це відома точка
 	            if (time == timePointArray[i]) {
-	            	if (accelerationPointArray[i] == "-") {
-	            		//формула прямої k*time+b;
-		                dt = timePointArray[i-1]-timePointArray[i+1];
-		                da = accelerationPointArray[i-1] - accelerationPointArray[i+1];
-		                
-		                //
-		                k = da/dt;
-		                b = accelerationPointArray[i-1] - k * timePointArray[i-1];
-		                result = k * time + b;
-	            	} else {
-	                	//вертаємо її
-	                	result = accelerationPointArray[i];
-	             	}
+                	//вертаємо її
+                	result = accelerationPointArray[i];
 	                break;
 	            } else if (time > timePointArray[i] && time < timePointArray[i + 1]) {
-	            	if (accelerationPointArray[i] == "-") {
-	            		//формула прямої k*time+b;
-		                dt = timePointArray[i-1]-timePointArray[i+1];
-		                da = accelerationPointArray[i-1] - accelerationPointArray[i+1];
+	            	
+	            	if (getMode(time) == "розгін-") {
+            		//формула прямої k*time+b;
+		                dt = timePointArray[i+1]-timePointArray[i];
+		                da = accelerationPointArray[i+1] - accelerationPointArray[i];
 		                
 		                //
 		                k = da/dt;
-		                b = accelerationPointArray[i-1] - k * timePointArray[i-1];
+		                b = accelerationPointArray[i] - k * timePointArray[i];
 		                result = k * time + b;
-	            	} else {
+	                } else {
 	                	result = accelerationPointArray[i];
-	             	}
+	                }
 	                break;
 	            }
 	        }

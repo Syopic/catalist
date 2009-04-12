@@ -120,6 +120,7 @@ package ua.com.syo.catalist.model.polynoms {
 		}
 		
 		public static function fiDr(time:Number):Number {
+			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "phiDros");
 			var A1:Number = PolyKoef.getP("A1", "phiDros");
 			var A2:Number = PolyKoef.getP("A2", "phiDros");

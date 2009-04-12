@@ -105,6 +105,7 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	//showView("ecoVars", "ecoVars1");
 	//showView("ecoVars2", "ecoVars2");
 	showView("energyVars", "energyVars");
+	//showView("cycleReproduce", "cycleReproduce");
 	
 	PolyKoef.currentMode = "withoutN";
 	PolyKoef.currentFuel = "gasoline";

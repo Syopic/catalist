@@ -142,9 +142,19 @@ package ua.com.syo.catalist.model.polynoms {
 			var A12:Number = PolyKoef.getP("A11111", "dPk");
 			
 			var nd:Number = EnergyVars.getNdv(time);
-			var Mk:Number = Math.abs(EnergyVars.getMk(time));
+			var Mk:Number = EnergyVars.getMk(time);
 			
 			return A0 + A1 * nd + A2 * Mk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(Mk, 2) + A12 * nd * Mk;
+		}
+		
+		public static function fiDr(nd:Number):Number {
+			// TODO
+			setCurrentModes("XX", PolyKoef.currentFuel, PolyKoef.currentMode);
+			//setCurrentModes("PXX", PolyKoef.currentFuel, PolyKoef.currentMode);
+			var A0:Number = PolyKoef.getP("A0", "phiDros");
+			var A1:Number = PolyKoef.getP("A1", "phiDros");
+			
+			return A0 + A1 * nd;
 		}
 		
 	}

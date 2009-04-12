@@ -40,7 +40,7 @@ package ua.com.syo.catalist.data {
 		public static var phiDrosEnd: Number=	50;
 		public static var phiDrosMax: Number=	100;
 		public static var phiDrosStala : Number=5.8;
-		public static var phiDrosMin: Number=	1;
+		public static var phiDrosMin: Number=	0;
 		//public static var phiDrosZch: Number=	10;
 		public static var lambda	: Number=	0;
 		public static var tNejtr	: Number=	1;
