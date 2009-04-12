@@ -39,7 +39,18 @@ package ua.com.syo.catalist.data {
 		public static var A			: Number=	0;
 		public static var phiDrosEnd: Number=	50;
 		public static var phiDrosMax: Number=	100;
-		public static var phiDrosStala : Number=5.8;
+		
+		//gasoline 
+		//without 
+		public static var phiDrosStalaBW : Number=4.65;
+		//withcat 
+		public static var phiDrosStalaB : Number=2.33;
+		//gas
+		//without 
+		public static var phiDrosStalaGW : Number=6.98;
+		//withcat 
+		public static var phiDrosStalaG : Number=5.83; 
+		
 		public static var phiDrosMin: Number=	0;
 		//public static var phiDrosZch: Number=	10;
 		public static var lambda	: Number=	0;
