@@ -1,5 +1,7 @@
 package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.data.CycleData;
+	import ua.com.syo.catalist.model.polynoms.PolyModelsNav;
+	import ua.com.syo.catalist.model.polynoms.PolyModelsPXX;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 	import ua.com.syo.catalist.utils.Integral;
 	
@@ -11,8 +13,18 @@ package ua.com.syo.catalist.model.calc {
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 				case "рушання":
-					result = PolyModelsXX.CO(EnergyVars.getNdv(time));
+					result = PolyModelsXX.CO(time);
 					break;
+				case "розгін-":
+				case "розгін+":
+				case "стала":
+					result = PolyModelsNav.CO(time);
+				break;
+				case "упов.+":
+				case "упов.-":
+				case "перемик.":
+					result = PolyModelsPXX.CO(time);
+				break;	
 			}
 			return result;
 		}
