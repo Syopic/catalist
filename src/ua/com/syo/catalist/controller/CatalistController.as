@@ -13,8 +13,8 @@ import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.ExperimentParamsView;
 import ua.com.syo.catalist.view.KTZParamsView;
 import ua.com.syo.catalist.view.polinoms.PolynomsCoefficientsView;
-import ua.com.syo.catalist.view.vars.EcoVars2View;
-import ua.com.syo.catalist.view.vars.EcoVarsView;
+import ua.com.syo.catalist.view.vars.EcologyVarsView;
+import ua.com.syo.catalist.view.vars.EconomyVarsView;
 import ua.com.syo.catalist.view.vars.EnergyVarsView;
 
 private var aboutPopup:AboutView = new AboutView();
@@ -24,8 +24,8 @@ private static const views:Object = {
 	ktzParams:KTZParamsView,
 	cycleReproduce:CycleView,
 	energyVars:EnergyVarsView,
-	ecoVars:EcoVarsView,
-	ecoVars2:EcoVars2View,
+	ecologyV:EcologyVarsView,
+	economyV:EconomyVarsView,
 	expParams:ExperimentParamsView,
 	poliKoef:PolynomsCoefficientsView
 }
@@ -102,9 +102,9 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	//PolyModelsNav.setCurrentModes("load", "gasoline", "withoutNeutralizer");
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "withoutNeutralizer");
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "beforeNeutralizer");
-	//showView("ecoVars", "ecoVars1");
-	//showView("ecoVars2", "ecoVars2");
-	showView("energyVars", "energyVars");
+	//showView("ecologyVars", "ecologyVars");
+	//showView("ecologyVars", "ecologyVars");
+	showView("ecologyV", "ecologyV");
 	//showView("cycleReproduce", "cycleReproduce");
 	
 	PolyKoef.currentMode = "withoutN";

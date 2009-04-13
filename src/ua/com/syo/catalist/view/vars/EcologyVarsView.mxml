@@ -5,13 +5,11 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.catalist.model.calc.EcologyVars;
 			import ua.com.syo.utils.MathUtils;
 			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 			import ua.com.syo.catalist.model.polynoms.PolyKoef;
-			import ua.com.syo.catalist.model.calc.EconomyVars;
-			import ua.com.syo.catalist.model.calc.EcologyVars;
-			import ua.com.syo.catalist.model.calc.EnergyVars;
 			import ua.com.syo.catalist.data.CycleData;
 			import mx.collections.ArrayCollection;
 			import ua.com.syo.catalist.utils.ExportUtils;
