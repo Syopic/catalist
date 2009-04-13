@@ -3,7 +3,7 @@ package ua.com.syo.catalist.model.polynoms {
 		
 		private static var cycleModeArray:Array=["load", "XX", "PXX"];
 		private static var fuelArray:Array=["gasoline", "gas"];
-		private static var modeArray:Array=["withoutN", "withN", "beforeN", "afterN"];
+		private static var modeArray:Array=["withoutN", "beforeN", "afterN"];
 				
 		[Bindable]
 		public static var loadArray:Array=["CO", "CO2", "HCs", "NOx", "O2", "Gпал", "Gпов", "dPk", "phiDros"];
