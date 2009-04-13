@@ -26,31 +26,33 @@
 				ecoDP = new ArrayCollection();
 				isN = (PolyKoef.currentMode == "withoutN");
 				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
-					var o:Object;
-					if (isN) {
-						o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
-								CO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
-								CO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
-								NOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
-								HCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
-								O2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces)}
-					} else {
-						o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
-								CO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
-								CO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
-								NOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
-								HCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
-								O2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces),
-								
-								NCO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
-								NCO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
-								NNOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
-								NHCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
-								NO2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces)}
+					if (Globals.traceAll || MathUtils.pRound(i, Globals.roundDecPlaces) is int) {
+						var o:Object;
+						if (isN) {
+							o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
+									CO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
+									CO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
+									NOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
+									HCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
+									O2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces)}
+						} else {
+							o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
+									CO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
+									CO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
+									NOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
+									HCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
+									O2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces),
+									
+									NCO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
+									NCO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
+									NNOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
+									NHCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
+									NO2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces)}
+						}
+						
+						ecoDP.addItem(o);
+						timeW = 8;
 					}
-					
-					ecoDP.addItem(o);
-					timeW = 8;
 				}
 				//showGraph(distSer);
 			}
