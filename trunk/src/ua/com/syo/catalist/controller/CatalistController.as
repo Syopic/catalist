@@ -24,8 +24,8 @@ private static const views:Object = {
 	ktzParams:KTZParamsView,
 	cycleReproduce:CycleView,
 	energyVars:EnergyVarsView,
-	ecologyV:EcologyVarsView,
-	economyV:EconomyVarsView,
+	ecologyVars:EcologyVarsView,
+	economyVars:EconomyVarsView,
 	expParams:ExperimentParamsView,
 	poliKoef:PolynomsCoefficientsView
 }
@@ -104,7 +104,7 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "beforeNeutralizer");
 	//showView("ecologyVars", "ecologyVars");
 	//showView("ecologyVars", "ecologyVars");
-	showView("ecologyV", "ecologyV");
+	showView("ecologyVars", "ecologyVars");
 	//showView("cycleReproduce", "cycleReproduce");
 	
 	PolyKoef.currentMode = "withoutN";

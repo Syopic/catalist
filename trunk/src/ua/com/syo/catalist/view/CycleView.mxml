@@ -16,15 +16,17 @@
 			public function init():void {
 				cycleDP = new ArrayCollection();
 				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
-					//CycleData.getModeTime(i);
-					var o:Object = {time : MathUtils.pRound(i, Globals.roundDecPlaces), 
-									speed : MathUtils.pRound(CycleData.getSpeed(i), Globals.roundDecPlaces), 
-									dist : MathUtils.pRound(CycleData.getDistance(i), Globals.roundDecPlaces), 
-									accel : MathUtils.pRound(CycleData.getAcceleration(i), Globals.roundDecPlaces), 
-									mode : CycleData.getMode(i), 
-									u : CycleData.getU(i)}
-					
-					cycleDP.addItem(o);
+					if (Globals.traceAll || MathUtils.pRound(i, Globals.roundDecPlaces) is int) {
+						//CycleData.getModeTime(i);
+						var o:Object = {time : MathUtils.pRound(i, Globals.roundDecPlaces), 
+										speed : MathUtils.pRound(CycleData.getSpeed(i), Globals.roundDecPlaces), 
+										dist : MathUtils.pRound(CycleData.getDistance(i), Globals.roundDecPlaces), 
+										accel : MathUtils.pRound(CycleData.getAcceleration(i), Globals.roundDecPlaces), 
+										mode : CycleData.getMode(i), 
+										u : CycleData.getU(i)}
+						
+						cycleDP.addItem(o);
+					}
 				}
 				//showGraph(distSer);
 			}
