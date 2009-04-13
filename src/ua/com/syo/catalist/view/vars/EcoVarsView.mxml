@@ -71,7 +71,7 @@
 	<mx:VDividedBox width="100%" height="100%">
 	<mx:HBox width="100%" height="100%">
 	
-	    <mx:LineSeries id="COSer" yField="CO2" displayName="CO" lineStroke="{s1}" />
+	    <mx:LineSeries id="COSer" yField="CO" displayName="CO" lineStroke="{s1}" />
 	    <mx:LineSeries id="CO2Ser" yField="CO2" displayName="CO2" lineStroke="{s1}"/>
 	    <mx:LineSeries id="NOxSer" yField="NOx" displayName="NOx" lineStroke="{s1}"/>
 	    <mx:LineSeries id="HCsSer" yField="HCs" displayName="HCs" lineStroke="{s1}"/>
