@@ -16,6 +16,7 @@ import ua.com.syo.catalist.view.polinoms.PolynomsCoefficientsView;
 import ua.com.syo.catalist.view.vars.EcologyVarsView;
 import ua.com.syo.catalist.view.vars.EconomyVarsView;
 import ua.com.syo.catalist.view.vars.EnergyVarsView;
+import ua.com.syo.catalist.view.vars.SumVarsView;
 
 private var aboutPopup:AboutView = new AboutView();
 private var fileManager:FileManager = new FileManager();
@@ -26,6 +27,7 @@ private static const views:Object = {
 	energyVars:EnergyVarsView,
 	ecologyVars:EcologyVarsView,
 	economyVars:EconomyVarsView,
+	sumVars:SumVarsView,
 	expParams:ExperimentParamsView,
 	poliKoef:PolynomsCoefficientsView
 }
@@ -37,8 +39,6 @@ private function init():void {
 private function getN(t:Number):Number {
 	return KTZParams.nXXmin+0*t;
 }
-
-
 
 private function onClickMenuBarHandler(event:MenuEvent): void {
 	switchMenuItems(XML(event.menu.selectedItem).@id, XML(event.menu.selectedItem).@label);
@@ -104,10 +104,11 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "beforeNeutralizer");
 	//showView("ecologyVars", "ecologyVars");
 	//showView("ecologyVars", "ecologyVars");
-	showView("ecologyVars", "ecologyVars");
+	//showView("ecologyVars", "ecologyVars");
+	showView("sumVars", "sumVars");
 	//showView("cycleReproduce", "cycleReproduce");
 	
-	PolyKoef.currentMode = "withoutN";
+	PolyKoef.currentMode = "afterN";
 	PolyKoef.currentFuel = "gasoline";
 
 	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));

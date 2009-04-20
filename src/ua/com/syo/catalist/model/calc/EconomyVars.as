@@ -1,5 +1,6 @@
 package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.data.CycleData;
+	import ua.com.syo.catalist.data.Globals;
 	import ua.com.syo.catalist.data.KoefStorage;
 	import ua.com.syo.catalist.model.ModePhase;
 	import ua.com.syo.catalist.model.polynoms.PolyKoef;
@@ -19,19 +20,23 @@ package ua.com.syo.catalist.model.calc {
 				case "ХХ":
 				case "рушання":
 					mf = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f1);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f1);
 					break;
 				case "розгін-":
 				case "розгін+":
 				case "стала":
 					mf = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f3);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f3);
 				break;
 				case "упов.+":
 				case "упов.-":
 				case "перемик.":
 					mf = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f4);
+					if (EnergyVars.getNdv(time) >= KoefStorage.nXXmin) {
+						result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f4);
+					} else {
+						result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f1);
+					}
 				break;
 			}
 			
@@ -46,19 +51,25 @@ package ua.com.syo.catalist.model.calc {
 				case "ХХ":
 				case "рушання":
 					var mf:ModePhase = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f2);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f2);
 					break;
 				case "розгін-":
 				case "розгін+":
 				case "стала":
 					mf = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f5);
+					result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f5);
 				break;
 				case "упов.+":
 				case "упов.-":
 				case "перемик.":
 					mf = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f6);
+					
+					mf = CycleData.getModeTime(time);
+					if (EnergyVars.getNdv(time) >= KoefStorage.nXXmin) {
+						result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f6);
+					} else {
+						result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f2);
+					}
 				break;	
 			}
 			

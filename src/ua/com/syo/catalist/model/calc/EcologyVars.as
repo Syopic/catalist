@@ -1,5 +1,8 @@
 package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.data.CycleData;
+	import ua.com.syo.catalist.data.Globals;
+	import ua.com.syo.catalist.data.KoefStorage;
+	import ua.com.syo.catalist.model.ModePhase;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsNav;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsPXX;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
@@ -23,7 +26,11 @@ package ua.com.syo.catalist.model.calc {
 				case "упов.+":
 				case "упов.-":
 				case "перемик.":
-					result = PolyModelsPXX.CO(time);
+					if (EnergyVars.getNdv(time) >= KoefStorage.nXXmin) {
+						result = PolyModelsPXX.CO(time);
+					} else {
+						result = PolyModelsXX.CO(time);
+					}
 				break;	
 			}
 			return result;
@@ -35,8 +42,22 @@ package ua.com.syo.catalist.model.calc {
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 				case "рушання":
-					result = PolyModelsXX.CO2(EnergyVars.getNdv(time));
+					result = PolyModelsXX.CO2(time);
 					break;
+				case "розгін-":
+				case "розгін+":
+				case "стала":
+					result = PolyModelsNav.CO2(time);
+				break;
+				case "упов.+":
+				case "упов.-":
+				case "перемик.":
+					if (EnergyVars.getNdv(time) >= KoefStorage.nXXmin) {
+						result = PolyModelsPXX.CO2(time);
+					} else {
+						result = PolyModelsXX.CO2(time);
+					}
+				break;		
 			}
 			return result;
 		}
@@ -47,8 +68,22 @@ package ua.com.syo.catalist.model.calc {
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 				case "рушання":
-					result = PolyModelsXX.NOX(EnergyVars.getNdv(time));
+					result = PolyModelsXX.NOX(time);
 					break;
+				case "розгін-":
+				case "розгін+":
+				case "стала":
+					result = PolyModelsNav.NOX(time);
+				break;
+				case "упов.+":
+				case "упов.-":
+				case "перемик.":
+					if (EnergyVars.getNdv(time) >= KoefStorage.nXXmin) {
+						result = PolyModelsPXX.NOX(time);
+					} else {
+						result = PolyModelsXX.NOX(time);
+					}
+				break;			
 			}
 			return result;
 		}
@@ -59,8 +94,22 @@ package ua.com.syo.catalist.model.calc {
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 				case "рушання":
-					result = PolyModelsXX.CH(EnergyVars.getNdv(time));
+					result = PolyModelsXX.CH(time);
 					break;
+				case "розгін-":
+				case "розгін+":
+				case "стала":
+					result = PolyModelsNav.CH(time);
+				break;
+				case "упов.+":
+				case "упов.-":
+				case "перемик.":
+					if (EnergyVars.getNdv(time) >= KoefStorage.nXXmin) {
+						result = PolyModelsPXX.CH(time);
+					} else {
+						result = PolyModelsXX.CH(time);
+					}
+				break;				
 			}
 			return result;
 		}
@@ -71,8 +120,22 @@ package ua.com.syo.catalist.model.calc {
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 				case "рушання":
-					result = PolyModelsXX.O2(EnergyVars.getNdv(time));
+					result = PolyModelsXX.O2(time);
 					break;
+				case "розгін-":
+				case "розгін+":
+				case "стала":
+					result = PolyModelsNav.O2(time);
+				break;
+				case "упов.+":
+				case "упов.-":
+				case "перемик.":
+					if (EnergyVars.getNdv(time) >= KoefStorage.nXXmin) {
+						result = PolyModelsPXX.O2(time);
+					} else {
+						result = PolyModelsXX.O2(time);
+					}
+				break;			
 			}
 			return result;
 		}
@@ -81,14 +144,9 @@ package ua.com.syo.catalist.model.calc {
 		//
 		public static function getGCO(time:Number): Number {
 			var result:Number = 0;
-			
-			switch (CycleData.getMode(time)) {
-				case "ХХ":
-				case "рушання":
-					var mf:ModePhase = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f1);
-					break;
-			}
+	
+			var mf:ModePhase = CycleData.getModeTime(time);
+			return Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f1);
 			
 			return result;
 		}
@@ -97,13 +155,8 @@ package ua.com.syo.catalist.model.calc {
 		public static function getGCO2(time:Number): Number {
 			var result:Number = 0;
 			
-			switch (CycleData.getMode(time)) {
-				case "ХХ":
-				case "рушання":
-					var mf:ModePhase = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f2);
-					break;
-			}
+			var mf:ModePhase = CycleData.getModeTime(time);
+			result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f2);
 			
 			return result;
 		}
@@ -112,13 +165,8 @@ package ua.com.syo.catalist.model.calc {
 		public static function getGNOx(time:Number): Number {
 			var result:Number = 0;
 			
-			switch (CycleData.getMode(time)) {
-				case "ХХ":
-				case "рушання":
-					var mf:ModePhase = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f3);
-					break;
-			}
+			var mf:ModePhase = CycleData.getModeTime(time);
+			result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f3);
 			
 			return result;
 		}
@@ -127,13 +175,8 @@ package ua.com.syo.catalist.model.calc {
 		public static function getGHCs(time:Number): Number {
 			var result:Number = 0;
 			
-			switch (CycleData.getMode(time)) {
-				case "ХХ":
-				case "рушання":
-					var mf:ModePhase = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f4);
-					break;
-			}
+			var mf:ModePhase = CycleData.getModeTime(time);
+			result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f4);
 			
 			return result;
 		}
@@ -141,13 +184,10 @@ package ua.com.syo.catalist.model.calc {
 		//
 		public static function getGO2(time:Number): Number {
 			var result:Number = 0;
-			switch (CycleData.getMode(time)) {
-				case "ХХ":
-				case "рушання":
-					var mf:ModePhase = CycleData.getModeTime(time);
-					result = Integral.rectangleRule(mf.startTime, mf.endTime, 0.001, f5);
-					break;
-			}
+			
+			var mf:ModePhase = CycleData.getModeTime(time);
+			result = Integral.rectangleRule(mf.startTime, mf.endTime, Globals.integStep, f5);
+			
 			return result;
 		}
 		

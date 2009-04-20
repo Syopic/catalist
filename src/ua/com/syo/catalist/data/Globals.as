@@ -8,6 +8,8 @@ package ua.com.syo.catalist.data {
 		public static var dT:Number = 0.2;
 		public static var roundDecPlaces:int = 3;
 		
+		public static var integStep:Number = 1;
+		
 		public static var traceAll:Boolean = false;
 	}
 }

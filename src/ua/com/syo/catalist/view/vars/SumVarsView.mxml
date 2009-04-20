@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+		creationComplete="init();" 
+		width="100%" height="100%"
+		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
+	<mx:Script>
+		<![CDATA[
+			import ua.com.syo.catalist.data.KoefStorage;
+			import ua.com.syo.catalist.model.polynoms.PolyKoef;
+			import ua.com.syo.catalist.model.calc.EcologyVars;
+			import ua.com.syo.utils.MathUtils;
+			import ua.com.syo.catalist.model.calc.EconomyVars;
+			import ua.com.syo.catalist.data.CycleData;
+			import ua.com.syo.catalist.data.Globals;
+		
+			private function init():void {
+				var sumGpal:Number = 0;
+				var sumGGpalMdj:Number = 0;
+				var sumGpov:Number = 0;
+				var sumGCO:Number = 0;
+				var sumGCO2:Number = 0;
+				var sumGNOx:Number = 0;
+				var sumGHCs:Number = 0;
+				var sumGO2:Number = 0;
+				
+				var sumGSO2:Number = 0;
+				var sumGPb:Number = 0;
+				var sumGC:Number = 0;
+				
+				var sumGsum:Number = 0;
+				
+				
+				var curMode:String = CycleData.getMode(0);
+				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
+					if (CycleData.getMode(i) != curMode) {
+						sumGpal += EconomyVars.getGpal(i);
+						sumGpov += EconomyVars.getGpov(i);
+						sumGCO += EcologyVars.getCO(i);
+						sumGCO2 += EcologyVars.getCO2(i);
+						sumGNOx += EcologyVars.getNOx(i);
+						sumGHCs += EcologyVars.getHCs(i);
+						sumGO2 += EcologyVars.getO2(i);
+						
+						curMode = CycleData.getMode(i);
+					}
+				}
+				
+				
+				if (PolyKoef.currentFuel == "gasoline") {
+					sumGGpalMdj = sumGpal * KoefStorage.HuBenz / 1000;
+					sumGSO2 = KoefStorage.Sbenz * sumGpal; 
+					sumGPb = KoefStorage.PbBenz * sumGpal / KoefStorage.roBenz;
+				} else {
+					sumGGpalMdj = sumGpal * KoefStorage.HuGas / 1000;
+					sumGSO2 = KoefStorage.Sgas * sumGpal; 
+					sumGPb = KoefStorage.PbGas * sumGpal / KoefStorage.roGas;
+				}
+				
+				sumGsum = sumGCO + 3.16 * sumGHCs + 41.1 * sumGNOx + 0.05 * sumGCO2 + 22 * sumGSO2 + 22400 * sumGPb + 200 * sumGC;
+				
+				GpalLab.text = sumGpal.toString();
+				GpalMdjLab.text = sumGGpalMdj.toString();
+				
+				GCOLab.text = sumGCO.toString();
+				GCO2Lab.text = sumGCO2.toString();
+				GHCsLab.text = sumGHCs.toString();
+				GNOxLab.text = sumGNOx.toString();
+				GO2Lab.text = sumGO2.toString();
+				GSO2Lab.text = sumGSO2.toString();
+				GPbLab.text = sumGPb.toString();
+				GCLab.text = sumGC.toString();
+				
+				SumGSumLab.text = sumGsum.toString();
+			}
+			
+		]]>
+	</mx:Script>	
+	<mx:VBox width="100%" height="100%">
+		<mx:VBox width="100%" height="100%">
+			<mx:Label text="Витрати палива за цикл:" width="163" fontWeight="normal"/>
+			<mx:HBox width="100%">
+				<mx:Label text="Gпал:"  fontWeight="bold"/>
+				<mx:Label id="GpalLab" selectable="true"/>
+				
+				<mx:Label text="Gпал:"  fontWeight="bold"/>
+				<mx:Label id="GpalMdjLab" selectable="true"/>
+			</mx:HBox>
+		</mx:VBox>
+		<mx:VBox width="100%" height="100%">
+			<mx:Label text="Масові викиди за цикл:" width="163" fontWeight="normal"/>
+			<mx:VBox width="100%">
+				<mx:HBox width="100%">
+					<mx:Label text="GCOцикл:"  fontWeight="bold"/>
+					<mx:Label id="GCOLab" selectable="true"/>
+					
+					<mx:Label text="GCO2цикл:"  fontWeight="bold"/>
+					<mx:Label id="GCO2Lab" selectable="true"/>
+					
+					<mx:Label text="GO2цикл:"  fontWeight="bold"/>
+					<mx:Label id="GO2Lab" selectable="true"/>
+				</mx:HBox>
+				<mx:HBox width="100%">
+					<mx:Label text="GHCsцикл:"  fontWeight="bold"/>
+					<mx:Label id="GHCsLab" selectable="true"/>
+					
+					<mx:Label text="GNOxцикл:"  fontWeight="bold"/>
+					<mx:Label id="GNOxLab" selectable="true"/>
+				</mx:HBox>
+				
+				<mx:HBox width="100%">
+					<mx:Label text="GSO2цикл:"  fontWeight="bold"/>
+					<mx:Label id="GSO2Lab" selectable="true"/>
+					
+					<mx:Label text="GPbцикл:"  fontWeight="bold"/>
+					<mx:Label id="GPbLab" selectable="true"/>
+					
+					<mx:Label text="GCцикл:"  fontWeight="bold"/>
+					<mx:Label id="GCLab" selectable="true"/>
+				</mx:HBox>
+				
+			</mx:VBox>
+		</mx:VBox>
+		<mx:VBox width="100%" height="100%">
+			<mx:Label text="Сумарні викиди, зведені до СО:" width="193" fontWeight="normal"/>
+			<mx:HBox width="100%">
+				<mx:Label text="SumGSum:"  fontWeight="bold"/>
+				<mx:Label id="SumGSumLab" selectable="true"/>
+			</mx:HBox>
+		</mx:VBox>
+	</mx:VBox>
+	
+</mx:VBox>

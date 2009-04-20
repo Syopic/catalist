@@ -39,7 +39,9 @@
 									GO2 : MathUtils.pRound(EcologyVars.getGO2(i), Globals.roundDecPlaces),
 									 
 									Gpal : MathUtils.pRound(EconomyVars.getGpal(i), Globals.roundDecPlaces), 
-									Gpov : MathUtils.pRound(EconomyVars.getGpov(i), Globals.roundDecPlaces)}
+									Gpov : MathUtils.pRound(EconomyVars.getGpov(i), Globals.roundDecPlaces),
+									
+									alpha : MathUtils.pRound(EconomyVars.getAlpha(i), Globals.roundDecPlaces)}
 						} else {
 							o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
 									GCO : MathUtils.pRound(EcologyVars.getGCO(i), Globals.roundDecPlaces), 
@@ -55,7 +57,9 @@
 									NGO2 : MathUtils.pRound(EcologyVars.getGO2(i), Globals.roundDecPlaces),
 									 
 									Gpal : MathUtils.pRound(EconomyVars.getGpal(i), Globals.roundDecPlaces), 
-									Gpov : MathUtils.pRound(EconomyVars.getGpov(i), Globals.roundDecPlaces)}
+									Gpov : MathUtils.pRound(EconomyVars.getGpov(i), Globals.roundDecPlaces),
+									
+									alpha : MathUtils.pRound(EconomyVars.getAlpha(i), Globals.roundDecPlaces)}
 						}
 						
 						ecoDP.addItem(o);
@@ -94,6 +98,8 @@
 	    <mx:LineSeries id="GpalSer" yField="Gpal" displayName="Gpal" lineStroke="{s3}"/>
 	    <mx:LineSeries id="GpovSer" yField="Gpov" displayName="Gpov" lineStroke="{s3}"/>
 	    
+	    <mx:LineSeries id="alphaSer" yField="alpha" displayName="Gpov" lineStroke="{s3}"/>
+	    
 		<mx:LineChart id="linechart" height="100%" width="100%"
             showDataTips="true" dataProvider="{ecoDP}">
 		    
@@ -107,9 +113,9 @@
 			    	<mx:LinkButton label="GNOx" click="showGraph(GNOxSer)"/>
 			    	<mx:LinkButton label="GHCs" click="showGraph(GHCsSer)"/>
 			    	<mx:LinkButton label="GO2" click="showGraph(GO2Ser)"/>
-			    	<mx:Spacer height="20" />
 			    	<mx:LinkButton label="Gpal" click="showGraph(GpalSer)"/>
 			    	<mx:LinkButton label="Gpov" click="showGraph(GpovSer)"/>
+			    	<mx:LinkButton label="alpha" click="showGraph(alphaSer)"/>
 			    </mx:VBox>   	 
 			    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
 			    	<mx:LinkButton label="NGCO" click="showGraph(GCOSer)" />
@@ -140,6 +146,7 @@
 				<mx:DataGridColumn headerText="NGO2" dataField="NGO2" visible="{!isN}"/>
 				<mx:DataGridColumn headerText="Gpal" dataField="Gpal" />
 				<mx:DataGridColumn headerText="Gpov" dataField="Gpov" />
+				<mx:DataGridColumn headerText="alpha" dataField="alpha" />
 			</mx:columns>
 		</mx:DataGrid>
 	</mx:VDividedBox>

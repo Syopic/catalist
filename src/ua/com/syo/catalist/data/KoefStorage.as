@@ -40,6 +40,20 @@ package ua.com.syo.catalist.data {
 		public static var phiDrosEnd: Number=	50;
 		public static var phiDrosMax: Number=	100;
 		
+		public static var roBenz    : Number=	0.72;
+		public static var roGas     : Number=	0.546;
+		
+		public static var Sbenz     : Number=	0.0005;
+		public static var Sgas      : Number=	0;
+		
+		public static var PbBenz    : Number=	0.013;
+		public static var PbGas     : Number=	0;
+		
+		public static var HuBenz: Number=	44;
+		public static var HuGas: Number=	45.672;
+		
+		
+		
 		//gasoline 
 		//without 
 		public static var phiDrosStalaBW : Number=4.65;

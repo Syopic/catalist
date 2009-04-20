@@ -9,6 +9,7 @@
         <item id="energyVars" label="Енергетичні показники"/>
         <item id="ecologyVars" label="Екологічні показники"/>
         <item id="economyVars" label="Економічні показники"/>
+        <item id="sumVars" label="Сумарні показники"/>
     </item>
     <item label="Налаштування">
     	<item id="ktzParams" label="Параметри КТЗ"/>
