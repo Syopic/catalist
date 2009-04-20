@@ -13,8 +13,8 @@ package ua.com.syo.catalist.model.polynoms {
 		/**
 		 * @param label 	A1,A0, A11 ...
 		 * @param gas 		CO2, NO2 ...
-		 * @param mode 		withoutNeutralizer, beforeNeutralizer, afterNeutralizer;
-		 * @param fuel 		gasoline, gas, afterNeutralizer;
+		 * @param mode 		"withoutN", "beforeN", "afterN"
+		 * @param fuel 		gasoline, gas
 		 * @param cycleMode load, XX, PXX;
 		 */
 		public static function addPolynom(value:Number,

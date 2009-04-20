@@ -54,44 +54,66 @@ package ua.com.syo.catalist.model.polynoms {
 			return A0 + A1 * nd + A2 * deltaPk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(deltaPk, 2) + A12 * nd * deltaPk;
 		}
 		
-		public static function CO2(nd:Number):Number {
+		public static function CO2(time:Number):Number {
 			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "CO2");
 			var A1:Number = PolyKoef.getP("A1", "CO2");
+			var A2:Number = PolyKoef.getP("A2", "CO2");
 			var A11:Number = PolyKoef.getP("A11", "CO2");
-			var A111:Number = PolyKoef.getP("A111", "CO2");
+			var A22:Number = PolyKoef.getP("A22", "CO2");
+			var A12:Number = PolyKoef.getP("A12", "CO2");
 			
-			return A0 + A1 * nd + A11 * nd * nd + A111 * Math.pow(nd, 3);
+			var nd:Number = EnergyVars.getNdv(time);
+			var deltaPk:Number = Math.abs(EnergyVars.getDeltaPk(time));
+			
+			return A0 + A1 * nd + A2 * deltaPk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(deltaPk, 2) + A12 * nd * deltaPk;
 		}
 		
-		public static function CH(nd:Number):Number {
+		public static function CH(time:Number):Number {
 			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "HCs");
 			var A1:Number = PolyKoef.getP("A1", "HCs");
+			var A2:Number = PolyKoef.getP("A2", "HCs");
 			var A11:Number = PolyKoef.getP("A11", "HCs");
-			var A111:Number = PolyKoef.getP("A111", "HCs");
-			var A1111:Number = PolyKoef.getP("A1111", "HCs");
-			var A11111:Number = PolyKoef.getP("A11111", "HCs");
-
-			return A0 + A1 * nd + A11 * nd * nd + A111 * Math.pow(nd, 3) + A1111 * Math.pow(nd, 4) + A11111 * Math.pow(nd, 5);
+			var A22:Number = PolyKoef.getP("A22", "HCs");
+			var A12:Number = PolyKoef.getP("A12", "HCs");
+			
+			var nd:Number = EnergyVars.getNdv(time);
+			var deltaPk:Number = Math.abs(EnergyVars.getDeltaPk(time));
+			
+			return A0 + A1 * nd + A2 * deltaPk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(deltaPk, 2) + A12 * nd * deltaPk;
 		}
 		
-		public static function NOX(nd:Number):Number {
+		public static function NOX(time:Number):Number {
 			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "NOx");
 			var A1:Number = PolyKoef.getP("A1", "NOx");
+			var A2:Number = PolyKoef.getP("A2", "NOx");
 			var A11:Number = PolyKoef.getP("A11", "NOx");
+			var A22:Number = PolyKoef.getP("A22", "NOx");
+			var A12:Number = PolyKoef.getP("A12", "NOx");
 			
-			return A0 + A1 * nd + A11 * nd * nd;
+			var nd:Number = EnergyVars.getNdv(time);
+			var deltaPk:Number = EnergyVars.getDeltaPk(time);
+			
+			return A0 + A1 * nd + A2 * deltaPk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(deltaPk, 2) + A12 * nd * deltaPk;
 		}
 		
-		public static function O2(nd:Number):Number {
+		public static function O2(time:Number):Number {
 			setCurrentModes("load", PolyKoef.currentFuel, PolyKoef.currentMode);
 			var A0:Number = PolyKoef.getP("A0", "O2");
 			var A1:Number = PolyKoef.getP("A1", "O2");
+			var A2:Number = PolyKoef.getP("A2", "O2");
 			var A11:Number = PolyKoef.getP("A11", "O2");
+			var A22:Number = PolyKoef.getP("A22", "O2");
+			var A12:Number = PolyKoef.getP("A12", "O2");
+			var A111:Number = PolyKoef.getP("A111", "O2");
+			var A222:Number = PolyKoef.getP("A222", "O2");
 			
-			return A0 + A1 * nd + A11 * nd * nd;
+			var nd:Number = EnergyVars.getNdv(time);
+			var dPk:Number = EnergyVars.getDeltaPk(time);
+			
+			return A0 + A1 * nd + A2 * dPk  + A11 * Math.pow(nd, 2) + A22 * Math.pow(dPk, 2) + A12 * nd * dPk + A111 * Math.pow(nd, 3) + A222 * Math.pow(dPk, 3);
 		}
 		
 		public static function GCO(nd:Number, time:Number):Number {
