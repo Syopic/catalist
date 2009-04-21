@@ -6,7 +6,7 @@ package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.model.polynoms.PolyModelsNav;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsPXX;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
-	import ua.com.syo.catalist.utils.DiffUr;
+	import ua.com.syo.utils.MathUtils;
 	
 	public class EnergyVars	{
 		
@@ -143,7 +143,7 @@ package ua.com.syo.catalist.model.calc {
 				case "упов.+":
 				case "упов.-":
 				case "перемик.":
-					result =  - (PolyModelsPXX.Mk(getNdv(time)) / KoefStorage.etaTrans);
+					result =  - (PolyModelsPXX.Mk(time) / KoefStorage.etaTrans);
 					break;	
 				/* case "перемик.":
 					result = -(KoefStorage.Ga * KoefStorage.f0 * KoefStorage.rd * KoefStorage.g * (1 + KoefStorage.A * Math.pow(((omegaZchep(time) * KoefStorage.rd * 3.6) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0)), 2))) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0 * KoefStorage.etaTrans));
@@ -187,11 +187,11 @@ package ua.com.syo.catalist.model.calc {
 			
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
-					result = PolyModelsXX.fiDr(getNdv(time));
+					result = PolyModelsXX.fiDr(time);
 					
 					break;
 				case "рушання":
-					result = PolyModelsXX.fiDr(getNdv(time));
+					result = PolyModelsXX.fiDr(time);
 					break;
 				case "розгін-":
 				case "розгін+":
@@ -219,7 +219,7 @@ package ua.com.syo.catalist.model.calc {
 					break;			
 			}
 			
-			return result;
+			return MathUtils.setRestriction(result, 0);;
 		}
 		
 		//швидкість КТЗ
