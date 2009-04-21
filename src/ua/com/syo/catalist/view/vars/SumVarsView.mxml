@@ -29,7 +29,6 @@
 				
 				var sumGsum:Number = 0;
 				
-				
 				var curMode:String = CycleData.getMode(0);
 				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
 					if (CycleData.getMode(i) != curMode) {
@@ -125,6 +124,7 @@
 			<mx:HBox width="100%">
 				<mx:Label text="SumGSum:"  fontWeight="bold"/>
 				<mx:Label id="SumGSumLab" selectable="true"/>
+				
 			</mx:HBox>
 		</mx:VBox>
 	</mx:VBox>
