@@ -37,14 +37,15 @@
 									HCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
 									O2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces)}
 						} else {
+							o = {time : MathUtils.pRound(i, Globals.roundDecPlaces), mode : CycleData.getMode(i)}
+							
+							
 							PolyKoef.currentMode = "beforeN";
-							o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
-									mode : CycleData.getMode(i),
-									CO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
-									CO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
-									NOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
-									HCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
-									O2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces)}
+									o.CO = MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces); 
+									o.CO2 = MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces); 
+									o.NOx = MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces); 
+									o.HCs = MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces);
+									o.O2 = MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces);
 									
 							PolyKoef.currentMode = "afterN";
 									o.NCO = MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces);
@@ -52,8 +53,13 @@
 									o.NNOx = MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces); 
 									o.NHCs = MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces);
 									o.NO2 = MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces);
+									
+									o.efCO = calcEffect(o.CO, o.NCO);									
+									o.efCO2 = calcEffect(o.CO2, o.NCO2);									
+									o.efNOx = calcEffect(o.NOx, o.NNOx);									
+									o.efHCs = calcEffect(o.HCs, o.NHCs);									
+									o.efO2 = calcEffect(o.O2, o.NO2);									
 						}
-						
 						ecoDP.addItem(o);
 						timeW = 8;
 					}
@@ -61,9 +67,18 @@
 				//showGraph(distSer);
 			}
 			
-			private function showGraph(ls:LineSeries):void {
+			private function calcEffect(beforeValue:Number, afterValue:Number):Number {
+				var result:Number = 0;
+				if (beforeValue != 0 && beforeValue != 0) {
+					result = (beforeValue - afterValue) / beforeValue * 100;
+				}
+				return result;
+			}
+			
+			private function showGraph(ls:LineSeries, ls2:LineSeries = null):void {
 				linechart.series = [];
 				linechart.series.push(ls);
+				if (ls2)linechart.series.push(ls2);
 				linechart.updateAllDataTips();
 			}
 		]]>
@@ -81,7 +96,7 @@
 	    <mx:LineSeries id="HCsSer" yField="HCs" displayName="HCs" lineStroke="{s1}"/>
 	    <mx:LineSeries id="O2Ser" yField="O2" displayName="O2" lineStroke="{s1}"/>
 	    
-	    <mx:LineSeries id="NCOSer" yField="NCO" displayName="NCO" lineStroke="{s1}"/>
+	    <mx:LineSeries id="NCOSer" yField="NCO" displayName="NCO" lineStroke="{s2}"/>
 	    <mx:LineSeries id="NCO2Ser" yField="NCO2" displayName="NCO2" lineStroke="{s2}"/>
 	    <mx:LineSeries id="NNOxSer" yField="NNOx" displayName="NNOx" lineStroke="{s2}"/>
 	    <mx:LineSeries id="NHCsSer" yField="NHCs" displayName="NHCs" lineStroke="{s2}"/>
@@ -101,16 +116,13 @@
 			    	<mx:LinkButton label="O2" click="showGraph(O2Ser)" />
 			    </mx:VBox>   	 
 			    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
-			    	<mx:LinkButton label="NCO" click="showGraph(NCOSer)" />
-			    	<mx:LinkButton label="NCO2" click="showGraph(NCO2Ser)"/>
-			    	<mx:LinkButton label="NNOx" click="showGraph(NNOxSer)"/>
-			    	<mx:LinkButton label="NHCs" click="showGraph(NHCsSer)"/>
-			    	<mx:LinkButton label="NO2" click="showGraph(NO2Ser)"/>
+			    	<mx:LinkButton label="NCO" click="showGraph(COSer, NCOSer)" />
+			    	<mx:LinkButton label="NCO2" click="showGraph(CO2Ser, NCO2Ser)"/>
+			    	<mx:LinkButton label="NNOx" click="showGraph(NOxSer, NNOxSer)"/>
+			    	<mx:LinkButton label="NHCs" click="showGraph(HCsSer, NHCsSer)"/>
+			    	<mx:LinkButton label="NO2" click="showGraph(O2Ser, NO2Ser)"/>
 			    </mx:VBox>   	 
 	        </mx:HBox>
-	        <mx:Spacer height="100%" />
-	    	<mx:HRule width="100%" />
-	    	<mx:Button toolTip="Скопіювати в буфер обміну" click="System.setClipboard(ExportUtils.convertDGToHTMLTable(cDG));" icon="@Embed('/../assets/images/icons/page_excel.png')" width="26" height="26"/>
         </mx:VBox>
 	</mx:HBox>
 	
@@ -123,11 +135,18 @@
 				<mx:DataGridColumn  headerText="NOx" dataField="NOx"/>
 				<mx:DataGridColumn  headerText="HCs" dataField="HCs"/>
 				<mx:DataGridColumn  headerText="O2" dataField="O2" />
+				
 				<mx:DataGridColumn  headerText="NCO" dataField="NCO" visible="{!isN}"/>
 				<mx:DataGridColumn  headerText="NCO2" dataField="NCO2" visible="{!isN}"/>
 				<mx:DataGridColumn  headerText="NNOx" dataField="NNOx" visible="{!isN}"/>
 				<mx:DataGridColumn  headerText="NHCs" dataField="NHCs" visible="{!isN}"/>
 				<mx:DataGridColumn  headerText="NO2" dataField="NO2" visible="{!isN}"/>
+				
+				<mx:DataGridColumn  headerText="%CO" dataField="efCO" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="%CO2" dataField="efCO2" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="%NOx" dataField="efNOx" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="%HCs" dataField="efHCs" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="%O2" dataField="efO2" visible="{!isN}"/>
 			</mx:columns>
 		</mx:DataGrid>
 	</mx:VDividedBox>
