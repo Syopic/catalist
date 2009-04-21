@@ -72,7 +72,7 @@
 				if (beforeValue != 0 && beforeValue != 0) {
 					result = (beforeValue - afterValue) / beforeValue * 100;
 				}
-				return result;
+				return MathUtils.pRound(result, Globals.roundDecPlaces);
 			}
 			
 			private function showGraph(ls:LineSeries, ls2:LineSeries = null):void {
@@ -88,7 +88,7 @@
     <mx:Stroke id = "s3" color="green" weight="2"/>
     
 	<mx:VDividedBox width="100%" height="100%">
-	<mx:HBox width="100%" height="100%">
+	<mx:HBox width="100%" height="100%" horizontalAlign="left">
 	
 	    <mx:LineSeries id="COSer" yField="CO" displayName="CO" lineStroke="{s1}" />
 	    <mx:LineSeries id="CO2Ser" yField="CO2" displayName="CO2" lineStroke="{s1}"/>
@@ -104,7 +104,6 @@
 	    
 		<mx:LineChart id="linechart" height="100%" width="100%"
             showDataTips="true" dataProvider="{ecoDP}">
-		    
         </mx:LineChart>
         <mx:VBox height="100%">
 	        <mx:HBox>
@@ -123,6 +122,9 @@
 			    	<mx:LinkButton label="NO2" click="showGraph(O2Ser, NO2Ser)"/>
 			    </mx:VBox>   	 
 	        </mx:HBox>
+	        <mx:Spacer height="100%" />
+	    	<mx:HRule width="100%" />
+	    	<mx:Button toolTip="Скопіювати в буфер обміну" click="System.setClipboard(ExportUtils.convertDGToHTMLTable(cDG));" icon="@Embed('/../assets/images/icons/page_excel.png')" width="26" height="26"/>
         </mx:VBox>
 	</mx:HBox>
 	
@@ -131,21 +133,23 @@
 				<mx:DataGridColumn  headerText="Час (сек.)" dataField="time" visible="true"/>
 				<mx:DataGridColumn  headerText="режим" dataField="mode" />
 				<mx:DataGridColumn  headerText="CO" dataField="CO" />
-				<mx:DataGridColumn  headerText="CO2" dataField="CO2" />
-				<mx:DataGridColumn  headerText="NOx" dataField="NOx"/>
-				<mx:DataGridColumn  headerText="HCs" dataField="HCs"/>
-				<mx:DataGridColumn  headerText="O2" dataField="O2" />
-				
 				<mx:DataGridColumn  headerText="NCO" dataField="NCO" visible="{!isN}"/>
-				<mx:DataGridColumn  headerText="NCO2" dataField="NCO2" visible="{!isN}"/>
-				<mx:DataGridColumn  headerText="NNOx" dataField="NNOx" visible="{!isN}"/>
-				<mx:DataGridColumn  headerText="NHCs" dataField="NHCs" visible="{!isN}"/>
-				<mx:DataGridColumn  headerText="NO2" dataField="NO2" visible="{!isN}"/>
-				
 				<mx:DataGridColumn  headerText="%CO" dataField="efCO" visible="{!isN}"/>
+				
+				<mx:DataGridColumn  headerText="CO2" dataField="CO2" />
+				<mx:DataGridColumn  headerText="NCO2" dataField="NCO2" visible="{!isN}"/>
 				<mx:DataGridColumn  headerText="%CO2" dataField="efCO2" visible="{!isN}"/>
+				
+				<mx:DataGridColumn  headerText="NOx" dataField="NOx"/>
+				<mx:DataGridColumn  headerText="NNOx" dataField="NNOx" visible="{!isN}"/>
 				<mx:DataGridColumn  headerText="%NOx" dataField="efNOx" visible="{!isN}"/>
+				
+				<mx:DataGridColumn  headerText="HCs" dataField="HCs"/>
+				<mx:DataGridColumn  headerText="NHCs" dataField="NHCs" visible="{!isN}"/>
 				<mx:DataGridColumn  headerText="%HCs" dataField="efHCs" visible="{!isN}"/>
+				
+				<mx:DataGridColumn  headerText="O2" dataField="O2" />
+				<mx:DataGridColumn  headerText="NO2" dataField="NO2" visible="{!isN}"/>
 				<mx:DataGridColumn  headerText="%O2" dataField="efO2" visible="{!isN}"/>
 			</mx:columns>
 		</mx:DataGrid>
