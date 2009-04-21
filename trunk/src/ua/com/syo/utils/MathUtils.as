@@ -57,6 +57,19 @@
 		public static function pRound(a:Number, b:Number):Number {
         	return (Math.round(a * Math.pow(10, b)) / Math.pow(10, b));
     	}
+    	
+		// set number restriction
+		public static function setRestriction(value:Number, fromValue:Number = NaN, toValue:Number = NaN):Number {
+			var result:Number = value;
+			if (!isNaN(fromValue)) {
+				if (value < fromValue) result = fromValue;
+			}
+			
+			if (!isNaN(toValue)) {
+				if (value > toValue) result = toValue;
+			}
+        	return result;
+    	}
 
 
 	}

@@ -7,6 +7,7 @@ package ua.com.syo.catalist.model.calc {
 	import ua.com.syo.catalist.model.polynoms.PolyModelsPXX;
 	import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
 	import ua.com.syo.catalist.utils.Integral;
+	import ua.com.syo.utils.MathUtils;
 	
 	public class EcologyVars {
 		/** Концентрації **/
@@ -33,7 +34,7 @@ package ua.com.syo.catalist.model.calc {
 					}
 				break;	
 			}
-			return result;
+			return MathUtils.setRestriction(result, 0);
 		}
 		
 		//
@@ -59,7 +60,7 @@ package ua.com.syo.catalist.model.calc {
 					}
 				break;		
 			}
-			return result;
+			return MathUtils.setRestriction(result, 0);
 		}
 		
 		//
@@ -85,7 +86,7 @@ package ua.com.syo.catalist.model.calc {
 					}
 				break;			
 			}
-			return result;
+			return MathUtils.setRestriction(result, 0);
 		}
 		
 		//
@@ -111,7 +112,7 @@ package ua.com.syo.catalist.model.calc {
 					}
 				break;				
 			}
-			return result;
+			return MathUtils.setRestriction(result, 0);
 		}
 		
 		//
@@ -137,7 +138,7 @@ package ua.com.syo.catalist.model.calc {
 					}
 				break;			
 			}
-			return result;
+			return MathUtils.setRestriction(result, 0);
 		}
 		
 		/** Масові викиди **/
