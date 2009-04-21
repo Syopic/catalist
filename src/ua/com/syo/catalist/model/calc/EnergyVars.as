@@ -175,10 +175,7 @@ package ua.com.syo.catalist.model.calc {
 					break;		
 			}
 			
-			if (result < 0) {
-				result = 0;
-			}
-			return result;
+			return MathUtils.setRestriction(result, 0);
 		}
 		
 		//кут відкриття дросельних заслінок (фі дроселя)
