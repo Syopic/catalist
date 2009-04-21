@@ -108,7 +108,7 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	showView("sumVars", "sumVars");
 	//showView("cycleReproduce", "cycleReproduce");
 	
-	PolyKoef.currentMode = "afterN";
+	PolyKoef.currentMode = "withoutN";
 	PolyKoef.currentFuel = "gasoline";
 
 	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
