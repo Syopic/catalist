@@ -1,4 +1,6 @@
 package ua.com.syo.catalist.model.polynoms {
+	import mx.core.Application;
+	
 	public class PolynomsParser {
 		
 		private static var cycleModeArray:Array=["load", "XX", "PXX"];
@@ -65,6 +67,7 @@ package ua.com.syo.catalist.model.polynoms {
 					}
 				}
 			}
+			Application.application.cbChangeHandler();
 			
 		}
 

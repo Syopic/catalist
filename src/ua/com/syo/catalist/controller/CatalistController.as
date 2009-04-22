@@ -67,8 +67,11 @@ private function showView(viewId:String, label:String): void {
 	
 	if (viewClass != null) {
 		view = getViewByClass(viewClass);
-		if (!view) {
+		if (!view || (viewId == "ecologyVars" || viewId == "economyVars" || viewId == "sumVars")) {
             view = new viewClass();
+            if ((viewId == "ecologyVars" || viewId == "economyVars" || viewId == "sumVars")) {
+            	label += "| "+ PolyKoef.currentFuel + "|" + PolyKoef.currentMode;
+            }
             view.label = label;
             
             if (tabNav.selectedIndex == -1) {
@@ -77,7 +80,7 @@ private function showView(viewId:String, label:String): void {
                 tabNav.addChildAt(view, tabNav.selectedIndex + 1);
                 tabNav.selectedIndex++
             }
-        } else {
+       } else {
         	tabNav.selectedChild = view;
         }
 	}
@@ -103,13 +106,14 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "withoutNeutralizer");
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "beforeNeutralizer");
 	//showView("ecologyVars", "ecologyVars");
-	showView("ecologyVars", "ecologyVars");
 	//showView("sumVars", "sumVars");
 	//showView("cycleReproduce", "cycleReproduce");
 	
-	PolyKoef.currentMode = "beforeN";
-	PolyKoef.currentFuel = "gasoline";
+	//PolyKoef.currentMode = "beforeN";
+	//PolyKoef.currentFuel = "gasoline";
+	trace(PolyKoef.currentMode);
 
+	//showView("ecologyVars", "ecologyVars");
 	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
 	//event.currentTarget.currentCycleDataXML
 }

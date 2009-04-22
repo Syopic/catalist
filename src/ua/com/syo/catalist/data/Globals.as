@@ -11,5 +11,7 @@ package ua.com.syo.catalist.data {
 		public static var integStep:Number = 1;
 		
 		public static var traceAll:Boolean = false;
+		[Bindable]
+		public static var dataLoaded:Boolean = false;
 	}
 }
