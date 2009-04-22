@@ -45,7 +45,7 @@
         </mx:ApplicationControlBar>
         <mx:Spacer width="100%" height="3" />
         <mx:MenuBar dataProvider="{menuBarXml.item}" labelField="@label" width="100%"
-        	itemClick="onClickMenuBarHandler(event)" enabled="{Globals.dataLoaded}"/>
+        	itemClick="onClickMenuBarHandler(event)" />
 
         <mx:ApplicationControlBar height="40" width="100%" >
             <mx:Button toolTip="Завантажити дані" click="fileManager.showOpenFileDialog()"
