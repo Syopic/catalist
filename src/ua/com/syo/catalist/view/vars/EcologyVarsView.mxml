@@ -76,10 +76,10 @@
 			}
 			
 			private function showGraph(ls:LineSeries, ls2:LineSeries = null):void {
-				linechart.series = [];
+				linechart.series = new Array();
 				linechart.series.push(ls);
 				if (ls2)linechart.series.push(ls2);
-				linechart.updateAllDataTips();
+				//linechart.updateAllDataTips();
 			}
 		]]>
 	</mx:Script>	
@@ -87,46 +87,61 @@
     <mx:Stroke id = "s2" color="red" weight="2"/>
     <mx:Stroke id = "s3" color="green" weight="2"/>
     
-	<mx:VDividedBox width="100%" height="100%">
-	<mx:HBox width="100%" height="100%" horizontalAlign="left">
+    
+	    
 	
-	    <mx:LineSeries id="COSer" yField="CO" displayName="CO" lineStroke="{s1}" />
-	    <mx:LineSeries id="CO2Ser" yField="CO2" displayName="CO2" lineStroke="{s1}"/>
-	    <mx:LineSeries id="NOxSer" yField="NOx" displayName="NOx" lineStroke="{s1}"/>
-	    <mx:LineSeries id="HCsSer" yField="HCs" displayName="HCs" lineStroke="{s1}"/>
-	    <mx:LineSeries id="O2Ser" yField="O2" displayName="O2" lineStroke="{s1}"/>
-	    
-	    <mx:LineSeries id="NCOSer" yField="NCO" displayName="NCO" lineStroke="{s2}"/>
-	    <mx:LineSeries id="NCO2Ser" yField="NCO2" displayName="NCO2" lineStroke="{s2}"/>
-	    <mx:LineSeries id="NNOxSer" yField="NNOx" displayName="NNOx" lineStroke="{s2}"/>
-	    <mx:LineSeries id="NHCsSer" yField="NHCs" displayName="NHCs" lineStroke="{s2}"/>
-	    <mx:LineSeries id="NO2Ser" yField="NO2" displayName="NO2" lineStroke="{s2}"/>
-	    
-		<mx:LineChart id="linechart" height="100%" width="100%"
-            showDataTips="true" dataProvider="{ecoDP}">
-        </mx:LineChart>
-        <mx:VBox height="100%">
-	        <mx:HBox>
-			    <mx:VBox height="100%" >
-			    	<mx:LinkButton label="CO" click="showGraph(COSer)" />
-			    	<mx:LinkButton label="CO2" click="showGraph(CO2Ser)"/>
-			    	<mx:LinkButton label="NOx" click="showGraph(NOxSer)"/>
-			    	<mx:LinkButton label="HCs" click="showGraph(HCsSer)" />
-			    	<mx:LinkButton label="O2" click="showGraph(O2Ser)" />
-			    </mx:VBox>   	 
-			    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
-			    	<mx:LinkButton label="NCO" click="showGraph(COSer, NCOSer)" />
-			    	<mx:LinkButton label="NCO2" click="showGraph(CO2Ser, NCO2Ser)"/>
-			    	<mx:LinkButton label="NNOx" click="showGraph(NOxSer, NNOxSer)"/>
-			    	<mx:LinkButton label="NHCs" click="showGraph(HCsSer, NHCsSer)"/>
-			    	<mx:LinkButton label="NO2" click="showGraph(O2Ser, NO2Ser)"/>
-			    </mx:VBox>   	 
-	        </mx:HBox>
-	        <mx:Spacer height="100%" />
-	    	<mx:HRule width="100%" />
-	    	<mx:Button toolTip="Скопіювати в буфер обміну" click="System.setClipboard(ExportUtils.convertDGToHTMLTable(cDG));" icon="@Embed('/../assets/images/icons/page_excel.png')" width="26" height="26"/>
-        </mx:VBox>
-	</mx:HBox>
+	<mx:VDividedBox width="100%" height="100%">
+			<mx:HBox width="100%" height="100%" horizontalAlign="left">
+			<mx:LineSeries id="COSer" yField="CO" displayName="CO" lineStroke="{s1}" includeInLayout="false"/>
+		    <mx:LineSeries id="CO2Ser" yField="CO2" displayName="CO2" lineStroke="{s1}" includeInLayout="false"/>
+		    <mx:LineSeries id="NOxSer" yField="NOx" displayName="NOx" lineStroke="{s1}" includeInLayout="false"/>
+		    <mx:LineSeries id="HCsSer" yField="HCs" displayName="HCs" lineStroke="{s1}" includeInLayout="false"/>
+		    <mx:LineSeries id="O2Ser" yField="O2" displayName="O2" lineStroke="{s1}" includeInLayout="false"/>
+		    
+		    <mx:LineSeries id="NCOSer" yField="NCO" displayName="NCO" lineStroke="{s2}" includeInLayout="false"/>
+		    <mx:LineSeries id="NCO2Ser" yField="NCO2" displayName="NCO2" lineStroke="{s2}" includeInLayout="false"/>
+		    <mx:LineSeries id="NNOxSer" yField="NNOx" displayName="NNOx" lineStroke="{s2}" includeInLayout="false"/>
+		    <mx:LineSeries id="NHCsSer" yField="NHCs" displayName="NHCs" lineStroke="{s2}" includeInLayout="false"/>
+		    <mx:LineSeries id="NO2Ser" yField="NO2" displayName="NO2" lineStroke="{s2}" includeInLayout="false"/>
+		    
+		    <mx:LineSeries id="efCOSer" yField="efCO" displayName="%CO" lineStroke="{s3}" includeInLayout="false"/>
+		    <mx:LineSeries id="efCO2Ser" yField="efCO2" displayName="%CO2" lineStroke="{s3}" includeInLayout="false"/>
+		    <mx:LineSeries id="efNOxSer" yField="efNOx" displayName="%NOx" lineStroke="{s3}" includeInLayout="false"/>
+		    <mx:LineSeries id="efHCsSer" yField="efHCs" displayName="%HCs" lineStroke="{s3}" includeInLayout="false"/>
+		    <mx:LineSeries id="efO2Ser" yField="efO2" displayName="%O2" lineStroke="{s3}" includeInLayout="false"/>
+			
+			<mx:LineChart id="linechart" height="100%" width="100%" 
+	            showDataTips="true" dataProvider="{ecoDP}">
+	        </mx:LineChart>
+	        <mx:VBox height="100%" horizontalAlign="right">
+		        <mx:HBox>
+				    <mx:VBox height="100%" >
+				    	<mx:LinkButton label="CO" click="showGraph(COSer)" />
+				    	<mx:LinkButton label="CO2" click="showGraph(CO2Ser)"/>
+				    	<mx:LinkButton label="NOx" click="showGraph(NOxSer)"/>
+				    	<mx:LinkButton label="HCs" click="showGraph(HCsSer)" />
+				    	<mx:LinkButton label="O2" click="showGraph(O2Ser)" />
+				    </mx:VBox>   	 
+				    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
+				    	<mx:LinkButton label="NCO" click="showGraph(COSer, NCOSer)" />
+				    	<mx:LinkButton label="NCO2" click="showGraph(CO2Ser, NCO2Ser)"/>
+				    	<mx:LinkButton label="NNOx" click="showGraph(NOxSer, NNOxSer)"/>
+				    	<mx:LinkButton label="NHCs" click="showGraph(HCsSer, NHCsSer)"/>
+				    	<mx:LinkButton label="NO2" click="showGraph(O2Ser, NO2Ser)"/>
+				    </mx:VBox>   	 
+				    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
+				    	<mx:LinkButton label="%CO" click="showGraph(efCOSer)" />
+				    	<mx:LinkButton label="%CO2" click="showGraph(efCO2Ser)"/>
+				    	<mx:LinkButton label="%NOx" click="showGraph(efNOxSer)"/>
+				    	<mx:LinkButton label="%HCs" click="showGraph(efHCsSer)"/>
+				    	<mx:LinkButton label="%O2" click="showGraph(efO2Ser)"/>
+				    </mx:VBox>   	 
+		        </mx:HBox>
+		        <mx:Spacer height="100%" />
+		    	<mx:HRule width="100%" />
+		    	<mx:Button toolTip="Скопіювати в буфер обміну" click="System.setClipboard(ExportUtils.convertDGToHTMLTable(cDG));" icon="@Embed('/../assets/images/icons/page_excel.png')" width="26" height="26"/>
+	        </mx:VBox>
+		</mx:HBox>
 	
 		<mx:DataGrid id="cDG" width="100%" height="300" dataProvider="{ecoDP}">
 			<mx:columns>

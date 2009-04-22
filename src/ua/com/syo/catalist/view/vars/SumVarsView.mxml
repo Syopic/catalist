@@ -57,24 +57,24 @@
 				
 				sumGsum = sumGCO + 3.16 * sumGHCs + 41.1 * sumGNOx + 0.05 * sumGCO2 + 22 * sumGSO2 + 22400 * sumGPb + 200 * sumGC;
 				
-				GpalLab.text = sumGpal.toString();
-				GpalMdjLab.text = sumGGpalMdj.toString();
+				GpalLab.text = MathUtils.pRound(sumGpal, Globals.roundDecPlaces).toString();
+				GpalMdjLab.text = MathUtils.pRound(sumGGpalMdj, Globals.roundDecPlaces).toString();
 				
-				GCOLab.text = sumGCO.toString();
-				GCO2Lab.text = sumGCO2.toString();
-				GHCsLab.text = sumGHCs.toString();
-				GNOxLab.text = sumGNOx.toString();
-				GO2Lab.text = sumGO2.toString();
-				GSO2Lab.text = sumGSO2.toString();
-				GPbLab.text = sumGPb.toString();
-				GCLab.text = sumGC.toString();
+				GCOLab.text = MathUtils.pRound(sumGCO, Globals.roundDecPlaces).toString();
+				GCO2Lab.text = MathUtils.pRound(sumGCO2, Globals.roundDecPlaces).toString();
+				GHCsLab.text = MathUtils.pRound(sumGHCs, Globals.roundDecPlaces).toString();
+				GNOxLab.text = MathUtils.pRound(sumGNOx, Globals.roundDecPlaces).toString();
+				GO2Lab.text = MathUtils.pRound(sumGO2, Globals.roundDecPlaces).toString();
+				GSO2Lab.text = MathUtils.pRound(sumGSO2, Globals.roundDecPlaces).toString();
+				GPbLab.text = MathUtils.pRound(sumGPb, Globals.roundDecPlaces).toString();
+				GCLab.text = MathUtils.pRound(sumGC, Globals.roundDecPlaces).toString();
 				
-				SumGSumLab.text = sumGsum.toString();
+				SumGSumLab.text = MathUtils.pRound(sumGsum, Globals.roundDecPlaces).toString();
 			}
 			
 		]]>
 	</mx:Script>	
-	<mx:VBox width="100%" height="100%">
+	<mx:VBox width="100%" >
 		<mx:VBox width="100%" height="100%">
 			<mx:Label text="Витрати палива за цикл:" width="163" fontWeight="normal"/>
 			<mx:HBox width="100%">
@@ -84,8 +84,9 @@
 				<mx:Label text="Gпал:"  fontWeight="bold"/>
 				<mx:Label id="GpalMdjLab" selectable="true"/>
 			</mx:HBox>
+			<mx:HRule width="100%"/>
 		</mx:VBox>
-		<mx:VBox width="100%" height="100%">
+		<mx:VBox width="100%" >
 			<mx:Label text="Масові викиди за цикл:" width="163" fontWeight="normal"/>
 			<mx:VBox width="100%">
 				<mx:HBox width="100%">
@@ -116,16 +117,18 @@
 					<mx:Label text="GCцикл:"  fontWeight="bold"/>
 					<mx:Label id="GCLab" selectable="true"/>
 				</mx:HBox>
+			<mx:HRule width="100%"/>
 				
 			</mx:VBox>
 		</mx:VBox>
-		<mx:VBox width="100%" height="100%">
+		<mx:VBox width="100%" >
 			<mx:Label text="Сумарні викиди, зведені до СО:" width="193" fontWeight="normal"/>
 			<mx:HBox width="100%">
 				<mx:Label text="SumGSum:"  fontWeight="bold"/>
 				<mx:Label id="SumGSumLab" selectable="true"/>
 				
 			</mx:HBox>
+			<mx:HRule width="100%"/>
 		</mx:VBox>
 	</mx:VBox>
 	

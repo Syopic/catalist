@@ -50,16 +50,16 @@
 	<mx:VDividedBox width="100%" height="100%">
 	<mx:HBox width="100%" height="100%">
 	    
-	    <mx:LineSeries id="NdvSer" yField="Ndv" displayName="Частота обертання колінчастого валу двигуна" lineStroke="{s1}"/>
-	    <mx:LineSeries id="OmegaSer" yField="Omega" displayName="Кутова швидкість обертання колінвалу" lineStroke="{s2}"/>
-	    <mx:LineSeries id="MkSer" yField="Mk" displayName="Крутний момент" lineStroke="{s3}"/>
-	    <mx:LineSeries id="DeltaPkSer" yField="DeltaPk" displayName="Розрідження за дросельними заслінками" lineStroke="{s4}"/>
-	    <mx:LineSeries id="PhiDrosPkSer" yField="PhiDros" displayName="Кут відкриття дросельних заслінок" lineStroke="{s5}"/>
+	    <mx:LineSeries id="NdvSer" yField="Ndv" displayName="Частота обертання колінчастого валу двигуна" lineStroke="{s1}" includeInLayout="false"/>
+	    <mx:LineSeries id="OmegaSer" yField="Omega" displayName="Кутова швидкість обертання колінвалу" lineStroke="{s2}" includeInLayout="false"/>
+	    <mx:LineSeries id="MkSer" yField="Mk" displayName="Крутний момент" lineStroke="{s3}" includeInLayout="false"/>
+	    <mx:LineSeries id="DeltaPkSer" yField="DeltaPk" displayName="Розрідження за дросельними заслінками" lineStroke="{s4}" includeInLayout="false"/>
+	    <mx:LineSeries id="PhiDrosPkSer" yField="PhiDros" displayName="Кут відкриття дросельних заслінок" lineStroke="{s5}" includeInLayout="false"/>
 		<mx:LineChart id="linechart" height="100%" width="100%"
             showDataTips="true" dataProvider="{energyvarsDP}">
 		    
         </mx:LineChart>
-	    <mx:VBox height="100%" >
+	    <mx:VBox height="100%" horizontalAlign="right">
 	    	<mx:LinkButton label="Ndv" click="showGraph(NdvSer)"/>
 	    	<mx:LinkButton label="Omega" click="showGraph(OmegaSer)"/>
 	    	<mx:LinkButton label="Mk" click="showGraph(MkSer)"/>

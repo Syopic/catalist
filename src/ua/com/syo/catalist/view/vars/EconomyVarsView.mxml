@@ -83,20 +83,20 @@
 	<mx:VDividedBox width="100%" height="100%">
 	<mx:HBox width="100%" height="100%">
 	
-	    <mx:LineSeries id="GCOSer" yField="GCO" displayName="GCO" lineStroke="{s1}"/>
-	    <mx:LineSeries id="GCO2Ser" yField="GCO2" displayName="GCO2" lineStroke="{s2}"/>
-	    <mx:LineSeries id="GNOxSer" yField="GNOx" displayName="GNOx" lineStroke="{s2}"/>
-	    <mx:LineSeries id="GHCsSer" yField="GHCs" displayName="GHCs" lineStroke="{s2}"/>
-	    <mx:LineSeries id="GO2Ser" yField="GO2" displayName="GO2" lineStroke="{s2}"/>
+	    <mx:LineSeries id="GCOSer" yField="GCO" displayName="GCO" lineStroke="{s1}" includeInLayout="false"/>
+	    <mx:LineSeries id="GCO2Ser" yField="GCO2" displayName="GCO2" lineStroke="{s2}" includeInLayout="false"/>
+	    <mx:LineSeries id="GNOxSer" yField="GNOx" displayName="GNOx" lineStroke="{s2}" includeInLayout="false"/>
+	    <mx:LineSeries id="GHCsSer" yField="GHCs" displayName="GHCs" lineStroke="{s2}" includeInLayout="false"/>
+	    <mx:LineSeries id="GO2Ser" yField="GO2" displayName="GO2" lineStroke="{s2}" includeInLayout="false"/>
 	    
-	    <mx:LineSeries id="NGCOSer" yField="NGCO" displayName="NGCO" lineStroke="{s1}"/>
-	    <mx:LineSeries id="NGCO2Ser" yField="NGCO2" displayName="NGCO2" lineStroke="{s2}"/>
-	    <mx:LineSeries id="NGNOxSer" yField="NGNOx" displayName="NGNOx" lineStroke="{s2}"/>
-	    <mx:LineSeries id="NGHCsSer" yField="NGHCs" displayName="NGHCs" lineStroke="{s2}"/>
-	    <mx:LineSeries id="NGO2Ser" yField="NGO2" displayName="NGO2" lineStroke="{s2}"/>
+	    <mx:LineSeries id="NGCOSer" yField="NGCO" displayName="NGCO" lineStroke="{s1}" includeInLayout="false"/>
+	    <mx:LineSeries id="NGCO2Ser" yField="NGCO2" displayName="NGCO2" lineStroke="{s2}" includeInLayout="false"/>
+	    <mx:LineSeries id="NGNOxSer" yField="NGNOx" displayName="NGNOx" lineStroke="{s2}" includeInLayout="false"/>
+	    <mx:LineSeries id="NGHCsSer" yField="NGHCs" displayName="NGHCs" lineStroke="{s2}" includeInLayout="false"/>
+	    <mx:LineSeries id="NGO2Ser" yField="NGO2" displayName="NGO2" lineStroke="{s2}" includeInLayout="false"/>
 	    
-	    <mx:LineSeries id="GpalSer" yField="Gpal" displayName="Gpal" lineStroke="{s3}"/>
-	    <mx:LineSeries id="GpovSer" yField="Gpov" displayName="Gpov" lineStroke="{s3}"/>
+	    <mx:LineSeries id="GpalSer" yField="Gpal" displayName="Gpal" lineStroke="{s3}" includeInLayout="false"/>
+	    <mx:LineSeries id="GpovSer" yField="Gpov" displayName="Gpov" lineStroke="{s3}" includeInLayout="false"/>
 	    
 	    <mx:LineSeries id="alphaSer" yField="alpha" displayName="Gpov" lineStroke="{s3}"/>
 	    
@@ -104,7 +104,7 @@
             showDataTips="true" dataProvider="{ecoDP}">
 		    
         </mx:LineChart>
-        <mx:VBox height="100%">
+        <mx:VBox height="100%" horizontalAlign="right">
         	
 	        <mx:HBox>
 			    <mx:VBox height="100%" >
@@ -113,9 +113,6 @@
 			    	<mx:LinkButton label="GNOx" click="showGraph(GNOxSer)"/>
 			    	<mx:LinkButton label="GHCs" click="showGraph(GHCsSer)"/>
 			    	<mx:LinkButton label="GO2" click="showGraph(GO2Ser)"/>
-			    	<mx:LinkButton label="Gpal" click="showGraph(GpalSer)"/>
-			    	<mx:LinkButton label="Gpov" click="showGraph(GpovSer)"/>
-			    	<mx:LinkButton label="alpha" click="showGraph(alphaSer)"/>
 			    </mx:VBox>   	 
 			    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
 			    	<mx:LinkButton label="NGCO" click="showGraph(GCOSer)" />
@@ -123,6 +120,10 @@
 			    	<mx:LinkButton label="NGNOx" click="showGraph(GNOxSer)"/>
 			    	<mx:LinkButton label="NGHCs" click="showGraph(GHCsSer)"/>
 			    	<mx:LinkButton label="NGO2" click="showGraph(GO2Ser)"/>
+			    </mx:VBox>   	 
+			    <mx:VBox height="100%" >
+			    	<mx:LinkButton label="Gpov" click="showGraph(GpovSer)"/>
+			    	<mx:LinkButton label="alpha" click="showGraph(alphaSer)"/>
 			    </mx:VBox>   	 
 	        </mx:HBox>
 	        <mx:Spacer height="100%" />

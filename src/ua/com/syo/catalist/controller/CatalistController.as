@@ -103,12 +103,11 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "withoutNeutralizer");
 	//PolyModelsXX.setCurrentModes("XX", "gasoline", "beforeNeutralizer");
 	//showView("ecologyVars", "ecologyVars");
-	//showView("ecologyVars", "ecologyVars");
-	//showView("ecologyVars", "ecologyVars");
-	showView("sumVars", "sumVars");
+	showView("ecologyVars", "ecologyVars");
+	//showView("sumVars", "sumVars");
 	//showView("cycleReproduce", "cycleReproduce");
 	
-	PolyKoef.currentMode = "withoutN";
+	PolyKoef.currentMode = "beforeN";
 	PolyKoef.currentFuel = "gasoline";
 
 	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
