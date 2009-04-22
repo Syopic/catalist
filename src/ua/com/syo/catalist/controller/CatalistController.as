@@ -111,7 +111,6 @@ private function cycleDataFileOpenHandler(event:Event):void  {
 	
 	//PolyKoef.currentMode = "beforeN";
 	//PolyKoef.currentFuel = "gasoline";
-	trace(PolyKoef.currentMode);
 
 	//showView("ecologyVars", "ecologyVars");
 	//trace(Integral.rectangleRule(0, 10.2, 0.001, testFunction));
