@@ -10,6 +10,7 @@ package ua.com.syo.catalist.model {
 	import flash.net.URLRequest;
 	
 	import ua.com.syo.catalist.data.CycleData;
+	import ua.com.syo.catalist.data.Globals;
 	import ua.com.syo.catalist.model.polynoms.PolynomsParser;
 	
 	public class FileManager extends EventDispatcher {
@@ -76,6 +77,7 @@ package ua.com.syo.catalist.model {
 			
 			CycleData.parseXML(currentCycleDataXML);
 			dispatchEvent(new Event(Event.OPEN));
+			Globals.dataLoaded = true;
 		}
 		
 		public function loadDefaultFile(url:String):void {

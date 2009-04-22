@@ -6,10 +6,10 @@
     </item>
     <item label="Розрахунок">
         <item id="cycleReproduce" label="Відтворення циклу"/>
-        <item id="energyVars" label="Енергетичні показники"/>
-        <item id="ecologyVars" label="Екологічні показники"/>
-        <item id="economyVars" label="Економічні показники"/>
-        <item id="sumVars" label="Сумарні показники"/>
+        <item id="energyVars" label="Енергетичні"/>
+        <item id="ecologyVars" label="Екологічні"/>
+        <item id="economyVars" label="Економічні"/>
+        <item id="sumVars" label="Сумарні"/>
     </item>
     <item label="Налаштування">
     	<item id="ktzParams" label="Параметри КТЗ"/>
