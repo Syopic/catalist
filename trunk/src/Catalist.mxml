@@ -7,7 +7,17 @@
     backgroundColor="#cccccc">
     <mx:Script>
     	<![CDATA[
+    		import mx.collections.ArrayCollection;
     		import ua.com.syo.catalist.view.data.CatalistStrings;
+    		
+    		[Bindable]
+            public var fuels:ArrayCollection = new ArrayCollection(
+                [ {label:"Бензин", data:"gasoline"}, 
+                  {label:"Газ", data:"gas"}]);
+    		[Bindable]
+            public var modes:ArrayCollection = new ArrayCollection(
+                [ {label:"Без нейтралізатора", data:"withN"}, 
+                  {label:"З нейтралізатором", data:"beforeN"}]);
     	]]>
     </mx:Script>
 
@@ -37,9 +47,12 @@
             	icon="@Embed('/../assets/images/icons/disk.png')" width="26" height="26"/>
             	
             <mx:VRule height="100%"/>
+            <mx:Spacer width="100%" />
+            <mx:VRule height="100%"/>
+            <mx:ComboBox id="fuelCB" height="26"  dataProvider="{fuels}" change="PolyKoef.currentMode = fuelCB.selectedItem.data"/>
+            <mx:ComboBox id="modeCB" height="26"  dataProvider="{modes}" change="PolyKoef.currentMode = modeCB.selectedItem.data"/>
             <mx:Button toolTip="Розрахувати" click="fileManager.loadDefaultFile('/../../assets/cycleData.xml')"
             	icon="@Embed('/../assets/images/icons/calculator.png')" label="Розрахувати" height="26"/>
-            <mx:Spacer width="100%" />
             
         </mx:ApplicationControlBar>
 
