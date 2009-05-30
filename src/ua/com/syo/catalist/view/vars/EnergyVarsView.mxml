@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.utils.StringUtils;
 			import ua.com.syo.utils.MathUtils;
 			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.model.calc.EnergyVars;
@@ -20,13 +21,13 @@
 				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
 					//CycleData.getModeTime(i);
 					if (Globals.traceAll || MathUtils.pRound(i, Globals.roundDecPlaces) is int) {
-						var o:Object = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
+						var o:Object = {time :  StringUtils.formatForPublish(i),
 										mode : CycleData.getMode(i),
-										Ndv : MathUtils.pRound(EnergyVars.getNdv(i), Globals.roundDecPlaces), 
-										Omega : MathUtils.pRound(EnergyVars.getOmega(i), Globals.roundDecPlaces), 
-										Mk : MathUtils.pRound(EnergyVars.getMk(i), Globals.roundDecPlaces), 
-										DeltaPk : MathUtils.pRound(EnergyVars.getDeltaPk(i), Globals.roundDecPlaces), 
-										PhiDros : MathUtils.pRound(EnergyVars.getPhiDros(i), Globals.roundDecPlaces)}
+										Ndv :  StringUtils.formatForPublish(EnergyVars.getNdv(i)), 
+										Omega :  StringUtils.formatForPublish(EnergyVars.getOmega(i)), 
+										Mk :  StringUtils.formatForPublish(EnergyVars.getMk(i)), 
+										DeltaPk :  StringUtils.formatForPublish(EnergyVars.getDeltaPk(i)), 
+										PhiDros :  StringUtils.formatForPublish(EnergyVars.getPhiDros(i))}
 						
 						energyvarsDP.addItem(o);
 					}

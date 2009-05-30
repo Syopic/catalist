@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.utils.StringUtils;
 			import ua.com.syo.catalist.model.calc.EcologyVars;
 			import ua.com.syo.utils.MathUtils;
 			import ua.com.syo.catalist.data.Globals;
@@ -29,30 +30,30 @@
 					if (Globals.traceAll || MathUtils.pRound(i, Globals.roundDecPlaces) is int) {
 						var o:Object;
 						if (isN) {
-							o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
+							o = {time : StringUtils.formatForPublish(i),
 									mode : CycleData.getMode(i),
-									CO : MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces), 
-									CO2 : MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces), 
-									NOx : MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces), 
-									HCs : MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces), 
-									O2 : MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces)}
+									CO : StringUtils.formatForPublish(EcologyVars.getCO(i)), 
+									CO2 : StringUtils.formatForPublish(EcologyVars.getCO2(i)), 
+									NOx : StringUtils.formatForPublish(EcologyVars.getNOx(i)), 
+									HCs : StringUtils.formatForPublish(EcologyVars.getHCs(i)), 
+									O2 : StringUtils.formatForPublish(EcologyVars.getO2(i))}
 						} else {
-							o = {time : MathUtils.pRound(i, Globals.roundDecPlaces), mode : CycleData.getMode(i)}
+							o = {time : StringUtils.formatForPublish(i), mode : CycleData.getMode(i)}
 							
 							
 							PolyKoef.currentMode = "beforeN";
-									o.CO = MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces); 
-									o.CO2 = MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces); 
-									o.NOx = MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces); 
-									o.HCs = MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces);
-									o.O2 = MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces);
+									o.CO = StringUtils.formatForPublish(EcologyVars.getCO(i)); 
+									o.CO2 = StringUtils.formatForPublish(EcologyVars.getCO2(i)); 
+									o.NOx = StringUtils.formatForPublish(EcologyVars.getNOx(i)); 
+									o.HCs = StringUtils.formatForPublish(EcologyVars.getHCs(i));
+									o.O2 = StringUtils.formatForPublish(EcologyVars.getO2(i));
 									
 							PolyKoef.currentMode = "afterN";
-									o.NCO = MathUtils.pRound(EcologyVars.getCO(i), Globals.roundDecPlaces);
-									o.NCO2 = MathUtils.pRound(EcologyVars.getCO2(i), Globals.roundDecPlaces);
-									o.NNOx = MathUtils.pRound(EcologyVars.getNOx(i), Globals.roundDecPlaces); 
-									o.NHCs = MathUtils.pRound(EcologyVars.getHCs(i), Globals.roundDecPlaces);
-									o.NO2 = MathUtils.pRound(EcologyVars.getO2(i), Globals.roundDecPlaces);
+									o.NCO = StringUtils.formatForPublish(EcologyVars.getCO(i));
+									o.NCO2 = StringUtils.formatForPublish(EcologyVars.getCO2(i));
+									o.NNOx = StringUtils.formatForPublish(EcologyVars.getNOx(i)); 
+									o.NHCs = StringUtils.formatForPublish(EcologyVars.getHCs(i));
+									o.NO2 = StringUtils.formatForPublish(EcologyVars.getO2(i));
 									
 									o.efCO = calcEffect(o.CO, o.NCO);									
 									o.efCO2 = calcEffect(o.CO2, o.NCO2);									

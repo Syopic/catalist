@@ -1,6 +1,8 @@
 package ua.com.syo.catalist.utils {
 	import mx.controls.DataGrid;
 	
+	import ua.com.syo.utils.StringUtils;
+	
 
 	public class ExportUtils {
 
@@ -53,6 +55,12 @@ package ua.com.syo.catalist.utils {
         			//Do we still have a valid item?						
         			if(dg.dataProvider.getItemAt(j) != undefined && dg.dataProvider.getItemAt(j) != null) {
         				
+	        			var s:String = dg.dataProvider.getItemAt(j)[dg.columns[k].dataField].toString();
+	        			if (!isNaN(dg.dataProvider.getItemAt(j)[dg.columns[k].dataField].toString())) {
+	        				s = StringUtils.dotToComma(dg.dataProvider.getItemAt(j)[dg.columns[k].dataField]);
+	        			} else {
+	        				s = dg.dataProvider.getItemAt(j)[dg.columns[k].dataField];
+	        			}
         				//Check to see if the user specified a labelfunction which we must
         				//use instead of the dataField
         				if(dg.columns[k].labelFunction != undefined) {
@@ -62,14 +70,14 @@ package ua.com.syo.catalist.utils {
         					//Our dataprovider contains the real data
         					//We need the column information (dataField)
         					//to specify which key to use.
-        					str += "<td width=\""+Math.ceil(dg.columns[k].width)+"\" "+style+">"+dg.dataProvider.getItemAt(j)[dg.columns[k].dataField]+"</td>";
+        					
+        					str += "<td width=\""+Math.ceil(dg.columns[k].width)+"\" "+style+">"+s+"</td>";
         				}
         			}
         		}
         		str += "</tr>";
         	}
         	str+="</tbody></table>";
-        
         	return str;
         }
 

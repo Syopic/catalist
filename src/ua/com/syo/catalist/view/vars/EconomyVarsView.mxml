@@ -5,6 +5,7 @@
 		paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10">
 	<mx:Script>
 		<![CDATA[
+			import ua.com.syo.utils.StringUtils;
 			import ua.com.syo.utils.MathUtils;
 			import ua.com.syo.catalist.data.Globals;
 			import ua.com.syo.catalist.model.polynoms.PolyModelsXX;
@@ -31,35 +32,37 @@
 					if (Globals.traceAll || MathUtils.pRound(i, Globals.roundDecPlaces) is int) {
 						var o:Object;
 						if (isN) {
-							o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
-									GCO : MathUtils.pRound(EcologyVars.getGCO(i), Globals.roundDecPlaces), 
-									GCO2 : MathUtils.pRound(EcologyVars.getGCO2(i), Globals.roundDecPlaces), 
-									GNOx : MathUtils.pRound(EcologyVars.getGNOx(i), Globals.roundDecPlaces), 
-									GHCs : MathUtils.pRound(EcologyVars.getGHCs(i), Globals.roundDecPlaces), 
-									GO2 : MathUtils.pRound(EcologyVars.getGO2(i), Globals.roundDecPlaces),
+							o = {time : StringUtils.formatForPublish(i),
+									mode : CycleData.getMode(i),
+									GCO : StringUtils.formatForPublish(EcologyVars.getGCO(i)), 
+									GCO2 : StringUtils.formatForPublish(EcologyVars.getGCO2(i)), 
+									GNOx : StringUtils.formatForPublish(EcologyVars.getGNOx(i)), 
+									GHCs : StringUtils.formatForPublish(EcologyVars.getGHCs(i)), 
+									GO2 : StringUtils.formatForPublish(EcologyVars.getGO2(i)),
 									 
-									Gpal : MathUtils.pRound(EconomyVars.getGpal(i), Globals.roundDecPlaces), 
-									Gpov : MathUtils.pRound(EconomyVars.getGpov(i), Globals.roundDecPlaces),
+									Gpal : StringUtils.formatForPublish(EconomyVars.getGpal(i)), 
+									Gpov : StringUtils.formatForPublish(EconomyVars.getGpov(i)),
 									
-									alpha : MathUtils.pRound(EconomyVars.getAlpha(i), Globals.roundDecPlaces)}
+									alpha : StringUtils.formatForPublish(EconomyVars.getAlpha(i))}
 						} else {
-							o = {time : MathUtils.pRound(i, Globals.roundDecPlaces),
-									GCO : MathUtils.pRound(EcologyVars.getGCO(i), Globals.roundDecPlaces), 
-									GCO2 : MathUtils.pRound(EcologyVars.getGCO2(i), Globals.roundDecPlaces), 
-									GNOx : MathUtils.pRound(EcologyVars.getGNOx(i), Globals.roundDecPlaces), 
-									GHCs : MathUtils.pRound(EcologyVars.getGHCs(i), Globals.roundDecPlaces), 
-									GO2 : MathUtils.pRound(EcologyVars.getGO2(i), Globals.roundDecPlaces),
+							o = {time : StringUtils.formatForPublish(i),
+									mode : CycleData.getMode(i),
+									GCO : StringUtils.formatForPublish(EcologyVars.getGCO(i)), 
+									GCO2 : StringUtils.formatForPublish(EcologyVars.getGCO2(i)), 
+									GNOx : StringUtils.formatForPublish(EcologyVars.getGNOx(i)), 
+									GHCs : StringUtils.formatForPublish(EcologyVars.getGHCs(i)), 
+									GO2 : StringUtils.formatForPublish(EcologyVars.getGO2(i)),
 									
-									NGCO : MathUtils.pRound(EcologyVars.getGCO(i), Globals.roundDecPlaces), 
-									NGCO2 : MathUtils.pRound(EcologyVars.getGCO2(i), Globals.roundDecPlaces), 
-									NGNOx : MathUtils.pRound(EcologyVars.getGNOx(i), Globals.roundDecPlaces), 
-									NGHCs : MathUtils.pRound(EcologyVars.getGHCs(i), Globals.roundDecPlaces), 
-									NGO2 : MathUtils.pRound(EcologyVars.getGO2(i), Globals.roundDecPlaces),
+									NGCO : StringUtils.formatForPublish(EcologyVars.getGCO(i)), 
+									NGCO2 : StringUtils.formatForPublish(EcologyVars.getGCO2(i)), 
+									NGNOx : StringUtils.formatForPublish(EcologyVars.getGNOx(i)), 
+									NGHCs : StringUtils.formatForPublish(EcologyVars.getGHCs(i)), 
+									NGO2 : StringUtils.formatForPublish(EcologyVars.getGO2(i)),
 									 
-									Gpal : MathUtils.pRound(EconomyVars.getGpal(i), Globals.roundDecPlaces), 
-									Gpov : MathUtils.pRound(EconomyVars.getGpov(i), Globals.roundDecPlaces),
+									Gpal : StringUtils.formatForPublish(EconomyVars.getGpal(i)), 
+									Gpov : StringUtils.formatForPublish(EconomyVars.getGpov(i)),
 									
-									alpha : MathUtils.pRound(EconomyVars.getAlpha(i), Globals.roundDecPlaces)}
+									alpha : StringUtils.formatForPublish(EconomyVars.getAlpha(i))}
 						}
 						
 						ecoDP.addItem(o);
@@ -135,6 +138,7 @@
 		<mx:DataGrid id="cDG" width="100%" height="300" dataProvider="{ecoDP}">
 			<mx:columns>
 				<mx:DataGridColumn headerText="Час (сек.)" dataField="time" visible="true"/>
+				<mx:DataGridColumn headerText="режим" dataField="mode" />
 				<mx:DataGridColumn headerText="GCO" dataField="GCO" />
 				<mx:DataGridColumn headerText="GCO2" dataField="GCO2" />
 				<mx:DataGridColumn headerText="GNOx" dataField="GNOx" />
