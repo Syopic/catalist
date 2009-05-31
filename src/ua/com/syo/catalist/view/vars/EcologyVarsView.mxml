@@ -56,10 +56,10 @@
 									o.NO2 = StringUtils.formatForPublish(EcologyVars.getO2(i));
 									
 									o.efCO = calcEffect(o.CO, o.NCO);									
-									o.efCO2 = calcEffect(o.CO2, o.NCO2);									
+									o.efCO2 = calcEffect(o.CO2, o.NCO2, true);									
 									o.efNOx = calcEffect(o.NOx, o.NNOx);									
 									o.efHCs = calcEffect(o.HCs, o.NHCs);									
-									o.efO2 = calcEffect(o.O2, o.NO2);									
+									o.efO2 = calcEffect(o.O2, o.NO2, true);									
 						}
 						ecoDP.addItem(o);
 						timeW = 8;
@@ -68,16 +68,18 @@
 				//showGraph(distSer);
 			}
 			
-			private function calcEffect(beforeValue:Number, afterValue:Number):Number {
+			private function calcEffect(beforeValue:Number, afterValue:Number, isTrue:Boolean = false):Number {
 				var result:Number = 0;
 				if (beforeValue != 0 && beforeValue != 0) {
 					result = (beforeValue - afterValue) / beforeValue * 100;
 				}
-				if (beforeValue == 0 && beforeValue == 0) {
-					result = 100;
-				}
-				if (result < 0) {
-					result = 0;
+				if (!isTrue) { 
+					if (beforeValue == 0 && beforeValue == 0) {
+						result = 100;
+					}
+					if (result < 0) {
+						result = 0;
+					}
 				}
 				
 				return MathUtils.pRound(result, Globals.roundDecPlaces);
