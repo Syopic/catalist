@@ -161,7 +161,7 @@ package ua.com.syo.catalist.model.calc {
 			switch (CycleData.getMode(time)) {
 				case "ХХ":
 				case "рушання":
-					result = KoefStorage.deltaPkXX;
+					result = KoefStorage.dPkXX;
 					break;
 				case "розгін-":
 				case "розгін+":
