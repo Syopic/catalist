@@ -101,11 +101,11 @@ package ua.com.syo.catalist.data {
 	        
 	        for (var i:Number = 0; i < (cycleTimeLength * 10); i++) {
 	        	if (time > i/10) {
-	        		result += getSpeed(i/10)/10;
+	        		result += (getSpeed(i/10)/10);
 	        	}
 	        }
 	        
-	        return result;
+	        return result/3.6;
 	    }
 	    
 	    //вертає режим в заданий час

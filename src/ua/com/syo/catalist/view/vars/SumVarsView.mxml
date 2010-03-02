@@ -29,6 +29,7 @@
 				var sumGC:Number = 0;
 				
 				var sumGsum:Number = 0;
+				var sumGsum2:Number = 0;
 				
 				var curMode:String = CycleData.getMode(0);
 				for (var i:Number = Globals.startT; i < Globals.endT; i+=Globals.dT) {
@@ -56,8 +57,10 @@
 					sumGPb = KoefStorage.PbGas * sumGpal / KoefStorage.roGas;
 				}
 				
-				sumGGpal1km = sumGpal / CycleData.getDistance(1950);
+				sumGGpal1km = sumGpal * 1000 / CycleData.getDistance(1950);
 				sumGsum = sumGCO + 3.16 * sumGHCs + 41.1 * sumGNOx + 0.05 * sumGCO2 + 22 * sumGSO2 + 22400 * sumGPb + 200 * sumGC;
+				sumGsum2 = sumGsum  * 3.6 / Globals.endT;
+				
 				
 				GpalLab.text = MathUtils.pRound(sumGpal, Globals.roundDecPlaces).toString();
 				GpalMdjLab.text = MathUtils.pRound(sumGGpalMdj, Globals.roundDecPlaces).toString();
@@ -73,6 +76,7 @@
 				GCLab.text = MathUtils.pRound(sumGC, Globals.roundDecPlaces).toString();
 				
 				SumGSumLab.text = MathUtils.pRound(sumGsum, Globals.roundDecPlaces).toString();
+				SumGSumLab2.text = MathUtils.pRound(sumGsum2, Globals.roundDecPlaces).toString();
 			}
 			
 		]]>
@@ -98,34 +102,34 @@
 			<mx:HRule width="100%"/>
 		</mx:VBox>
 		<mx:VBox width="100%" >
-			<mx:Label text="Масові викиди за цикл, кг/год:" width="163" fontWeight="normal"/>
+			<mx:Label text="Масові викиди за цикл:" width="250" fontWeight="normal"/>
 			<mx:VBox width="100%">
 				<mx:HBox width="100%">
-					<mx:Label text="GCOцикл:"  fontWeight="bold"/>
+					<mx:Label text="GCO, г/цикл:"  fontWeight="bold"/>
 					<mx:Label id="GCOLab" selectable="true"/>
 					
-					<mx:Label text="GCO2цикл:"  fontWeight="bold"/>
+					<mx:Label text="GCO2, г/цикл:"  fontWeight="bold"/>
 					<mx:Label id="GCO2Lab" selectable="true"/>
 					
-					<mx:Label text="GO2цикл:"  fontWeight="bold"/>
+					<mx:Label text="GO2, г/цикл:"  fontWeight="bold"/>
 					<mx:Label id="GO2Lab" selectable="true"/>
 				</mx:HBox>
 				<mx:HBox width="100%">
-					<mx:Label text="GHCsцикл:"  fontWeight="bold"/>
+					<mx:Label text="GHCs, г/цикл:"  fontWeight="bold"/>
 					<mx:Label id="GHCsLab" selectable="true"/>
 					
-					<mx:Label text="GNOxцикл:"  fontWeight="bold"/>
+					<mx:Label text="GNOx, г/цикл:"  fontWeight="bold"/>
 					<mx:Label id="GNOxLab" selectable="true"/>
 				</mx:HBox>
 				
 				<mx:HBox width="100%">
-					<mx:Label text="GSO2цикл:"  fontWeight="bold"/>
+					<mx:Label text="GSO2, г/цикл:"  fontWeight="bold"/>
 					<mx:Label id="GSO2Lab" selectable="true"/>
 					
-					<mx:Label text="GPbцикл:"  fontWeight="bold"/>
+					<mx:Label text="GPb, г/цикл:"  fontWeight="bold"/>
 					<mx:Label id="GPbLab" selectable="true"/>
 					
-					<mx:Label text="GCцикл:"  fontWeight="bold"/>
+					<mx:Label text="GC, г/цикл:"  fontWeight="bold"/>
 					<mx:Label id="GCLab" selectable="true"/>
 				</mx:HBox>
 			<mx:HRule width="100%"/>
@@ -133,10 +137,15 @@
 			</mx:VBox>
 		</mx:VBox>
 		<mx:VBox width="100%" >
-			<mx:Label text="Сумарні викиди, зведені до СО, умовних кг/год:" width="193" fontWeight="normal"/>
+			<mx:Label text="Сумарні викиди, зведені до СО:" width="193" fontWeight="normal"/>
 			<mx:HBox width="100%">
-				<mx:Label text="SumGSum:"  fontWeight="bold"/>
+				<mx:Label text="GΣ, умовні г/цикл:"  fontWeight="bold"/>
 				<mx:Label id="SumGSumLab" selectable="true"/>
+				</mx:HBox>
+						
+				<mx:HBox width="100%">	
+				<mx:Label text="GΣ, умовні кг/год:"  fontWeight="bold"/>
+				<mx:Label id="SumGSumLab2" selectable="true"/>
 				
 			</mx:HBox>
 			<mx:HRule width="100%"/>
