@@ -3,31 +3,31 @@
 	cornerRadius="0" verticalGap="4" width="100%" height="100%" headerHeight="10">
 	<mx:Script>
 	    <![CDATA[
-	    	import ua.com.syo.catalist.model.KTZParams;
+	    	import ua.com.syo.catalist.data.KoefStorage;
 	    	
 	    	private function applyButtonClickHandler():void {
-	    		KTZParams.ktzModel = modelTextInput.text;
+	    		KoefStorage.ktzModel = modelTextInput.text;
 	    		
-	    		KTZParams.UI = uINumStepper.value;
-	    		KTZParams.UII = uIINumStepper.value;
-	    		KTZParams.UIII = uIIINumStepper.value;
-	    		KTZParams.UIV = uIVNumStepper.value;
-	    		KTZParams.UV = uVNumStepper.value;
+	    		KoefStorage.UI = uINumStepper.value;
+	    		KoefStorage.UII = uIINumStepper.value;
+	    		KoefStorage.UIII = uIIINumStepper.value;
+	    		KoefStorage.UIV = uIVNumStepper.value;
+	    		KoefStorage.UV = uVNumStepper.value;
 	    		
-	    		KTZParams.Ga = GaNumStepper.value;
-				KTZParams.rk = rkNumStepper.value;
-				KTZParams.rd = rdNumStepper.value;
-				KTZParams.vMax = vMaxNumStepper.value;
-				KTZParams.g100km = g100kmNumStepper.value;
-				KTZParams.MkMax = MkMaxNumStepper.value;
-				KTZParams.nXXmin = nXXminNumStepper.value;
-				KTZParams.u0 = u0NumStepper.value;
-				KTZParams.etaTrans = etaTransNumStepper.value;
-				KTZParams.beta = betaNumStepper.value;
-				KTZParams.Idv = IdvNumStepper.value;
-				KTZParams.IkSum = IkSumNumStepper.value;
-				KTZParams.f0 = f0NumStepper.value;
-				KTZParams.W = WNumStepper.value;
+	    		KoefStorage.Ga = GaNumStepper.value;
+				KoefStorage.rk = rkNumStepper.value;
+				KoefStorage.rd = rdNumStepper.value;
+				KoefStorage.vMax = vMaxNumStepper.value;
+				KoefStorage.g100km = g100kmNumStepper.value;
+				KoefStorage.MkMax = MkMaxNumStepper.value;
+				KoefStorage.u0 = u0NumStepper.value;
+				KoefStorage.etaTrans = etaTransNumStepper.value;
+				KoefStorage.beta = betaNumStepper.value;
+				KoefStorage.IkSum = IkSumNumStepper.value;
+				KoefStorage.f0 = f0NumStepper.value;
+				KoefStorage.W = WNumStepper.value;
+				KoefStorage.nDvZchep = nDvZchepNumStepper.value;
+				KoefStorage.phiDrosMin = phiDrosMinNumStepper.value;
 	    	}
 			
 	
@@ -38,25 +38,25 @@
 			<mx:VBox width="100%" height="100%" verticalAlign="top">
 				<mx:Form height="59" width="100%" >
 			        <mx:FormItem height="27" width="100%" label="Модель КТЗ" horizontalAlign="left" >
-				    	<mx:TextInput id="modelTextInput" text="{KTZParams.ktzModel}"/>
+				    	<mx:TextInput id="modelTextInput" text="{KoefStorage.ktzModel}"/>
 			        </mx:FormItem>
 				</mx:Form>
 				<mx:Label fontSize="10" text="Передаткові числа коробки передач:" x="20" y="496"/>
 		    	<mx:Form height="100%" width="100%" >
 			    	<mx:FormItem label="UI:">
-			            <mx:NumericStepper id="uINumStepper" value="{KTZParams.UI}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uINumStepper" value="{KoefStorage.UI}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 			    	<mx:FormItem label="UII:">
-			            <mx:NumericStepper id="uIINumStepper" value="{KTZParams.UII}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uIINumStepper" value="{KoefStorage.UII}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 			    	<mx:FormItem label="UIII:">
-			            <mx:NumericStepper id="uIIINumStepper" value="{KTZParams.UIII}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uIIINumStepper" value="{KoefStorage.UIII}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 			    	<mx:FormItem label="UIV:">
-			            <mx:NumericStepper id="uIVNumStepper" value="{KTZParams.UIV}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uIVNumStepper" value="{KoefStorage.UIV}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 			    	<mx:FormItem label="UV:">
-			            <mx:NumericStepper id="uVNumStepper" value="{KTZParams.UV}" stepSize="0.1" maximum="500"/>
+			            <mx:NumericStepper id="uVNumStepper" value="{KoefStorage.UV}" stepSize="0.1" maximum="500"/>
 			        </mx:FormItem>
 		        </mx:Form>
 			</mx:VBox>
@@ -65,21 +65,48 @@
 		    </mx:HBox>
 			<mx:HBox width="100%" height="100%">
 				<mx:Form height="100%" width="100%" verticalGap="5">
+			        <mx:FormItem label="Передаткове число головної передачі">
+			        	<mx:HBox>
+			        		<mx:HBox width="55">
+			        		   	<mx:Image source="@Embed('/../assets/images/icons/params/U0.png')" scaleContent="false"/>
+			        		   </mx:HBox>
+			        	    <mx:NumericStepper id="u0NumStepper" value="{KoefStorage.u0}" stepSize="0.1"/>
+			        	    <mx:Label text="" />
+			        	</mx:HBox>
+			        </mx:FormItem>
+			        <mx:FormItem label="Максимальний крутний момент двигуна">
+			        	<mx:HBox>
+			        		<mx:HBox width="55">
+			        		   	<mx:Image source="@Embed('/../assets/images/icons/params/Mkmax.png')" scaleContent="false"/>
+			        		   </mx:HBox>
+			        	    <mx:NumericStepper id="MkMaxNumStepper" value="{KoefStorage.MkMax}" stepSize="0.1"/>
+			        	    <mx:Label text="Н ∙ м" />
+			        	</mx:HBox>
+			        </mx:FormItem>
 			        <mx:FormItem label="Повна вага КТЗ">
 			        	<mx:HBox>
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/Ga.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="GaNumStepper" value="{KTZParams.Ga}" stepSize="1" maximum="10000"/>
+				            <mx:NumericStepper id="GaNumStepper" value="{KoefStorage.Ga}" stepSize="1" maximum="10000"/>
 				            <mx:Label text="кг" />
 			        	</mx:HBox>
 			        </mx:FormItem>
-			        <mx:FormItem label="Радіус кочення коліс КТ">
+			        <mx:FormItem label="Максимальна швидкість руху на вищій передачі при повній масі">
+			        	<mx:HBox>
+			        		<mx:HBox width="55">
+			        		   	<mx:Image source="@Embed('/../assets/images/icons/params/Vmax.png')" scaleContent="false"/>
+			        		   </mx:HBox>
+			        	    <mx:NumericStepper id="vMaxNumStepper" value="{KoefStorage.vMax}" stepSize="0.1"/>
+			        	    <mx:Label text="км/год" />
+			        	</mx:HBox>
+			        </mx:FormItem>
+			        <mx:FormItem label="Радіус кочення коліс КТЗ">
 			        	<mx:HBox>
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/rk.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="rkNumStepper" value="{KTZParams.rk}" stepSize="0.1"/>
+				            <mx:NumericStepper id="rkNumStepper" value="{KoefStorage.rk}" stepSize="0.1"/>
 				            <mx:Label text="м" />
 			        	</mx:HBox>
 			        </mx:FormItem>
@@ -88,17 +115,8 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/rdin.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="rdNumStepper" value="{KTZParams.rd}" stepSize="0.1"/>
+				            <mx:NumericStepper id="rdNumStepper" value="{KoefStorage.rd}" stepSize="0.1"/>
 				            <mx:Label text="м" />
-			        	</mx:HBox>
-			        </mx:FormItem>
-			        <mx:FormItem label="Максимальна швидкість руху на вищій передачі при повній масі">
-			        	<mx:HBox>
-			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/Vmax.png')" scaleContent="false"/>
-				            </mx:HBox>
-				            <mx:NumericStepper id="vMaxNumStepper" value="{KTZParams.vMax}" stepSize="0.1"/>
-				            <mx:Label text="км/год" />
 			        	</mx:HBox>
 			        </mx:FormItem>
 			        <mx:FormItem label="Витрата палива в міському циклі">
@@ -106,89 +124,70 @@
 			        		<mx:HBox width="55">
 				            	<mx:Image source="@Embed('/../assets/images/icons/params/g100.png')" scaleContent="false"/>
 				            </mx:HBox>
-				            <mx:NumericStepper id="g100kmNumStepper" value="{KTZParams.g100km}" stepSize="0.1"/>
+				            <mx:NumericStepper id="g100kmNumStepper" value="{KoefStorage.g100km}" stepSize="0.1"/>
 				            <mx:Label text="л/100 км" />
-			        	</mx:HBox>
-			        </mx:FormItem>
-			        <mx:FormItem label="Максимальний крутний момент двигуна">
-			        	<mx:HBox>
-			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/Mkmax.png')" scaleContent="false"/>
-				            </mx:HBox>
-				            <mx:NumericStepper id="MkMaxNumStepper" value="{KTZParams.MkMax}" stepSize="0.1"/>
-				            <mx:Label text="Н ∙ м" />
-			        	</mx:HBox>
-			        </mx:FormItem>
-			        <mx:FormItem label="Мнімальна частота обертання колінчастого валу двигуна в режимі хол. ходу">
-			        	<mx:HBox>
-			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/nXXmin.png')" scaleContent="false"/>
-				            </mx:HBox>
-				            <mx:NumericStepper id="nXXminNumStepper" value="{KTZParams.nXXmin}" stepSize="0.1"/>
-				            <mx:Label text="хв-1" />
-			        	</mx:HBox>
-			        </mx:FormItem>
-			        <mx:FormItem label="Передаткове число головної передачі">
-			        	<mx:HBox>
-			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/U0.png')" scaleContent="false"/>
-				            </mx:HBox>
-				            <mx:NumericStepper id="u0NumStepper" value="{KTZParams.u0}" stepSize="0.1"/>
-				            <mx:Label text="" />
 			        	</mx:HBox>
 			        </mx:FormItem>
 			        <mx:FormItem label="Коефіцієнт корисної дії трансмісії">
 			        	<mx:HBox>
 			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/nTrans.png')" scaleContent="false"/>
-				            </mx:HBox>
-				            <mx:NumericStepper id="etaTransNumStepper" value="{KTZParams.etaTrans}" stepSize="0.1"/>
-				            <mx:Label text="" />
+			        		   	<mx:Image source="@Embed('/../assets/images/icons/params/nTrans.png')" scaleContent="false"/>
+			        		   </mx:HBox>
+			        	    <mx:NumericStepper id="etaTransNumStepper" value="{KoefStorage.etaTrans}" stepSize="0.1"/>
+			        	    <mx:Label text="" />
 			        	</mx:HBox>
 			        </mx:FormItem>
 			        <mx:FormItem label="Коефіцієнт запасу зчеплення">
 			        	<mx:HBox>
 			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/beta.png')" scaleContent="false"/>
-				            </mx:HBox>
-				            <mx:NumericStepper id="betaNumStepper" value="{KTZParams.beta}" stepSize="0.1"/>
-				            <mx:Label text="" />
-			        	</mx:HBox>
-			        </mx:FormItem>
-			        <mx:FormItem label="Момент інерції двигуна">
-			        	<mx:HBox>
-			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/Idv.png')" scaleContent="false"/>
-				            </mx:HBox>
-				            <mx:NumericStepper id="IdvNumStepper" value="{KTZParams.Idv}" stepSize="0.1"/>
-				            <mx:Label text="кг ∙ м2" />
+			        		   	<mx:Image source="@Embed('/../assets/images/icons/params/beta.png')" scaleContent="false"/>
+			        		   </mx:HBox>
+			        	    <mx:NumericStepper id="betaNumStepper" value="{KoefStorage.beta}" stepSize="0.1"/>
+			        	    <mx:Label text="" />
 			        	</mx:HBox>
 			        </mx:FormItem>
 			        <mx:FormItem label="Сумарний момент інерції усіх коліс КТЗ">
 			        	<mx:HBox>
 			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/sum.png')" scaleContent="false"/>
-				            </mx:HBox>
-				            <mx:NumericStepper id="IkSumNumStepper" value="{KTZParams.IkSum}" stepSize="0.1"/>
-				            <mx:Label text="кг ∙ м2" />
-			        	</mx:HBox>
-			        </mx:FormItem>
-			        <mx:FormItem label="Коефіцієнт опору коченню">
-			        	<mx:HBox>
-			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/f0.png')" scaleContent="false"/>
-				            </mx:HBox>
-				            <mx:NumericStepper id="f0NumStepper" value="{KTZParams.f0}" stepSize="0.1"/>
-				            <mx:Label text="кгс/кг" />
+			        		   	<mx:Image source="@Embed('/../assets/images/icons/params/sum.png')" scaleContent="false"/>
+			        		   </mx:HBox>
+			        	    <mx:NumericStepper id="IkSumNumStepper" value="{KoefStorage.IkSum}" stepSize="0.1"/>
+			        	    <mx:Label text="кг ∙ м2" />
 			        	</mx:HBox>
 			        </mx:FormItem>
 			        <mx:FormItem label="Фактор обтічності КТЗ">
 			        	<mx:HBox>
 			        		<mx:HBox width="55">
-				            	<mx:Image source="@Embed('/../assets/images/icons/params/W.png')" scaleContent="false"/>
+			        		   	<mx:Image source="@Embed('/../assets/images/icons/params/W.png')" scaleContent="false"/>
+			        		   </mx:HBox>
+			        	    <mx:NumericStepper id="WNumStepper" value="{KoefStorage.W}" stepSize="0.1"/>
+			        	    <mx:Label text="Н ∙ с2/м4" />
+			        	</mx:HBox>
+			        </mx:FormItem>
+			        <mx:FormItem label="Коефіцієнт опору коченню">
+			        	<mx:HBox>
+			        		<mx:HBox width="55">
+			        		   	<mx:Image source="@Embed('/../assets/images/icons/params/f0.png')" scaleContent="false"/>
+			        		   </mx:HBox>
+			        	    <mx:NumericStepper id="f0NumStepper" value="{KoefStorage.f0}" stepSize="0.1"/>
+			        	    <mx:Label text="кгс/кг" />
+			        	</mx:HBox>
+			        </mx:FormItem>
+			        <mx:FormItem label="Частота обертання колінчастого валу двигуна в момент вмикання зчеплення">
+			        	<mx:HBox>
+			        		<mx:HBox width="55">
+			        		    <mx:Label text="nдв зчеп" />
+			        		   </mx:HBox>
+			        	    <mx:NumericStepper id="nDvZchepNumStepper" value="{KoefStorage.nDvZchep}" stepSize="10"/>
+			        	    <mx:Label text="хв-1" />
+			        	</mx:HBox>
+			        </mx:FormItem>
+			        <mx:FormItem label="Найменший кут відкриття дросельних заслінок">
+			        	<mx:HBox>
+			        		<mx:HBox width="55">
 				            </mx:HBox>
-				            <mx:NumericStepper id="WNumStepper" value="{KTZParams.W}" stepSize="0.1"/>
-				            <mx:Label text="Н ∙ с2/м4" />
+				            <mx:NumericStepper id="phiDrosMinNumStepper" value="{KoefStorage.phiDrosMin}" stepSize="0.1"/>
+				            <mx:Label text="рад" />
 			        	</mx:HBox>
 			        </mx:FormItem>
 			    </mx:Form>

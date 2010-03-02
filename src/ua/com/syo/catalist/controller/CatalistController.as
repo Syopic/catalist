@@ -6,7 +6,6 @@ import mx.events.MenuEvent;
 import mx.managers.PopUpManager;
 
 import ua.com.syo.catalist.model.FileManager;
-import ua.com.syo.catalist.model.KTZParams;
 import ua.com.syo.catalist.model.polynoms.PolyKoef;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
@@ -34,11 +33,9 @@ private static const views:Object = {
 
 private function init():void {
 	fileManager.addEventListener(Event.OPEN, cycleDataFileOpenHandler);
+	fileManager.loadDefaultFile('cycleData.xml');
 }
 
-private function getN(t:Number):Number {
-	return KTZParams.nXXmin+0*t;
-}
 
 private function onClickMenuBarHandler(event:MenuEvent): void {
 	switchMenuItems(XML(event.menu.selectedItem).@id, XML(event.menu.selectedItem).@label);
