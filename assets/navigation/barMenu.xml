@@ -12,10 +12,9 @@
         <item id="sumVars" label="Сумарні"/>
     </item>
     <item label="Налаштування">
-    	<item id="ktzParams" label="Параметри КТЗ"/>
-    	<item id="expParams" label="Параметри двигуна"/>
-    	<item id="" label="Параметри для визначення екологічних показників КТЗ"/>
-    	<item id="" label="Параметри оточуючого середовища і фізичні константи"/>
+    	<item id="ktzParams" label="Параметри КТЗ і двигуна"/>
+    	<item id="expParams" label="Параметри палива"/>
+    	<item id="otherParams" label="Інші параметри"/>
     	<item id="poliKoef" label="Коефіцієнти поліномів"/>
     </item>
     <item label="Довідка">
