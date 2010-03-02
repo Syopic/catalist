@@ -5,6 +5,7 @@ import mx.core.Container;
 import mx.events.MenuEvent;
 import mx.managers.PopUpManager;
 
+import ua.com.syo.catalist.data.KoefStorage;
 import ua.com.syo.catalist.model.FileManager;
 import ua.com.syo.catalist.model.polynoms.PolyKoef;
 import ua.com.syo.catalist.view.AboutView;
@@ -32,6 +33,7 @@ private static const views:Object = {
 }
 
 private function init():void {
+	KoefStorage.init();
 	fileManager.addEventListener(Event.OPEN, cycleDataFileOpenHandler);
 	fileManager.loadDefaultFile('cycleData.xml');
 }
