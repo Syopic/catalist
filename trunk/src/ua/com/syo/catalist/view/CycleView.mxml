@@ -46,17 +46,17 @@
     
 	<mx:VDividedBox width="100%" height="100%">
 	<mx:HBox width="100%" height="100%">
-	    <mx:LineSeries id="speedSer" yField="speed" displayName="Швидкість" lineStroke="{s1}" includeInLayout="false"/>
-	    <mx:LineSeries id="distSer" yField="dist" displayName="Дистанція" lineStroke="{s2}" includeInLayout="false"/>
-	    <mx:LineSeries id="accelSer" yField="accel" displayName="Прискорення" lineStroke="{s3}" includeInLayout="false"/>
+	    <mx:LineSeries id="speedSer" yField="speed" displayName="Швидкість, км/год" lineStroke="{s1}" includeInLayout="false"/>
+	    <mx:LineSeries id="distSer" yField="dist" displayName="Відстань, м" lineStroke="{s2}" includeInLayout="false"/>
+	    <mx:LineSeries id="accelSer" yField="accel" displayName="Прискорення, м/с²" lineStroke="{s3}" includeInLayout="false"/>
 		<mx:LineChart id="linechart" height="100%" width="100%"
             showDataTips="true" dataProvider="{cycleDP}">
 		    
         </mx:LineChart>
 	    <mx:VBox height="100%" horizontalAlign="right">
-	    	<mx:LinkButton label="Швидкість" click="showGraph(speedSer)"/>
-	    	<mx:LinkButton label="Дистанція" click="showGraph(distSer)"/>
-	    	<mx:LinkButton label="Прискорення" click="showGraph(accelSer)"/>
+	    	<mx:LinkButton label="Швидкість, км/год" click="showGraph(speedSer)"/>
+	    	<mx:LinkButton label="Відстань, м" click="showGraph(distSer)"/>
+	    	<mx:LinkButton label="Прискорення, м/с²" click="showGraph(accelSer)"/>
 	    	<mx:Spacer height="100%" />
 	    	<mx:HRule width="100%" />
 	    	<mx:Button toolTip="Скопіювати в буфер обміну" click="System.setClipboard(ExportUtils.convertDGToHTMLTable(cDG));" icon="@Embed('/../assets/images/icons/page_excel.png')" width="26" height="26"/>
@@ -65,10 +65,10 @@
     
 	<mx:DataGrid id="cDG" width="100%" height="300" dataProvider="{cycleDP}">
 		<mx:columns>
-			<mx:DataGridColumn width="5" headerText="Час (сек.)" dataField="time" />
-			<mx:DataGridColumn width="10" headerText="Швидкість" dataField="speed" />
-			<mx:DataGridColumn width="10" headerText="Дистанція" dataField="dist"/>
-			<mx:DataGridColumn width="10" headerText="Прискорення" dataField="accel"/>
+			<mx:DataGridColumn width="5" headerText="Час, с" dataField="time" />
+			<mx:DataGridColumn width="10" headerText="Швидкість, км/год" dataField="speed" />
+			<mx:DataGridColumn width="10" headerText="Відстань, м" dataField="dist"/>
+			<mx:DataGridColumn width="10" headerText="Прискорення, м/с²" dataField="accel"/>
 			<mx:DataGridColumn width="10" headerText="Режим" dataField="mode"/>
 			<mx:DataGridColumn width="10" headerText="Передача" dataField="u"/>
 		</mx:columns>
