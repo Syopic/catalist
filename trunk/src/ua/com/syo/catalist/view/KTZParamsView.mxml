@@ -8,11 +8,11 @@
 	    	private function applyButtonClickHandler():void {
 	    		KoefStorage.ktzModel = modelTextInput.text;
 	    		
-	    		KoefStorage.UI = uINumStepper.value;
-	    		KoefStorage.UII = uIINumStepper.value;
-	    		KoefStorage.UIII = uIIINumStepper.value;
-	    		KoefStorage.UIV = uIVNumStepper.value;
-	    		KoefStorage.UV = uVNumStepper.value;
+	    		KoefStorage.U["I"] = KoefStorage.UI = uINumStepper.value;
+	    		KoefStorage.U["II"] = KoefStorage.UII = uIINumStepper.value;
+	    		KoefStorage.U["III"] = KoefStorage.UIII = uIIINumStepper.value;
+	    		KoefStorage.U["IV"] = KoefStorage.UIV = uIVNumStepper.value;
+	    		KoefStorage.U["V"] = KoefStorage.UV = uVNumStepper.value;
 	    		
 	    		KoefStorage.Ga = GaNumStepper.value;
 				KoefStorage.rk = rkNumStepper.value;

@@ -1,13 +1,17 @@
 package ua.com.syo.catalist.data {
 	[Bindable]	
 	public class KoefStorage {
-		public static var U			: Array= new Array();
-		U["I"] = UI;
-		U["II"] = UII;
-		U["III"] = UIII;
-		U["IV"] = UIV;
-		U["V"] = UV;
 		
+		public static var U	: Array;
+		
+		public static function init():void {
+			U = new Array();
+			U["I"] = UI;
+			U["II"] = UII;
+			U["III"] = UIII;
+			U["IV"] = UIV;
+			U["V"] = UV;
+		}
 		
 		//----------------- Параметри КТЗ і двигуна ---------------
 		
@@ -100,12 +104,23 @@ package ua.com.syo.catalist.data {
 		
 		//Експериментальний кут відкриття дросельних заслінок за сталої швидкості
 		public static var phiDrosStalaBW : Number=4.65;
-		public static var tDrosMin	: Number=	1.035*60/6.6/nXXmin;
+		
+		public static function get tDrosMin():Number {
+			return 1.035*60/6.6/nXXmin;
+		}
+		
 		public static var phiDrosStalaB : Number=2.33;
 		public static var phiDrosStalaGW : Number=6.98;
 		public static var phiDrosStalaG : Number=5.83; 
-		public static var cosA		: Number=	Math.cos(alpha);
-		public static var sinA		: Number=	Math.sin(alpha);
+		
+		public static function get cosA():Number {
+			return Math.cos(alpha);
+		}
+		
+		public static function get sinA():Number {
+			return Math.sin(alpha);
+		}
+		
 		//Коефіцієнт опору коченню із урахуванням втрат в трансмісії, кгс/кг
 		public static var f1		: Number=	0.014+0.005;
 		//Кут відкриття дросельних заслінок під час розгону, %
