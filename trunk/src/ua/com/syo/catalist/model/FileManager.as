@@ -68,14 +68,18 @@ package ua.com.syo.catalist.model {
 			// 
 			currentCycleDataXML = new XML(str);
 			stream.close();
+			parseXMLCycleData(currentCycleDataXML);
 			
-			PolynomsParser.parse(currentCycleDataXML.polynoms);
 			
 			//var pc:PolynomsCollection = new PolynomsCollection(currentCycleDataXML.polynoms.load.gasoline.withoutNeutralizer.children()[0]);
 			//Polynoms.addPolinomsCollection(pc, "gazoline", "withoutNeutralizer");
 			
 			
-			CycleData.parseXML(currentCycleDataXML);
+		}
+		
+		public function parseXMLCycleData(cycleDataXML:XML):void {
+			PolynomsParser.parse(cycleDataXML.polynoms);
+			CycleData.parseXML(cycleDataXML);
 			dispatchEvent(new Event(Event.OPEN));
 			Globals.dataLoaded = true;
 		}
@@ -85,6 +89,7 @@ package ua.com.syo.catalist.model {
 		    xmlContainer.dataFormat = URLLoaderDataFormat.TEXT;
 		    xmlContainer.addEventListener(Event.COMPLETE, xmlLoadedHandler);
 		    xmlContainer.load(new URLRequest(url));
+			Globals.dataLoaded = true;
 		}
 		
 		private function xmlLoadedHandler(e:Event):void {
