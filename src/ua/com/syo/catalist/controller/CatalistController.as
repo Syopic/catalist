@@ -10,7 +10,7 @@ import ua.com.syo.catalist.model.FileManager;
 import ua.com.syo.catalist.model.polynoms.PolyKoef;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleView;
-import ua.com.syo.catalist.view.ExperimentParamsView;
+import ua.com.syo.catalist.view.FuelParamsView;
 import ua.com.syo.catalist.view.KTZParamsView;
 import ua.com.syo.catalist.view.polinoms.PolynomsCoefficientsView;
 import ua.com.syo.catalist.view.vars.EcologyVarsView;
@@ -28,7 +28,7 @@ private static const views:Object = {
 	ecologyVars:EcologyVarsView,
 	economyVars:EconomyVarsView,
 	sumVars:SumVarsView,
-	expParams:ExperimentParamsView,
+	fuelParams:FuelParamsView,
 	poliKoef:PolynomsCoefficientsView
 }
 
