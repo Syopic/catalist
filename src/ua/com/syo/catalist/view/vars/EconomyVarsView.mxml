@@ -111,22 +111,22 @@
         	
 	        <mx:HBox>
 			    <mx:VBox height="100%" >
-			    	<mx:LinkButton label="GCO" click="showGraph(GCOSer)" />
-			    	<mx:LinkButton label="GCO2" click="showGraph(GCO2Ser)"/>
-			    	<mx:LinkButton label="GNOx" click="showGraph(GNOxSer)"/>
-			    	<mx:LinkButton label="GHCs" click="showGraph(GHCsSer)"/>
-			    	<mx:LinkButton label="GO2" click="showGraph(GO2Ser)"/>
+			    	<mx:LinkButton label="GCO§, кг/год" click="showGraph(GCOSer)" />
+			    	<mx:LinkButton label="GCO2§, кг/год" click="showGraph(GCO2Ser)"/>
+			    	<mx:LinkButton label="GNOx§, кг/год" click="showGraph(GNOxSer)"/>
+			    	<mx:LinkButton label="GHCs§, кг/год" click="showGraph(GHCsSer)"/>
+			    	<mx:LinkButton label="GO2§, кг/год" click="showGraph(GO2Ser)"/>
 			    </mx:VBox>   	 
 			    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
-			    	<mx:LinkButton label="NGCO" click="showGraph(GCOSer)" />
-			    	<mx:LinkButton label="NGCO2" click="showGraph(GCO2Ser)"/>
-			    	<mx:LinkButton label="NGNOx" click="showGraph(GNOxSer)"/>
-			    	<mx:LinkButton label="NGHCs" click="showGraph(GHCsSer)"/>
-			    	<mx:LinkButton label="NGO2" click="showGraph(GO2Ser)"/>
+			    	<mx:LinkButton label="G§CO, кг/год" click="showGraph(GCOSer)" />
+			    	<mx:LinkButton label="G§CO2, кг/год" click="showGraph(GCO2Ser)"/>
+			    	<mx:LinkButton label="G§NOx, кг/год" click="showGraph(GNOxSer)"/>
+			    	<mx:LinkButton label="G§HCs, кг/год" click="showGraph(GHCsSer)"/>
+			    	<mx:LinkButton label="G§O2, кг/год" click="showGraph(GO2Ser)"/>
 			    </mx:VBox>   	 
 			    <mx:VBox height="100%" >
-			    	<mx:LinkButton label="Gpov" click="showGraph(GpovSer)"/>
-			    	<mx:LinkButton label="alpha" click="showGraph(alphaSer)"/>
+			    	<mx:LinkButton label="Gпов, кг/год" click="showGraph(GpovSer)"/>
+			    	<mx:LinkButton label="α" click="showGraph(alphaSer)"/>
 			    </mx:VBox>   	 
 	        </mx:HBox>
 	        <mx:Spacer height="100%" />
@@ -137,21 +137,21 @@
 	
 		<mx:DataGrid id="cDG" width="100%" height="300" dataProvider="{ecoDP}">
 			<mx:columns>
-				<mx:DataGridColumn headerText="Час (сек.)" dataField="time" visible="true"/>
-				<mx:DataGridColumn headerText="режим" dataField="mode" />
-				<mx:DataGridColumn headerText="GCO" dataField="GCO" />
-				<mx:DataGridColumn headerText="GCO2" dataField="GCO2" />
-				<mx:DataGridColumn headerText="GNOx" dataField="GNOx" />
-				<mx:DataGridColumn headerText="GHCs" dataField="GHCs" />
-				<mx:DataGridColumn headerText="GO2" dataField="GO2" />
-				<mx:DataGridColumn headerText="NGCO" dataField="NGCO" visible="{!isN}"/>
-				<mx:DataGridColumn headerText="NGCO2" dataField="NGCO2" visible="{!isN}"/>
-				<mx:DataGridColumn headerText="NGNOx" dataField="NGNOx" visible="{!isN}"/>
-				<mx:DataGridColumn headerText="NGHCs" dataField="NGHCs" visible="{!isN}"/>
-				<mx:DataGridColumn headerText="NGO2" dataField="NGO2" visible="{!isN}"/>
-				<mx:DataGridColumn headerText="Gpal" dataField="Gpal" />
-				<mx:DataGridColumn headerText="Gpov" dataField="Gpov" />
-				<mx:DataGridColumn headerText="alpha" dataField="alpha" />
+				<mx:DataGridColumn headerText="Час, с" dataField="time" visible="true"/>
+				<mx:DataGridColumn headerText="Режим" dataField="mode" />
+				<mx:DataGridColumn headerText="GCO§, кг/год" dataField="GCO" />
+				<mx:DataGridColumn headerText="GCO2§, кг/год" dataField="GCO2" />
+				<mx:DataGridColumn headerText="GNOx§, кг/год" dataField="GNOx" />
+				<mx:DataGridColumn headerText="GHCs§, кг/год" dataField="GHCs" />
+				<mx:DataGridColumn headerText="GO2§, кг/год" dataField="GO2" />
+				<mx:DataGridColumn headerText="G§CO, кг/год" dataField="NGCO" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="G§CO2, кг/год" dataField="NGCO2" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="G§NOx, кг/год" dataField="NGNOx" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="G§HCs, кг/год" dataField="NGHCs" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="G§O2, кг/год" dataField="NGO2" visible="{!isN}"/>
+				<mx:DataGridColumn headerText="Gпал, кг/год" dataField="Gpal" />
+				<mx:DataGridColumn headerText="Gпов, кг/год" dataField="Gpov" />
+				<mx:DataGridColumn headerText="α" dataField="alpha" />
 			</mx:columns>
 		</mx:DataGrid>
 	</mx:VDividedBox>

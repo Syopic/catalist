@@ -1,7 +1,7 @@
 package ua.com.syo.catalist.view.data
 {
     public class CatalistStrings {
-        public static const TITLE_LABEL:String="Програма для розрахунку";
+        public static const TITLE_LABEL:String="Визначення енергетичних, паливно-економічних та екологічних показників роботи КТЗ з каталітичним нейтралізатором";
         public static const VERSION:String="v. 0.6";
         
         public static const ABOUT_TEXT:String="Програму створено за сприяння, а також завдяки." + 
