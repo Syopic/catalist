@@ -61,11 +61,11 @@
 		    
         </mx:LineChart>
 	    <mx:VBox height="100%" horizontalAlign="right">
-	    	<mx:LinkButton label="Ndv" click="showGraph(NdvSer)"/>
-	    	<mx:LinkButton label="Omega" click="showGraph(OmegaSer)"/>
-	    	<mx:LinkButton label="Mk" click="showGraph(MkSer)"/>
-	    	<mx:LinkButton label="DeltaPk" click="showGraph(DeltaPkSer)"/>
-	    	<mx:LinkButton label="PhiDros" click="showGraph(PhiDrosPkSer)"/>
+	    	<mx:LinkButton label="nдв, хв-¹" click="showGraph(NdvSer)"/>
+	    	<mx:LinkButton label="ω, рад/с" click="showGraph(OmegaSer)"/>
+	    	<mx:LinkButton label="Мк, Н•м" click="showGraph(MkSer)"/>
+	    	<mx:LinkButton label="Δрк, кПа" click="showGraph(DeltaPkSer)"/>
+	    	<mx:LinkButton label="φдрос, %" click="showGraph(PhiDrosPkSer)"/>
 	    	<mx:Spacer height="100%" />
 	    	<mx:HRule width="100%" />
 	    	<mx:Button toolTip="Скопіювати в буфер обміну" click="System.setClipboard(ExportUtils.convertDGToHTMLTable(cDG));" icon="@Embed('/../assets/images/icons/page_excel.png')" width="26" height="26"/>
@@ -74,13 +74,13 @@
 	
 		<mx:DataGrid id="cDG" width="100%" height="300" dataProvider="{energyvarsDP}">
 			<mx:columns>
-				<mx:DataGridColumn width="5" headerText="Час (сек.)" dataField="time" />
-				<mx:DataGridColumn width="5" headerText="режим" dataField="mode" />
-				<mx:DataGridColumn width="10" headerText="Ndv" dataField="Ndv" />
-				<mx:DataGridColumn width="10" headerText="Omega" dataField="Omega"/>
-				<mx:DataGridColumn width="10" headerText="Mk" dataField="Mk"/>
-				<mx:DataGridColumn width="10" headerText="DeltaPk" dataField="DeltaPk"/>
-				<mx:DataGridColumn width="10" headerText="PhiDros" dataField="PhiDros"/>
+				<mx:DataGridColumn width="5" headerText="Час, с" dataField="time" />
+				<mx:DataGridColumn width="5" headerText="Режим" dataField="mode" />
+				<mx:DataGridColumn width="10" headerText="nдв, хв-¹" dataField="Ndv" />
+				<mx:DataGridColumn width="10" headerText="ω, рад/с" dataField="Omega"/>
+				<mx:DataGridColumn width="10" headerText="Мк, Н•м" dataField="Mk"/>
+				<mx:DataGridColumn width="10" headerText="Δрк, кПа" dataField="DeltaPk"/>
+				<mx:DataGridColumn width="10" headerText="φдрос, %" dataField="PhiDros"/>
 			</mx:columns>
 		</mx:DataGrid>
 	</mx:VDividedBox>

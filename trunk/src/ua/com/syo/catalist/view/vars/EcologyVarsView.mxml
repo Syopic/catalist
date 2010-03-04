@@ -126,25 +126,25 @@
 	        <mx:VBox height="100%" horizontalAlign="right">
 		        <mx:HBox>
 				    <mx:VBox height="100%" >
-				    	<mx:LinkButton label="CO" click="showGraph(COSer)" />
-				    	<mx:LinkButton label="CO2" click="showGraph(CO2Ser)"/>
-				    	<mx:LinkButton label="NOx" click="showGraph(NOxSer)"/>
-				    	<mx:LinkButton label="HCs" click="showGraph(HCsSer)" />
-				    	<mx:LinkButton label="O2" click="showGraph(O2Ser)" />
+				    	<mx:LinkButton label="CO§, %" click="showGraph(COSer)" />
+				    	<mx:LinkButton label="CO2§, %" click="showGraph(CO2Ser)"/>
+				    	<mx:LinkButton label="NOx§, млн-¹" click="showGraph(NOxSer)"/>
+				    	<mx:LinkButton label="HCs§, млн-¹" click="showGraph(HCsSer)" />
+				    	<mx:LinkButton label="O2§, %" click="showGraph(O2Ser)" />
 				    </mx:VBox>   	 
 				    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
-				    	<mx:LinkButton label="NCO" click="showGraph(COSer, NCOSer)" />
-				    	<mx:LinkButton label="NCO2" click="showGraph(CO2Ser, NCO2Ser)"/>
-				    	<mx:LinkButton label="NNOx" click="showGraph(NOxSer, NNOxSer)"/>
-				    	<mx:LinkButton label="NHCs" click="showGraph(HCsSer, NHCsSer)"/>
-				    	<mx:LinkButton label="NO2" click="showGraph(O2Ser, NO2Ser)"/>
+				    	<mx:LinkButton label="§CO, %" click="showGraph(COSer, NCOSer)" />
+				    	<mx:LinkButton label="§CO2, %" click="showGraph(CO2Ser, NCO2Ser)"/>
+				    	<mx:LinkButton label="§NOx, млн-¹" click="showGraph(NOxSer, NNOxSer)"/>
+				    	<mx:LinkButton label="§HCs, млн-¹" click="showGraph(HCsSer, NHCsSer)"/>
+				    	<mx:LinkButton label="§O2, %" click="showGraph(O2Ser, NO2Ser)"/>
 				    </mx:VBox>   	 
 				    <mx:VBox height="100%" includeInLayout="{!isN}" visible="{!isN}">
-				    	<mx:LinkButton label="%CO" click="showGraph(efCOSer)" />
-				    	<mx:LinkButton label="%CO2" click="showGraph(efCO2Ser)"/>
-				    	<mx:LinkButton label="%NOx" click="showGraph(efNOxSer)"/>
-				    	<mx:LinkButton label="%HCs" click="showGraph(efHCsSer)"/>
-				    	<mx:LinkButton label="%O2" click="showGraph(efO2Ser)"/>
+				    	<mx:LinkButton label="↓CO, %" click="showGraph(efCOSer)" />
+				    	<mx:LinkButton label="↑CO2, %" click="showGraph(efCO2Ser)"/>
+				    	<mx:LinkButton label="↓NOx, млн-¹" click="showGraph(efNOxSer)"/>
+				    	<mx:LinkButton label="↓HCs, млн-¹" click="showGraph(efHCsSer)"/>
+				    	<mx:LinkButton label="↑O2, %" click="showGraph(efO2Ser)"/>
 				    </mx:VBox>   	 
 		        </mx:HBox>
 		        <mx:Spacer height="100%" />
@@ -155,27 +155,27 @@
 	
 		<mx:DataGrid id="cDG" width="100%" height="300" dataProvider="{ecoDP}">
 			<mx:columns>
-				<mx:DataGridColumn  headerText="Час (сек.)" dataField="time" visible="true"/>
-				<mx:DataGridColumn  headerText="режим" dataField="mode" />
-				<mx:DataGridColumn  headerText="CO" dataField="CO" />
-				<mx:DataGridColumn  headerText="NCO" dataField="NCO" visible="{!isN}"/>
-				<mx:DataGridColumn  headerText="%CO" dataField="efCO" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="Час, с" dataField="time" visible="true"/>
+				<mx:DataGridColumn  headerText="Режим" dataField="mode" />
+				<mx:DataGridColumn  headerText="CO§, %" dataField="CO" />
+				<mx:DataGridColumn  headerText="§CO, %" dataField="NCO" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="↓CO, %" dataField="efCO" visible="{!isN}"/>
 				
-				<mx:DataGridColumn  headerText="CO2" dataField="CO2" />
-				<mx:DataGridColumn  headerText="NCO2" dataField="NCO2" visible="{!isN}"/>
-				<mx:DataGridColumn  headerText="%CO2" dataField="efCO2" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="CO2§, %" dataField="CO2" />
+				<mx:DataGridColumn  headerText="§CO2, %" dataField="NCO2" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="↑CO2, %" dataField="efCO2" visible="{!isN}"/>
 				
-				<mx:DataGridColumn  headerText="NOx" dataField="NOx"/>
-				<mx:DataGridColumn  headerText="NNOx" dataField="NNOx" visible="{!isN}"/>
-				<mx:DataGridColumn  headerText="%NOx" dataField="efNOx" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="NOx§, млн-¹" dataField="NOx"/>
+				<mx:DataGridColumn  headerText="§NOx, млн-¹" dataField="NNOx" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="↓NOx, %" dataField="efNOx" visible="{!isN}"/>
 				
-				<mx:DataGridColumn  headerText="HCs" dataField="HCs"/>
-				<mx:DataGridColumn  headerText="NHCs" dataField="NHCs" visible="{!isN}"/>
-				<mx:DataGridColumn  headerText="%HCs" dataField="efHCs" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="HCs§, млн-¹" dataField="HCs"/>
+				<mx:DataGridColumn  headerText="§HCs, млн-¹" dataField="NHCs" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="↓HCs, %" dataField="efHCs" visible="{!isN}"/>
 				
-				<mx:DataGridColumn  headerText="O2" dataField="O2" />
-				<mx:DataGridColumn  headerText="NO2" dataField="NO2" visible="{!isN}"/>
-				<mx:DataGridColumn  headerText="%O2" dataField="efO2" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="O2§, %" dataField="O2" />
+				<mx:DataGridColumn  headerText="§O2, %" dataField="NO2" visible="{!isN}"/>
+				<mx:DataGridColumn  headerText="↑O2, %" dataField="efO2" visible="{!isN}"/>
 			</mx:columns>
 		</mx:DataGrid>
 	</mx:VDividedBox>
