@@ -9,6 +9,7 @@ import ua.com.syo.catalist.data.KoefStorage;
 import ua.com.syo.catalist.model.FileManager;
 import ua.com.syo.catalist.model.polynoms.PolyKoef;
 import ua.com.syo.catalist.view.AboutView;
+import ua.com.syo.catalist.view.CycleParamsView;
 import ua.com.syo.catalist.view.CycleView;
 import ua.com.syo.catalist.view.FuelParamsView;
 import ua.com.syo.catalist.view.KTZParamsView;
@@ -29,6 +30,7 @@ private static const views:Object = {
 	economyVars:EconomyVarsView,
 	sumVars:SumVarsView,
 	fuelParams:FuelParamsView,
+	cycleParams:CycleParamsView,
 	poliKoef:PolynomsCoefficientsView
 }
 
