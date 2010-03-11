@@ -16,7 +16,7 @@ package ua.com.syo.catalist.data {
 		//----------------- Параметри КТЗ і двигуна ---------------
 		
 		//Модель КТЗ
-		public static var ktzModel:String = "ВАЗ-2106»";
+		public static var ktzModel:String = "ВАЗ-2106";
 		
 		//Передаткові числа коробки передач
 		public static var UI:Number = 3.67;

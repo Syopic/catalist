@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml"
+	creationComplete="init()"
+	cornerRadius="0" verticalGap="4" width="100%" height="100%" headerHeight="10">
+	<mx:Script>
+	    <![CDATA[
+	    	import mx.collections.ArrayCollection;
+	    	import ua.com.syo.catalist.data.CycleData;
+	    	
+	    	[Bindable]
+			private var cycleDP:ArrayCollection;
+	    	
+	    	private function init():void {
+	    		cycleDP = new ArrayCollection();
+	    		for (var i:int = 0; i < CycleData.timePointArray.length; i++) {
+	    			var o:Object = {time : CycleData.timePointArray[i], 
+										speed : CycleData.speedPointArray[i], 
+										accel : CycleData.accelerationPointArray[i], 
+										mode : CycleData.modePointArray[i], 
+										u : CycleData.uPointArray[i]}
+		    		cycleDP.addItem(o);
+	    		}
+	    	}
+	    	  	
+	    	private function applyButtonClickHandler():void {
+	    		CycleData.timePointArray = new Array();
+	    		CycleData.speedPointArray = new Array();
+	    		CycleData.accelerationPointArray = new Array();
+	    		CycleData.modePointArray = new Array();
+	    		CycleData.uPointArray = new Array();
+	    		
+	    		for (var i:int = 0; i < cycleDP.length; i++) {
+	    			CycleData.timePointArray.push(cycleDP[i].time);
+	    			CycleData.speedPointArray.push(cycleDP[i].speed);
+	    			CycleData.accelerationPointArray.push(cycleDP[i].accel);
+	    			CycleData.modePointArray.push(cycleDP[i].mode);
+	    			CycleData.uPointArray.push(cycleDP[i].u);
+	    		}
+	    	}
+	    	private function addRowClickHandler():void {
+	    		cycleDP.addItem({});
+	    	}
+	    ]]>
+	</mx:Script>
+	<mx:VBox width="100%" height="100%">
+		<mx:DataGrid id="cDG" width="100%" height="100%" dataProvider="{cycleDP}" editable="true">
+		<mx:columns>
+			<mx:DataGridColumn editable="true" width="5" headerText="Час, с" dataField="time" />
+			<mx:DataGridColumn editable="true" width="10" headerText="Швидкість, км/год" dataField="speed" />
+			<mx:DataGridColumn editable="true" width="10" headerText="Прискорення, м/с²" dataField="accel"/>
+			<mx:DataGridColumn editable="true" width="10" headerText="Режим" dataField="mode"/>
+			<mx:DataGridColumn editable="true" width="10" headerText="Передача" dataField="u"/>
+		</mx:columns>
+	</mx:DataGrid>
+	</mx:VBox>
+	<mx:ControlBar horizontalAlign="right">
+    	<mx:Button id="addRow" click="addRowClickHandler()" label="Додати точку"/>
+    	<mx:Button id="applyButton" click="applyButtonClickHandler()" label="Прийняти" icon="@Embed('/../assets/images/icons/tick.png')"/>
+	</mx:ControlBar>
+</mx:Panel>
+

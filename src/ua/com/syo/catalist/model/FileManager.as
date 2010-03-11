@@ -100,10 +100,32 @@ package ua.com.syo.catalist.model {
 		}
 		
 		public function showSaveDialog():void {
-			var fileChooser:File = new File();
-			var txtFilter:FileFilter = new FileFilter("Cycle data", "*.xml");
-			fileChooser.browseForSave("Зберегти результати обчислень");
+			var docsDir:File = File.applicationDirectory;
+
+			try {
+				docsDir.browseForSave("Зберегти результати обчислень");
+				docsDir.addEventListener(Event.SELECT, saveData);
+			} catch (error:Error) {
+				trace("Failed:", error.message);
+			}
+			
 		}
+		
+		private function saveData(event:Event):void {
+	        //currentPath.text="u should enter yor name without extension";
+	        var savedAsFile:File = event.target as File;
+	        var st:String = event.target.nativePath;
+	        st += ".xml";
+	        savedAsFile.nativePath=st;
+	
+	        var fs:FileStream=new FileStream();
+	        fs.open(savedAsFile,FileMode.WRITE);
+	        fs.writeUTFBytes("Hello!!!!");
+	        fs.close();
+	       // current=savedAsFile;
+	       // currentPath.text="The current file is :    "+savedAsFile.nativePath;
+
+    	}
 		
 		public function loadFile(filePath:String):void {
 			
