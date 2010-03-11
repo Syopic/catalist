@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <menu>
     <item label="Файл">
-        <item id="loadData" label="Завантажити дані"/>
-        <item id="saveData" label="Зберегти результат"/>
+        <item id="loadData" label="Завантажити параметри"/>
+        <item id="saveData" label="Зберегти параметри"/>
     </item>
     <item label="Розрахунок">
         <item id="cycleReproduce" label="Відтворення циклу"/>
@@ -12,8 +12,9 @@
         <item id="sumVars" label="Сумарні"/>
     </item>
     <item label="Налаштування">
+    	<item id="cycleParams" label="Параметри циклу"/>
     	<item id="ktzParams" label="Параметри КТЗ і двигуна"/>
-    	<item id="expParams" label="Параметри палива"/>
+    	<item id="fuelParams" label="Параметри палива"/>
     	<item id="otherParams" label="Інші параметри"/>
     	<item id="poliKoef" label="Коефіцієнти поліномів"/>
     </item>
