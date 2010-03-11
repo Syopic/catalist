@@ -1,14 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml"
 	cornerRadius="0" verticalGap="4" width="100%" height="100%" headerHeight="10">
-<mx:VBox width="100%" height="100%">
-	<mx:HBox width="100%" height="100%">
-		<mx:HBox width="100%" height="100%">
-	    </mx:HBox>
-    </mx:HBox>
+	<mx:Script>
+		<![CDATA[
+			import ua.com.syo.catalist.data.KoefStorage;
+			
+			private function applyButtonClickHandler():void {
+				KoefStorage.roBenz = Number(roBenzNS.text);
+				KoefStorage.roGas = Number(roGasNS.text);
+				KoefStorage.Sbenz = Number(SbenzNS.text);
+				KoefStorage.Sgas = Number(SgasNS.text);
+				KoefStorage.PbBenz = Number(PbBenzNS.text);
+				KoefStorage.PbGas = Number(PbGasNS.text);
+				KoefStorage.HuBenz = Number(HuBenzNS.text);
+				KoefStorage.HuGas = Number(HuGasNS.text);
+				KoefStorage.L0ben = Number(L0benNS.text);
+				KoefStorage.L0gas = Number(L0gasNS.text);
+				KoefStorage.muCO = Number(muCONS.text);
+				KoefStorage.muCO2 = Number(muCO2NS.text);
+				KoefStorage.muCH = Number(muCHNS.text);
+				KoefStorage.muNOX = Number(muNOXNS.text);
+				KoefStorage.muO2 = Number(muO2NS.text);
+	    	}
+	    	
+		]]>
+	</mx:Script>
+	<mx:VBox width="100%" height="100%" horizontalAlign="center">
+		<mx:Spacer height="50" />
+		<mx:Grid borderStyle="solid" height="223">
+			<mx:GridRow width="100%" height="100%">
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle">
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%">
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" borderColor="#C2C2C2" backgroundColor="#E0E0E0">
+					<mx:Label text="Бензин А-95" fontWeight="bold"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" backgroundColor="#D7D7D7">
+					<mx:Label text="ЗНГ (пропан-бутан)" fontWeight="bold"/>
+				</mx:GridItem>
+			</mx:GridRow>
+			<mx:GridRow width="100%" height="100%" backgroundColor="#E7E7E7">
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle">
+					<mx:Label text="Густина палива, кг/л"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#D9D9D9">
+					<mx:Label text="ρпал"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="roBenzNS" text="{KoefStorage.roBenz}" width="60"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="roGasNS" text="{KoefStorage.roGas}" width="60"/>
+				</mx:GridItem>
+			</mx:GridRow>
+			<mx:GridRow width="100%" height="100%" backgroundColor="#E7E7E7">
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle">
+					<mx:Label text="Вміст сірки в паливі, %/100"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#D9D9D9">
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="SbenzNS" text="{KoefStorage.Sbenz}" width="60"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="SgasNS" text="{KoefStorage.Sgas}" width="60"/>
+				</mx:GridItem>
+			</mx:GridRow>
+			<mx:GridRow width="100%" height="100%" backgroundColor="#E7E7E7">
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle">
+					<mx:Label text="Вміст свинцю в паливі, г/л"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#D9D9D9">
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="PbBenzNS" text="{KoefStorage.PbBenz}" width="60"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="PbGasNS" text="{KoefStorage.PbGas}" width="60"/>
+				</mx:GridItem>
+			</mx:GridRow>
+			<mx:GridRow width="100%" height="100%" backgroundColor="#E7E7E7">
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle">
+					<mx:Label text="Нижча теплота згорання, МДж/кг"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#D9D9D9">
+					<mx:Label text="Hu"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="HuBenzNS" text="{KoefStorage.HuBenz}" width="60"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="HuGasNS" text="{KoefStorage.HuGas}" width="60"/>
+				</mx:GridItem>
+			</mx:GridRow>
+			<mx:GridRow width="100%" height="100%" backgroundColor="#E7E7E7">
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle">
+					<mx:Label text="Теоретично необхідна кількість повітря, кг/кг"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="#D9D9D9">
+					<mx:Label text="L0"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="L0benNS" text="{KoefStorage.L0ben}" width="60"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="L0gasNS" text="{KoefStorage.L0gas}" width="60"/>
+				</mx:GridItem>
+			</mx:GridRow>
+		</mx:Grid>
+		<mx:Grid borderStyle="solid" width="522" height="145">
+			<mx:GridRow width="100%" height="100%">
+				<mx:GridItem width="100%" height="100%">
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" backgroundColor="#E1E1E1">
+					<mx:Label text="μCO" fontWeight="bold"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" backgroundColor="#E1E1E1">
+					<mx:Label text="μCO2" fontWeight="bold"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" backgroundColor="#E1E1E1">
+					<mx:Label text="μHCs" fontWeight="bold"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" backgroundColor="#E1E1E1">
+					<mx:Label text="μNOx" fontWeight="bold"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" backgroundColor="#CFCFCF">
+					<mx:Label text="μO2" fontWeight="bold"/>
+				</mx:GridItem>
+			</mx:GridRow>
+			<mx:GridRow width="100%" height="100%">
+				<mx:GridItem width="100%" height="100%">
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%">
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%">
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" backgroundColor="#E1E1E1">
+					<mx:Label text="за гексаном"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" backgroundColor="#E1E1E1">
+					<mx:Label text="за NO2"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%">
+				</mx:GridItem>
+			</mx:GridRow>
+			<mx:GridRow width="100%" height="100%" backgroundColor="#DADADA">
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:Label text="Вміст свинцю в паливі, г/л"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="muCONS" text="{KoefStorage.muCO}" width="60"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="muCO2NS" text="{KoefStorage.muCO2}" width="60"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="muCHNS" text="{KoefStorage.muCH}" width="60"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="muNOXNS" text="{KoefStorage.muNOX}" width="60"/>
+				</mx:GridItem>
+				<mx:GridItem width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+					<mx:TextInput id="muO2NS" text="{KoefStorage.muO2}" width="60"/>
+				</mx:GridItem>
+			</mx:GridRow>
+		</mx:Grid>
+			
 	</mx:VBox>
 	<mx:ControlBar horizontalAlign="right">
-    	<mx:Button label="Прийняти" icon="@Embed('/../assets/images/icons/tick.png')"/>
+    	<mx:Button label="Прийняти" click="applyButtonClickHandler()" icon="@Embed('/../assets/images/icons/tick.png')"/>
 	</mx:ControlBar>
 </mx:Panel>
 
