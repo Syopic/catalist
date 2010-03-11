@@ -129,12 +129,5 @@ package ua.com.syo.catalist.data {
 		public static var phiDrosMax: Number=	100;
 		//Прискорення вільного падіння
 		public static var g			: Number=	9.81;
-		
-		
-		
-		
-		
-		
-		
 	}
 }
