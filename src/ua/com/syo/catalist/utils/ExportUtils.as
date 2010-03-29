@@ -1,5 +1,6 @@
 package ua.com.syo.catalist.utils {
 	import mx.controls.DataGrid;
+	import mx.controls.dataGridClasses.DataGridColumn;
 	
 	import ua.com.syo.utils.StringUtils;
 	
@@ -34,12 +35,14 @@ package ua.com.syo.catalist.utils {
         	
         	//Set the tableheader data (retrieves information from the datagrid header				
         	for(var i:int = 0;i<dg.columns.length;i++) {
-        		colors = dg.getStyle("themeColor");
-        			
-        		if(dg.columns[i].headerText != undefined) {
-        			str+="<th "+style+">"+dg.columns[i].headerText+"</th>";
-        		} else {
-        			str+= "<th "+style+">"+dg.columns[i].dataField+"</th>";
+        		if ((dg.columns[i] as DataGridColumn).visible) {
+	        		colors = dg.getStyle("themeColor");
+	        			
+	        		if(dg.columns[i].headerText != undefined) {
+	        			str+="<th "+style+">"+dg.columns[i].headerText+"</th>";
+	        		} else {
+	        			str+= "<th "+style+">"+dg.columns[i].dataField+"</th>";
+	        		}
         		}
         	}
         	str += "</tr></thead><tbody>";
@@ -53,13 +56,15 @@ package ua.com.syo.catalist.utils {
         		for(var k:int=0; k < dg.columns.length; k++) {
         			
         			//Do we still have a valid item?						
-        			if(dg.dataProvider.getItemAt(j) != undefined && dg.dataProvider.getItemAt(j) != null) {
+        			if((dg.columns[k] as DataGridColumn).visible && dg.dataProvider.getItemAt(j) != undefined && dg.dataProvider.getItemAt(j) != null) {
         				
-	        			var s:String = dg.dataProvider.getItemAt(j)[dg.columns[k].dataField].toString();
-	        			if (!isNaN(dg.dataProvider.getItemAt(j)[dg.columns[k].dataField].toString())) {
-	        				s = StringUtils.dotToComma(dg.dataProvider.getItemAt(j)[dg.columns[k].dataField]);
-	        			} else {
-	        				s = dg.dataProvider.getItemAt(j)[dg.columns[k].dataField];
+        				if (dg.dataProvider.getItemAt(j)[dg.columns[k].dataField]) {
+		        			var s:String = dg.dataProvider.getItemAt(j)[dg.columns[k].dataField].toString();
+		        			if (!isNaN(dg.dataProvider.getItemAt(j)[dg.columns[k].dataField].toString())) {
+		        				s = StringUtils.dotToComma(dg.dataProvider.getItemAt(j)[dg.columns[k].dataField]);
+		        			} else {
+		        				s = dg.dataProvider.getItemAt(j)[dg.columns[k].dataField];
+		        			}
 	        			}
         				//Check to see if the user specified a labelfunction which we must
         				//use instead of the dataField
