@@ -79,6 +79,9 @@
 				SumGSumLab2.text = MathUtils.pRound(sumGsum2, Globals.roundDecPlaces).toString();
 			}
 			
+			private function copyClickHandler(event:Event):void {
+				System.setClipboard("Витрата палива: " + GpalLab.text);
+			}
 		]]>
 	</mx:Script>	
 	<mx:VBox width="100%" >
@@ -148,6 +151,7 @@
 				<mx:Label id="SumGSumLab2" selectable="true"/>
 				
 			</mx:HBox>
+				<mx:Button label="Скопіювати" click="copyClickHandler(event)"/>
 			<mx:HRule width="100%"/>
 		</mx:VBox>
 	</mx:VBox>

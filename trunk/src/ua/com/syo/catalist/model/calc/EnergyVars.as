@@ -143,7 +143,7 @@ package ua.com.syo.catalist.model.calc {
 				case "упов.+":
 				case "упов.-":
 				case "перемик.":
-					result =  - (PolyModelsPXX.Mk(time) / KoefStorage.etaTrans);
+					result =   (PolyModelsPXX.Mk(time) / KoefStorage.etaTrans);
 					break;	
 				/* case "перемик.":
 					result = -(KoefStorage.Ga * KoefStorage.f0 * KoefStorage.rd * KoefStorage.g * (1 + KoefStorage.A * Math.pow(((omegaZchep(time) * KoefStorage.rd * 3.6) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0)), 2))) / (KoefStorage.U[CycleData.getU(time)] * KoefStorage.u0 * KoefStorage.etaTrans));
