@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml"
+	cornerRadius="0" verticalGap="4" width="100%" height="100%" headerHeight="10">
+	
+	<mx:Script>
+		<![CDATA[
+			import ua.com.syo.catalist.data.KoefStorage;
+			
+			private function applyButtonClickHandler():void {
+				KoefStorage.A = ANumStepper.value;
+				KoefStorage.alpha = alphaNumStepper.value;
+				KoefStorage.vZchep = vZchepNumStepper.value;
+				KoefStorage.vDros = vDrosNumStepper.value;
+				KoefStorage.lambda = lambdaNumStepper.value;
+			}
+			
+			
+		]]>
+	</mx:Script>
+<mx:VBox width="100%" height="100%">
+	<mx:HBox width="100%" height="100%">
+		<mx:HBox width="100%" height="100%">
+			<mx:Form height="100%" width="100%" verticalGap="5">
+		        <mx:FormItem label="Умовний опір коченню коліс КТЗ">
+		        	<mx:HBox>
+			            <mx:NumericStepper id="ANumStepper" stepSize="0.1" maximum="500" value="{KoefStorage.A}"/>
+			            <mx:Label/>
+		        	</mx:HBox>
+		        </mx:FormItem>
+		        <mx:FormItem label="Кут нахилу повздовжнього профілю дороги">
+		        	<mx:HBox>
+			            <mx:NumericStepper id="alphaNumStepper" stepSize="0.1" maximum="500" value="{KoefStorage.alpha}"/>
+			            <mx:Label text="град" />
+		        	</mx:HBox>
+		        </mx:FormItem>
+		        <mx:FormItem label="Швидкість зростання моменту тертя зчеплення, ">
+		        	<mx:HBox>
+			            <mx:NumericStepper id="vZchepNumStepper" stepSize="0.1" maximum="500" value="{KoefStorage.vZchep}"/>
+			            <mx:Label text="Нм/с" />
+		        	</mx:HBox>
+		        </mx:FormItem>
+		        <mx:FormItem label="Швидкість відкриття дросельних заслінок ">
+		        	<mx:HBox>
+			            <mx:NumericStepper id="vDrosNumStepper" stepSize="0.1" maximum="500" value="{KoefStorage.vDros}"/>
+			            <mx:Label text="%/с" />
+		        	</mx:HBox>
+		        </mx:FormItem>
+				<mx:FormItem label="Експериментальний коефіцієнт неусталеного режиму">
+					<mx:HBox>
+						<mx:NumericStepper id="lambdaNumStepper" stepSize="0.1" maximum="500" value="{KoefStorage.lambda}"/>
+						<mx:Label/>
+					</mx:HBox>
+				</mx:FormItem>
+		    </mx:Form>
+	    </mx:HBox>
+    </mx:HBox>
+	</mx:VBox>
+	<mx:ControlBar horizontalAlign="right">
+    	<mx:Button label="Прийняти" icon="@Embed('/../assets/images/icons/tick.png')" click="applyButtonClickHandler()"/>
+	</mx:ControlBar>
+</mx:Panel>
+

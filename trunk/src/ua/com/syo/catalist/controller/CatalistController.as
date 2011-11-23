@@ -11,6 +11,7 @@ import ua.com.syo.catalist.model.polynoms.PolyKoef;
 import ua.com.syo.catalist.view.AboutView;
 import ua.com.syo.catalist.view.CycleParamsView;
 import ua.com.syo.catalist.view.CycleView;
+import ua.com.syo.catalist.view.OtherParamsView;
 import ua.com.syo.catalist.view.FuelParamsView;
 import ua.com.syo.catalist.view.KTZParamsView;
 import ua.com.syo.catalist.view.polinoms.PolynomsCoefficientsView;
@@ -31,6 +32,7 @@ private static const views:Object = {
 	sumVars:SumVarsView,
 	fuelParams:FuelParamsView,
 	cycleParams:CycleParamsView,
+	otherParams:OtherParamsView,
 	poliKoef:PolynomsCoefficientsView
 }
 
