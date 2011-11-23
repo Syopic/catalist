@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<application xmlns="http://ns.adobe.com/air/application/1.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/2.0">
 
 <!-- Adobe AIR Application Descriptor File Template.
 
@@ -15,13 +15,13 @@
 -->
 
 	<!-- The application identifier string, unique to this application. Required. -->
-	<id>GUICourseWork</id>
+	<id>Catalist</id>
 
 	<!-- Used as the filename for the application. Required. -->
-	<filename>Catalist</filename>
+	<filename>Catalyst</filename>
 
 	<!-- The name that is displayed in the AIR application installer. Optional. -->
-	<name>Catalist</name>
+	<name>Catalyst</name>
 
 	<!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required. -->
 	<version>v 0.1</version>
@@ -39,7 +39,7 @@
 		<content>Catalist.swf</content>
 		
 		<!-- The title of the main window. Optional. -->
-		<title>Catalist</title>
+		<title>Catalyst</title>
 
 		<!-- The type of system chrome to use (either "standard" or "none"). Optional. Default standard. -->
 		<!-- <systemChrome></systemChrome> -->
@@ -76,7 +76,10 @@
 
 		<!-- The window's initial maximum size, specified as a width/height pair, such as "1600 1200". Optional. -->
 		<!-- <maxSize>600</maxSize> -->
-	</initialWindow>
+	<autoOrients>false</autoOrients>
+        <fullScreen>false</fullScreen>
+        <visible>false</visible>
+    </initialWindow>
 
 	<!-- The subpath of the standard default installation location to use. Optional. -->
 	<!-- <installFolder></installFolder> -->
